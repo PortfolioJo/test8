@@ -1,670 +1,587 @@
-// script.js - بورتفوليو مهندس
+// ملف JavaScript للثيم الفني العصري
 document.addEventListener('DOMContentLoaded', function() {
-    // نظام الترجمة الكامل للمهندس
-    const translations = {
-        ar: {
-            // التنقل
-            logo: "أحمد",
-            navHome: "الرئيسية",
-            navProfile: "حول",
-            navServices: "الخدمات",
-            navPortfolio: "مشاريعي",
-            navSkills: "المهارات",
-            navContact: "اتصل",
-            language: "EN",
-            
-            // الصفحة الرئيسية
-            heroBadge: "مهندس برمجيات",
-            heroTitle: "أبني المستقبل الرقمي",
-            heroDescription: "أصمم وأطور حلولًا تقنية مبتكرة تلبي احتياجات العصر الرقمي. أجمع بين الخبرة التقنية والإبداع لبناء أنظمة ذكية ومتطورة.",
-            viewPortfolio: "شاهد مشاريعي",
-            contactMe: "لنعمل معًا",
-            statProjects: "مشروع",
-            statClients: "عميل",
-            statYears: "سنوات خبرة",
-            whyChooseTitle: "لماذا تختارني؟",
-            feature1Title: "تصميم مبتكر",
-            feature1Desc: "أصمم حلولًا تقنية مبتكرة تلبي أحدث معايير الجودة والأداء",
-            feature2Title: "تطوير متكامل",
-            feature2Desc: "أطور أنظمة متكاملة من الفكرة إلى التنفيذ مع ضمان أعلى معايير الأمان",
-            feature3Title: "تحسين الأداء",
-            feature3Desc: "أحلل وأحسن أداء الأنظمة لضمان كفاءتها واستقرارها على المدى الطويل",
-            feature4Title: "دعم مستمر",
-            feature4Desc: "أقدم دعمًا فنيًا مستمرًا ومراجعات دورية لضمان استمرارية العمل",
-            
-            // صفحة حول
-            profileTitle: "حول المهندس أحمد",
-            profileDescription: "مهندس برمجيات متخصص في تطوير الحلول التقنية المتكاملة والأنظمة الذكية",
-            aboutTitle: "شغفي هو بناء حلول تقنية مبتكرة",
-            aboutDescription: "مع أكثر من 5 سنوات من الخبرة في هندسة البرمجيات، أساعد الشركات والأفراد على تحويل أفكارهم إلى حلول رقمية متكاملة. أؤمن أن التكنولوجيا يجب أن تكون في خدمة الإنسان لتحسين جودة الحياة.",
-            specialtiesTitle: "تخصصاتي",
-            connectTitle: "تواصل معي",
-            philosophyTitle: "فلسفتي في هندسة البرمجيات",
-            philosophy1Title: "الجودة أولاً",
-            philosophy1Desc: "ألتزم بأعلى معايير الجودة في كل سطر أكتبه وكل نظام أصممه",
-            philosophy2Title: "الأداء الأمثل",
-            philosophy2Desc: "أركز على بناء أنظمة سريعة وموثوقة تلبي احتياجات المستخدمين",
-            philosophy3Title: "التطوير المستمر",
-            philosophy3Desc: "أتطور باستمرار لأواكب أحدث التقنيات وأفضل الممارسات في المجال",
-            
-            // صفحة الخدمات
-            servicesTitle: "خدماتي",
-            servicesDescription: "أقدم مجموعة متكاملة من الخدمات الهندسية لتلبية جميع احتياجاتك التقنية",
-            service1Title: "تطوير الويب",
-            service1Desc: "تصميم وتطوير مواقع وتطبيقات ويب متكاملة باستخدام أحدث التقنيات",
-            service1Feature1: "تطوير Frontend",
-            service1Feature2: "تطوير Backend",
-            service1Feature3: "تطوير متكامل",
-            service2Title: "تطوير التطبيقات",
-            service2Desc: "بناء تطبيقات الهواتف الذكية لأنظمة iOS و Android بتجربة استخدام ممتازة",
-            service2Feature1: "تطبيقات iOS",
-            service2Feature2: "تطبيقات Android",
-            service2Feature3: "تطبيقات متعددة المنصات",
-            service3Title: "أنظمة قواعد البيانات",
-            service3Desc: "تصميم وإدارة قواعد البيانات العلائقية وغير العلائقية بمعايير أمنية عالية",
-            service3Feature1: "تصميم قواعد البيانات",
-            service3Feature2: "تحسين الاستعلامات",
-            service3Feature3: "تأمين البيانات",
-            service4Title: "استشارات تقنية",
-            service4Desc: "تقديم استشارات متخصصة لتحسين البنية التحتية التقنية للشركات",
-            service4Feature1: "تحليل النظم",
-            service4Feature2: "تخطيط البنية التحتية",
-            service4Feature3: "مراجعة الأمان",
-            
-            // عملية العمل
-            processTitle: "كيف أعمل؟",
-            step1Title: "التحليل",
-            step1Desc: "أحلل متطلبات المشروع وأدرس احتياجات العميل بدقة",
-            step2Title: "التصميم",
-            step2Desc: "أصمم هندسة النظام وخوارزميات الحل مع وضع قابلية التوسع في الاعتبار",
-            step3Title: "التنفيذ",
-            step3Desc: "أبدأ في كتابة الكود وبناء النظام مع تحديثات مستمرة",
-            step4Title: "الاختبار والتسليم",
-            step4Desc: "أختبر النظام بدقة وأسلّمه مع وثائق فنية كاملة",
-            
-            // صفحة أعمالي
-            portfolioTitle: "معرض مشاريعي",
-            portfolioDescription: "مجموعة مختارة من المشاريع الهندسية التي نفذتها لشركات ومؤسسات مختلفة",
-            project1Title: "منصة تعليمية ذكية",
-            project1Desc: "تطوير منصة تعليمية متكاملة بميزات التعلم الذكي والتقارير التحليلية",
-            project2Title: "نظام إدارة المستشفيات",
-            project2Desc: "بناء نظام متكامل لإدارة عمليات المستشفى وتتبع الحالات المرضية",
-            project3Title: "تطبيق توصيل طعام",
-            project3Desc: "تطوير تطبيق ذكي لتوصيل الطعام مع نظام تتبع حي للطلبات",
-            project4Title: "منصة تجارة إلكترونية",
-            project4Desc: "تصميم وتطوير منصة تسوق إلكتروني بميزات متقدمة للدفع والتوصيل",
-            project5Title: "نظام إدارة المشاريع",
-            project5Desc: "بناء نظام لإدارة المشاريع والتواصل بين فرق العمل",
-            project6Title: "تطبيق لياقة بدنية",
-            project6Desc: "تطوير تطبيق متكامل لمتابعة اللياقة البدنية والتمارين الرياضية",
-            
-            // صفحة المهارات
-            skillsTitle: "مهاراتي",
-            skillsDescription: "مجموعة من المهارات التقنية والإبداعية التي أتمتع بها في مجال هندسة البرمجيات",
-            creativeSkills: "المهارات التقنية",
-            skillVideo: "تطوير الويب",
-            skillWriting: "تطوير التطبيقات",
-            skillPhoto: "قواعد البيانات",
-            skillDesign: "هندسة البرمجيات",
-            technicalSkills: "لغات البرمجة",
-            skillPremiere: "JavaScript",
-            skillAfter: "Python",
-            skillPhotoshop: "Java",
-            skillAnalytics: "C++",
-            softSkills: "المهارات الشخصية",
-            skillCommunication: "التواصل الفعال",
-            skillTime: "إدارة الوقت",
-            skillProblem: "حل المشكلات",
-            skillTeam: "العمل الجماعي",
-            toolsTitle: "الأدوات والتقنيات",
-            
-            // صفحة الاتصال
-            contactTitle: "لنعمل معًا",
-            contactDescription: "أهلاً بك! دعنا نناقش مشروعك القادم ونحول أفكارك إلى حلول رقمية مبتكرة",
-            emailTitle: "البريد الإلكتروني",
-            phoneTitle: "الهاتف",
-            locationTitle: "الموقع",
-            locationText: "الرياض، المملكة العربية السعودية",
-            hoursTitle: "ساعات العمل",
-            hoursText: "الأحد - الخميس: 9 ص - 6 م",
-            formName: "الاسم *",
-            formEmail: "البريد الإلكتروني *",
-            formSubject: "نوع المشروع *",
-            formMessage: "تفاصيل المشروع *",
-            formMessagePlaceholder: "أخبرني عن مشروعك وأهدافك...",
-            formSubmit: "أرسل الرسالة",
-            
-            // التذييل
-            footerText: "مهندس برمجيات متخصص في تطوير الحلول التقنية المتكاملة والأنظمة الذكية"
-        },
-        en: {
-            // Navigation
-            logo: "Ahmed",
-            navHome: "Home",
-            navProfile: "About",
-            navServices: "Services",
-            navPortfolio: "Portfolio",
-            navSkills: "Skills",
-            navContact: "Contact",
-            language: "AR",
-            
-            // Home Page
-            heroBadge: "Software Engineer",
-            heroTitle: "Building the Digital Future",
-            heroDescription: "I design and develop innovative technological solutions that meet the needs of the digital age. I combine technical expertise and creativity to build smart and advanced systems.",
-            viewPortfolio: "View My Projects",
-            contactMe: "Let's Work Together",
-            statProjects: "Projects",
-            statClients: "Clients",
-            statYears: "Years Experience",
-            whyChooseTitle: "Why Choose Me?",
-            feature1Title: "Innovative Design",
-            feature1Desc: "I design innovative technical solutions that meet the latest quality and performance standards",
-            feature2Title: "Integrated Development",
-            feature2Desc: "I develop integrated systems from idea to implementation while ensuring the highest security standards",
-            feature3Title: "Performance Optimization",
-            feature3Desc: "I analyze and improve system performance to ensure efficiency and long-term stability",
-            feature4Title: "Continuous Support",
-            feature4Desc: "I provide continuous technical support and periodic reviews to ensure business continuity",
-            
-            // About Page
-            profileTitle: "About Engineer Ahmed",
-            profileDescription: "Software engineer specializing in developing integrated technical solutions and smart systems",
-            aboutTitle: "My Passion is Building Innovative Technical Solutions",
-            aboutDescription: "With over 5 years of experience in software engineering, I help companies and individuals transform their ideas into integrated digital solutions. I believe technology should serve humanity to improve quality of life.",
-            specialtiesTitle: "My Specialties",
-            connectTitle: "Connect With Me",
-            philosophyTitle: "My Software Engineering Philosophy",
-            philosophy1Title: "Quality First",
-            philosophy1Desc: "I commit to the highest quality standards in every line I write and every system I design",
-            philosophy2Title: "Optimal Performance",
-            philosophy2Desc: "I focus on building fast and reliable systems that meet user needs",
-            philosophy3Title: "Continuous Development",
-            philosophy3Desc: "I continuously evolve to keep up with the latest technologies and best practices in the field",
-            
-            // Services Page
-            servicesTitle: "My Services",
-            servicesDescription: "I offer a comprehensive set of engineering services to meet all your technical needs",
-            service1Title: "Web Development",
-            service1Desc: "Design and development of integrated websites and web applications using the latest technologies",
-            service1Feature1: "Frontend Development",
-            service1Feature2: "Backend Development",
-            service1Feature3: "Full Stack Development",
-            service2Title: "App Development",
-            service2Desc: "Building smartphone applications for iOS and Android with excellent user experience",
-            service2Feature1: "iOS Applications",
-            service2Feature2: "Android Applications",
-            service2Feature3: "Cross-Platform Applications",
-            service3Title: "Database Systems",
-            service3Desc: "Design and management of relational and non-relational databases with high security standards",
-            service3Feature1: "Database Design",
-            service3Feature2: "Query Optimization",
-            service3Feature3: "Data Security",
-            service4Title: "Technical Consulting",
-            service4Desc: "Providing specialized consultations to improve companies' technical infrastructure",
-            service4Feature1: "Systems Analysis",
-            service4Feature2: "Infrastructure Planning",
-            service4Feature3: "Security Review",
-            
-            // Work Process
-            processTitle: "How I Work?",
-            step1Title: "Analysis",
-            step1Desc: "I analyze project requirements and study client needs accurately",
-            step2Title: "Design",
-            step2Desc: "I design system architecture and solution algorithms with scalability in mind",
-            step3Title: "Implementation",
-            step3Desc: "I start writing code and building the system with continuous updates",
-            step4Title: "Testing & Delivery",
-            step4Desc: "I thoroughly test the system and deliver it with complete technical documentation",
-            
-            // Portfolio Page
-            portfolioTitle: "My Projects Portfolio",
-            portfolioDescription: "A curated selection of engineering projects I've executed for various companies and institutions",
-            project1Title: "Smart Learning Platform",
-            project1Desc: "Development of an integrated educational platform with smart learning features and analytical reports",
-            project2Title: "Hospital Management System",
-            project2Desc: "Building an integrated system for managing hospital operations and tracking medical cases",
-            project3Title: "Food Delivery App",
-            project4Desc: "Development of a smart food delivery app with live order tracking system",
-            project4Title: "E-commerce Platform",
-            project4Desc: "Design and development of an e-commerce platform with advanced payment and delivery features",
-            project5Title: "Project Management System",
-            project5Desc: "Building a system for project management and team communication",
-            project6Title: "Fitness Application",
-            project6Desc: "Development of an integrated application for fitness tracking and exercises",
-            
-            // Skills Page
-            skillsTitle: "My Skills",
-            skillsDescription: "A set of technical and creative skills I possess in software engineering",
-            creativeSkills: "Technical Skills",
-            skillVideo: "Web Development",
-            skillWriting: "App Development",
-            skillPhoto: "Photography",
-            skillDesign: "Visual Design",
-            technicalSkills: "Technical Skills",
-            skillPremiere: "Adobe Premiere Pro",
-            skillAfter: "Adobe After Effects",
-            skillPhotoshop: "Adobe Photoshop",
-            skillAnalytics: "Data Analysis",
-            softSkills: "Soft Skills",
-            skillCommunication: "Effective Communication",
-            skillTime: "Time Management",
-            skillProblem: "Problem Solving",
-            skillTeam: "Teamwork",
-            toolsTitle: "Tools I Use",
-            
-            // Contact Page
-            contactTitle: "Let's Work Together",
-            contactDescription: "Welcome! Let's discuss your upcoming project and transform your ideas into impactful creative content",
-            emailTitle: "Email",
-            phoneTitle: "Phone",
-            locationTitle: "Location",
-            locationText: "Riyadh, Saudi Arabia",
-            hoursTitle: "Working Hours",
-            hoursText: "Sunday - Thursday: 9 AM - 6 PM",
-            formName: "Name *",
-            formEmail: "Email *",
-            formSubject: "Project Type *",
-            formMessage: "Project Details *",
-            formMessagePlaceholder: "Tell me about your project and goals...",
-            formSubmit: "Send Message",
-            
-            // Footer
-            footerText: "Software engineer specializing in developing integrated technical solutions and smart systems"
-        }
-    };
-
-    // تهيئة تأثير الجزيئات المتحركة
-    if (typeof particlesJS !== 'undefined') {
-        particlesJS("particles-js", {
-            particles: {
-                number: { value: 100, density: { enable: true, value_area: 800 } },
-                color: { value: "#2563eb" },
-                shape: { type: "circle" },
-                opacity: { value: 0.2, random: true },
-                size: { value: 3, random: true },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: "#2563eb",
-                    opacity: 0.1,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 1.5,
-                    direction: "none",
-                    random: true,
-                    straight: false,
-                    out_mode: "out",
-                    bounce: false
-                }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: {
-                    onhover: { enable: true, mode: "repulse" },
-                    onclick: { enable: true, mode: "push" }
-                }
-            }
-        });
-    }
-
-    // تهيئة المتغيرات
-    let currentLang = 'ar';
-    let currentPage = 'home';
-    const backHomeBtn = document.getElementById('backHomeBtn');
-    const navbarToggle = document.getElementById('navbarToggle');
-    const navbarMenu = document.getElementById('navbarMenu');
-    const languageBtn = document.getElementById('languageBtn');
-    const languageDropdown = document.getElementById('languageDropdown');
-
-    // وظيفة تغيير اللغة
-    function changeLanguage(lang) {
-        currentLang = lang;
+    
+    // ========== شاشة التحميل ==========
+    const loader = document.querySelector('.loader');
+    
+    setTimeout(() => {
+        loader.classList.add('fade-out');
         
-        // تحديث اتجاه الصفحة
-        document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-        document.documentElement.lang = lang;
-        
-        // تغيير الخط حسب اللغة
-        document.body.style.fontFamily = lang === 'ar' ? "'Tajawal', sans-serif" : "'Inter', sans-serif";
-        
-        // تحديث جميع النصوص
-        updateAllTexts();
-        
-        // تحديث زر اللغة
-        const languageText = languageBtn.querySelector('.language-text');
-        if (languageText) {
-            languageText.textContent = translations[lang].language;
-        }
-        
-        // تحديث القائمة المنسدلة للغة
-        document.querySelectorAll('.language-option').forEach(option => {
-            option.classList.remove('active');
-            if (option.getAttribute('data-lang') === lang) {
-                option.classList.add('active');
-            }
-        });
-        
-        // تحديث زر الرجوع
-        const backHomeSpan = backHomeBtn.querySelector('span');
-        if (backHomeSpan) {
-            backHomeSpan.textContent = translations[lang].navHome;
-        }
-    }
-
-    // وظيفة تحديث جميع النصوص
-    function updateAllTexts() {
-        const elements = document.querySelectorAll('[data-key]');
-        elements.forEach(element => {
-            const key = element.getAttribute('data-key');
-            if (translations[currentLang][key]) {
-                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                    if (element.hasAttribute('placeholder')) {
-                        element.setAttribute('placeholder', translations[currentLang][key]);
-                    }
-                } else if (element.tagName === 'BUTTON' && element.type === 'submit') {
-                    element.innerHTML = `<i class="fas fa-paper-plane"></i> ${translations[currentLang][key]}`;
-                } else {
-                    const text = translations[currentLang][key];
-                    if (text.includes('<br>')) {
-                        element.innerHTML = text;
-                    } else {
-                        element.textContent = text;
-                    }
-                }
-            }
-        });
-    }
-
-    // وظيفة تغيير الصفحة
-    function changePage(pageId) {
-        if (pageId === currentPage) return;
-        
-        // إخفاء جميع الصفحات
-        document.querySelectorAll('.page').forEach(page => {
-            page.classList.remove('active');
-        });
-        
-        // إزالة النشاط من جميع روابط التنقل
-        document.querySelectorAll('.navbar-link').forEach(link => {
-            link.classList.remove('active');
-        });
-        
-        // إظهار الصفحة المحددة
-        const targetPage = document.getElementById(pageId);
-        if (targetPage) {
-            targetPage.classList.add('active');
+        setTimeout(() => {
+            loader.style.display = 'none';
             
-            // إضافة النشاط للرابط المحدد
-            const targetLink = document.querySelector(`.navbar-link[data-page="${pageId}"]`);
-            if (targetLink) {
-                targetLink.classList.add('active');
-            }
+            // عرض النافذة المنبثقة بعد 3 ثواني
+            setTimeout(() => {
+                showSubscribeModal();
+            }, 3000);
+        }, 500);
+    }, 2000);
+    
+    // ========== القائمة المتنقلة ==========
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (menuToggle) {
+        menuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
             
-            // تحديث المتغير الحالي
-            currentPage = pageId;
-            
-            // إظهار أو إخفاء زر الرجوع
-            if (pageId === 'home') {
-                backHomeBtn.style.display = 'none';
+            // تحريك الأشرطة
+            const bars = this.querySelectorAll('.artistic-bar');
+            if (this.classList.contains('active')) {
+                bars[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
+                bars[1].style.opacity = '0';
+                bars[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
             } else {
-                backHomeBtn.style.display = 'flex';
+                bars[0].style.transform = 'none';
+                bars[1].style.opacity = '1';
+                bars[2].style.transform = 'none';
             }
-            
-            // إغلاق القائمة على الأجهزة المحمولة
-            if (window.innerWidth <= 768) {
-                navbarMenu.classList.remove('active');
-                navbarToggle.innerHTML = '<i class="fas fa-bars"></i>';
-            }
-            
-            // تفعيل تأثير شريط المهارات إذا كانت الصفحة هي المهارات
-            if (pageId === 'skills') {
-                setTimeout(animateSkills, 300);
-            }
-            
-            // تفعيل عداد الإحصائيات إذا كانت الصفحة الرئيسية
-            if (pageId === 'home') {
-                setTimeout(animateStats, 300);
-            }
-            
-            // تفعيل تأثيرات البطاقات
-            setTimeout(checkCards, 300);
-            
-            // التمرير إلى أعلى الصفحة
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        });
     }
-
-    // زر الرجوع للرئيسية
-    backHomeBtn.addEventListener('click', function() {
-        changePage('home');
+    
+    // إغلاق القائمة عند النقر على رابط
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function() {
+            if (menuToggle) {
+                menuToggle.classList.remove('active');
+            }
+            if (navLinks) {
+                navLinks.classList.remove('active');
+            }
+            
+            if (menuToggle) {
+                const bars = menuToggle.querySelectorAll('.artistic-bar');
+                bars[0].style.transform = 'none';
+                bars[1].style.opacity = '1';
+                bars[2].style.transform = 'none';
+            }
+        });
     });
-
-    // تبديل القائمة على الأجهزة المحمولة
-    navbarToggle.addEventListener('click', function() {
-        navbarMenu.classList.toggle('active');
-        this.innerHTML = navbarMenu.classList.contains('active') ? 
-            '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-    });
-
-    // التنقل عبر روابط القائمة
-    document.querySelectorAll('.navbar-link').forEach(link => {
-        link.addEventListener('click', function(e) {
+    
+    // ========== التمرير السلس ==========
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            const pageId = this.getAttribute('data-page');
-            changePage(pageId);
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
         });
     });
-
-    // التنقل عبر الأزرار
-    document.querySelectorAll('.btn[data-page]').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            const pageId = this.getAttribute('data-page');
-            changePage(pageId);
+    
+    // ========== إضافة فئة نشطة للروابط عند التمرير ==========
+    window.addEventListener('scroll', function() {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        let currentSection = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            
+            if (window.pageYOffset >= (sectionTop - 150)) {
+                currentSection = section.getAttribute('id');
+            }
         });
-    });
-
-    // تبديل اللغة
-    languageBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        languageDropdown.classList.toggle('show');
-    });
-
-    // اختيار لغة من القائمة
-    document.querySelectorAll('.language-option').forEach(option => {
-        option.addEventListener('click', function() {
-            const lang = this.getAttribute('data-lang');
-            changeLanguage(lang);
-            languageDropdown.classList.remove('show');
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${currentSection}`) {
+                link.classList.add('active');
+            }
         });
-    });
-
-    // إغلاق القائمة عند النقر خارجها
-    document.addEventListener('click', function(e) {
-        if (!languageBtn.contains(e.target) && !languageDropdown.contains(e.target)) {
-            languageDropdown.classList.remove('show');
+        
+        // زر العودة للأعلى
+        const backToTop = document.getElementById('backToTop');
+        if (backToTop) {
+            if (window.pageYOffset > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
         }
+        
+        // تأثيرات التمرير للأرقام
+        animateStats();
     });
-
-    // تأثير شريط المهارات
-    function animateSkills() {
-        const skillProgressElements = document.querySelectorAll('.skill-progress');
-        const skillsPage = document.getElementById('skills');
-        
-        if (!skillsPage) return;
-        
-        const rect = skillsPage.getBoundingClientRect();
-        
-        if (rect.top <= window.innerHeight && rect.bottom >= 0) {
-            skillProgressElements.forEach(skill => {
-                const width = skill.getAttribute('data-width');
-                skill.style.width = width + '%';
+    
+    // ========== زر العودة للأعلى ==========
+    const backToTop = document.getElementById('backToTop');
+    if (backToTop) {
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
-        }
+        });
     }
-
-    // تأثير عداد الإحصائيات
+    
+    // ========== تأثيرات الأرقام المتحركة ==========
     function animateStats() {
         const statNumbers = document.querySelectorAll('.stat-number[data-count]');
-        const statsSection = document.querySelector('.hero-stats');
         
-        if (!statsSection) return;
-        
-        const rect = statsSection.getBoundingClientRect();
-        
-        if (rect.top <= window.innerHeight && rect.bottom >= 0) {
-            statNumbers.forEach(stat => {
-                const target = parseInt(stat.getAttribute('data-count'));
-                const duration = 2000;
-                const step = target / (duration / 16);
-                let current = 0;
+        statNumbers.forEach(stat => {
+            const target = parseInt(stat.getAttribute('data-count'));
+            const current = parseInt(stat.textContent);
+            
+            if (isElementInViewport(stat) && current < target) {
+                // زيادة تدريجية
+                let increment = Math.ceil(target / 50);
+                let newValue = current + increment;
                 
-                const timer = setInterval(() => {
-                    current += step;
-                    if (current >= target) {
-                        current = target;
-                        clearInterval(timer);
-                    }
-                    stat.textContent = Math.floor(current);
-                }, 16);
-            });
-        }
-    }
-
-    // تصفية أعمال المعرض
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            // إزالة النشاط من جميع الأزرار
-            filterBtns.forEach(b => b.classList.remove('active'));
-            // إضافة النشاط للزر المحدد
-            this.classList.add('active');
-            
-            const filter = this.getAttribute('data-filter');
-            
-            portfolioItems.forEach(item => {
-                if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                    item.style.display = 'block';
+                if (newValue > target) newValue = target;
+                
+                stat.textContent = newValue;
+                
+                // استمرار حتى الوصول للهدف
+                if (newValue < target) {
                     setTimeout(() => {
-                        item.style.opacity = '1';
-                        item.style.transform = 'translateY(0)';
-                    }, 10);
-                } else {
-                    item.style.opacity = '0';
-                    item.style.transform = 'translateY(20px)';
-                    setTimeout(() => {
-                        item.style.display = 'none';
-                    }, 300);
+                        animateStats();
+                    }, 30);
                 }
-            });
-        });
-    });
-
-    // إرسال نموذج الاتصال
-    const contactForm = document.getElementById('contactForm');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // رسالة نجاح
-            const message = currentLang === 'ar' 
-                ? 'شكراً لك على رسالتك! سأعود إليك في أقرب وقت ممكن.' 
-                : 'Thank you for your message! I will get back to you as soon as possible.';
-            
-            // إنشاء إشعار
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                top: 100px;
-                right: 30px;
-                background: linear-gradient(135deg, #2563eb, #06b6d4);
-                color: white;
-                padding: 15px 25px;
-                border-radius: 10px;
-                box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-                z-index: 9999;
-                font-weight: 500;
-                display: flex;
-                align-items: center;
-                gap: 12px;
-                transform: translateX(150%);
-                transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            `;
-            
-            notification.innerHTML = `
-                <i class="fas fa-check-circle" style="font-size: 20px;"></i>
-                <span>${message}</span>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            // عرض الإشعار
-            setTimeout(() => {
-                notification.style.transform = 'translateX(0)';
-            }, 10);
-            
-            // إخفاء الإشعار بعد 4 ثواني
-            setTimeout(() => {
-                notification.style.transform = 'translateX(150%)';
-                setTimeout(() => {
-                    if (notification.parentNode) {
-                        notification.parentNode.removeChild(notification);
-                    }
-                }, 400);
-            }, 4000);
-            
-            // إعادة تعيين النموذج
-            contactForm.reset();
-        });
-    }
-
-    // إضافة تأثيرات للبطاقات عند التمرير
-    const cards = document.querySelectorAll('.feature-card, .service-card, .philosophy-card, .portfolio-item, .skill-category, .contact-card, .tool-item');
-    
-    function checkCards() {
-        cards.forEach(card => {
-            const rect = card.getBoundingClientRect();
-            if (rect.top <= window.innerHeight * 0.85 && rect.bottom >= 0) {
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
             }
         });
     }
     
-    // إعداد البطاقات الأولية
-    cards.forEach(card => {
+    // دالة التحقق من ظهور العنصر في الشاشة
+    function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+    
+    // ========== علامات التبويب ==========
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+    
+    if (tabButtons.length > 0) {
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                
+                // إزالة النشط من جميع الأزرار
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                // إضافة النشط للزر المحدد
+                this.classList.add('active');
+                
+                // إخفاء جميع المحتويات
+                tabPanes.forEach(pane => pane.classList.remove('active'));
+                // إظهار المحتوى المحدد
+                const targetPane = document.getElementById(tabId);
+                if (targetPane) {
+                    targetPane.classList.add('active');
+                }
+            });
+        });
+    }
+    
+    // ========== قائمة التدقيق ==========
+    const checkboxes = document.querySelectorAll('.checklist-item input[type="checkbox"]');
+    const progressFill = document.getElementById('progressFill');
+    const progressText = document.querySelector('.progress-text');
+    const resetChecklist = document.getElementById('resetChecklist');
+    
+    if (checkboxes.length > 0) {
+        // تحديث شريط التقدم
+        function updateChecklistProgress() {
+            const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
+            const totalCount = checkboxes.length;
+            const percentage = (checkedCount / totalCount) * 100;
+            
+            if (progressFill) {
+                progressFill.style.width = `${percentage}%`;
+            }
+            
+            if (progressText) {
+                progressText.textContent = `${checkedCount}/${totalCount} مكتمل`;
+            }
+        }
+        
+        // إضافة مستمع لكل خانة اختيار
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateChecklistProgress);
+        });
+        
+        // زر إعادة تعيين القائمة
+        if (resetChecklist) {
+            resetChecklist.addEventListener('click', function() {
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+                updateChecklistProgress();
+                
+                // تأثير بسيط
+                this.style.transform = 'rotate(360deg)';
+                setTimeout(() => {
+                    this.style.transform = 'rotate(0)';
+                }, 500);
+            });
+        }
+        
+        // تحديث التقدم في البداية
+        updateChecklistProgress();
+    }
+    
+    // ========== تأثيرات للعناصر عند التمرير ==========
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                
+                // إضافة تأثيرات خاصة للبطاقات
+                if (entry.target.classList.contains('artistic-card')) {
+                    setTimeout(() => {
+                        entry.target.classList.add('animated');
+                    }, 300);
+                }
+            }
+        });
+    }, observerOptions);
+    
+    // مراقبة العناصر لإضافة تأثيرات
+    document.querySelectorAll('.artistic-card, .reason-card, .tip-item, .stat-box').forEach(card => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(30px)';
-        card.style.transition = 'opacity 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(card);
     });
     
-    // تفعيل تأثيرات البطاقات عند التحميل
-    setTimeout(checkCards, 300);
+    // ========== تأثيرات التحويم ==========
+    const artisticElements = document.querySelectorAll('.artistic-btn, .artistic-card, .social-icon, .job-card');
     
-    // تفعيل تأثيرات البطاقات عند التمرير
-    window.addEventListener('scroll', checkCards);
+    artisticElements.forEach(element => {
+        element.addEventListener('mouseenter', function() {
+            if (this.classList.contains('beige-btn') || this.classList.contains('border-beige')) {
+                this.style.boxShadow = '0 8px 25px rgba(232, 224, 211, 0.4)';
+            } else if (this.classList.contains('nude-btn') || this.classList.contains('border-nude')) {
+                this.style.boxShadow = '0 8px 25px rgba(205, 182, 172, 0.4)';
+            } else if (this.classList.contains('gold-btn') || this.classList.contains('border-gold')) {
+                this.style.boxShadow = '0 8px 25px rgba(212, 175, 55, 0.3)';
+            } else if (this.classList.contains('border-brown')) {
+                this.style.boxShadow = '0 8px 25px rgba(139, 115, 85, 0.3)';
+            }
+        });
+        
+        element.addEventListener('mouseleave', function() {
+            this.style.boxShadow = '';
+        });
+    });
     
-    // تفعيل تأثيرات عند التمرير
+    // ========== النماذج ==========
+    const newsletterForm = document.getElementById('newsletterForm');
+    const modalForm = document.getElementById('modalForm');
+    
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const emailInput = this.querySelector('input[type="email"]');
+            const email = emailInput.value.trim();
+            
+            if (email && validateEmail(email)) {
+                showNotification('شكراً لاشتراكك! ستتلقى آخر التحديثات والموارد القيّمة قريباً.', 'success');
+                emailInput.value = '';
+            } else {
+                showNotification('يرجى إدخال بريد إلكتروني صحيح.', 'error');
+            }
+        });
+    }
+    
+    if (modalForm) {
+        modalForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const emailInput = this.querySelector('input[type="email"]');
+            const email = emailInput.value.trim();
+            
+            if (email && validateEmail(email)) {
+                showNotification('تم إرسال القوالب المجانية إلى بريدك الإلكتروني بنجاح! نوصي بالتحقق من مجلد الرسائل غير المرغوب فيها أيضاً.', 'success');
+                emailInput.value = '';
+                hideSubscribeModal();
+            } else {
+                showNotification('يرجى إدخال بريد إلكتروني صحيح.', 'error');
+            }
+        });
+    }
+    
+    // دالة التحقق من صحة البريد الإلكتروني
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+    
+    // ========== النافذة المنبثقة ==========
+    const subscribeModal = document.getElementById('subscribeModal');
+    const closeModal = document.querySelector('.close-modal');
+    
+    function showSubscribeModal() {
+        // التحقق مما إذا كان المستخدم قد شاهد النافذة من قبل
+        if (!localStorage.getItem('subscribeModalShown')) {
+            setTimeout(() => {
+                if (subscribeModal) {
+                    subscribeModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            }, 1000);
+        }
+    }
+    
+    function hideSubscribeModal() {
+        if (subscribeModal) {
+            subscribeModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            localStorage.setItem('subscribeModalShown', 'true');
+        }
+    }
+    
+    if (closeModal) {
+        closeModal.addEventListener('click', hideSubscribeModal);
+    }
+    
+    // إغلاق النافذة عند النقر خارجها
+    if (subscribeModal) {
+        subscribeModal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                hideSubscribeModal();
+            }
+        });
+    }
+    
+    // ========== إشعارات ==========
+    function showNotification(message, type) {
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.textContent = message;
+        
+        // إضافة أنماط للإشعار
+        notification.style.position = 'fixed';
+        notification.style.top = '25px';
+        notification.style.right = '25px';
+        notification.style.padding = '1.25rem 1.75rem';
+        notification.style.borderRadius = 'var(--radius-md)';
+        notification.style.color = 'white';
+        notification.style.fontFamily = 'var(--font-body)';
+        notification.style.fontSize = '1.05rem';
+        notification.style.zIndex = '9999';
+        notification.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
+        notification.style.transition = 'all 0.3s ease';
+        notification.style.transform = 'translateY(-100px)';
+        notification.style.opacity = '0';
+        notification.style.maxWidth = '400px';
+        notification.style.lineHeight = '1.5';
+        
+        if (type === 'success') {
+            notification.style.background = 'linear-gradient(45deg, var(--secondary-brown), var(--accent-gold))';
+            notification.style.border = '2px solid var(--accent-gold)';
+        } else {
+            notification.style.background = 'linear-gradient(45deg, #9e2a2a, #b45309)';
+            notification.style.border = '2px solid #b45309';
+        }
+        
+        document.body.appendChild(notification);
+        
+        // ظهور الإشعار
+        setTimeout(() => {
+            notification.style.transform = 'translateY(0)';
+            notification.style.opacity = '1';
+        }, 100);
+        
+        // إزالة الإشعار بعد 4 ثوانٍ
+        setTimeout(() => {
+            notification.style.transform = 'translateY(-100px)';
+            notification.style.opacity = '0';
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 300);
+        }, 4000);
+    }
+    
+    // ========== تأثيرات إضافية ==========
+    // تأثير الكتابة للعنوان
+    const artisticTitle = document.querySelector('.artistic-title');
+    if (artisticTitle) {
+        const spans = artisticTitle.querySelectorAll('span');
+        spans.forEach((span, index) => {
+            span.style.opacity = '0';
+            span.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                span.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                span.style.opacity = '1';
+                span.style.transform = 'translateY(0)';
+            }, index * 300);
+        });
+    }
+    
+    // تأثيرات للهاتف المحمول
+    const phoneMockup = document.querySelector('.phone-mockup');
+    if (phoneMockup) {
+        phoneMockup.addEventListener('mousemove', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const rotateY = (x / rect.width - 0.5) * 8;
+            const rotateX = (0.5 - y / rect.height) * 8;
+            
+            this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+        
+        phoneMockup.addEventListener('mouseleave', function() {
+            this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+        });
+    }
+    
+    // ========== تأثيرات الصوت (اختياري) ==========
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('artistic-btn') || 
+            e.target.closest('.artistic-btn') || 
+            e.target.classList.contains('tab-btn')) {
+            
+            // تأثير صوتي (يمكن إضافة صوت حقيقي)
+            playClickSound();
+        }
+    });
+    
+    function playClickSound() {
+        // في التطبيق الحقيقي، يمكنك إضافة صوت هنا
+        // const audio = new Audio('click-sound.mp3');
+        // audio.volume = 0.2;
+        // audio.play();
+    }
+    
+    // ========== تأثيرات الخلفية الديناميكية ==========
+    function createFloatingArtisticElements() {
+        const colors = ['beige', 'nude', 'gold'];
+        const section = document.querySelector('.artistic-section');
+        
+        if (!section) return;
+        
+        for (let i = 0; i < 12; i++) {
+            const element = document.createElement('div');
+            element.className = `floating-artistic artistic-${colors[Math.floor(Math.random() * colors.length)]}`;
+            
+            // مواضع عشوائية
+            const size = Math.random() * 15 + 8;
+            const posX = Math.random() * 100;
+            const posY = Math.random() * 100;
+            const duration = Math.random() * 20 + 20;
+            const delay = Math.random() * 5;
+            
+            element.style.width = `${size}px`;
+            element.style.height = `${size}px`;
+            element.style.right = `${posX}%`;
+            element.style.top = `${posY}%`;
+            element.style.animationDuration = `${duration}s`;
+            element.style.animationDelay = `${delay}s`;
+            element.style.position = 'absolute';
+            element.style.borderRadius = '50%';
+            element.style.opacity = '0.1';
+            element.style.zIndex = '0';
+            element.style.pointerEvents = 'none';
+            
+            if (element.className.includes('artistic-beige')) {
+                element.style.backgroundColor = 'var(--primary-beige)';
+            } else if (element.className.includes('artistic-nude')) {
+                element.style.backgroundColor = 'var(--primary-nude)';
+            } else if (element.className.includes('artistic-gold')) {
+                element.style.backgroundColor = 'var(--accent-gold)';
+            }
+            
+            section.appendChild(element);
+        }
+    }
+    
+    // استدعاء دالة العناصر العائمة
+    createFloatingArtisticElements();
+    
+    // ========== رسالة ترحيب في الكونسول ==========
+    console.log('%c🎨 بورتفوليو فني - إصدار جيل Z 2025 🎨', 'background: linear-gradient(45deg, #E8E0D3, #CDB6AC, #8B7355, #D4AF37); color: #1A1A1A; padding: 12px; border-radius: 6px; font-size: 14px; font-weight: bold;');
+    console.log('%c📚 منصة عربية لبناء بورتفوليو احترافي بمظهر فني عصري', 'color: #8B7355; font-size: 12px; padding: 8px; background: #F5EFE4; border-radius: 4px;');
+    
+    // ========== تحميل إضافي عند التمرير ==========
+    let isLoading = false;
+    
     window.addEventListener('scroll', function() {
-        animateSkills();
-        animateStats();
+        const scrollPosition = window.innerHeight + window.scrollY;
+        const documentHeight = document.documentElement.scrollHeight;
+        
+        if (scrollPosition >= documentHeight - 100 && !isLoading) {
+            isLoading = true;
+            
+            // محاكاة تحميل المحتوى
+            const loadingIndicator = document.createElement('div');
+            loadingIndicator.className = 'loading-indicator';
+            loadingIndicator.innerHTML = `
+                <div class="loading-spinner"></div>
+                <span>جاري تحميل المزيد من المحتوى القيّم...</span>
+            `;
+            
+            // إضافة الأنماط
+            const loadingStyle = document.createElement('style');
+            loadingStyle.textContent = `
+                .loading-indicator {
+                    text-align: center;
+                    padding: 3rem;
+                    color: var(--text-muted);
+                    font-size: 1.1rem;
+                }
+                .loading-spinner {
+                    border: 3px solid rgba(139, 115, 85, 0.1);
+                    border-top: 3px solid var(--secondary-brown);
+                    border-radius: 50%;
+                    width: 50px;
+                    height: 50px;
+                    animation: spin 1s linear infinite;
+                    margin: 0 auto 1.5rem;
+                }
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+            `;
+            
+            document.head.appendChild(loadingStyle);
+            const tipsSection = document.querySelector('#tips');
+            if (tipsSection) {
+                tipsSection.appendChild(loadingIndicator);
+            }
+            
+            // محاكاة التأخير
+            setTimeout(() => {
+                if (tipsSection && tipsSection.contains(loadingIndicator)) {
+                    tipsSection.removeChild(loadingIndicator);
+                }
+                document.head.removeChild(loadingStyle);
+                isLoading = false;
+                
+                // رسالة أن كل المحتوى تم تحميله
+                showNotification('تم تحميل جميع المحتويات الإضافية بنجاح! استمر في الاستكشاف. 🎉', 'success');
+            }, 1500);
+        }
     });
     
-    // تهيئة اللغة الافتراضية
-    changeLanguage('ar');
-    
-    // إخفاء زر الرجوع في الصفحة الرئيسية
-    backHomeBtn.style.display = 'none';
-    
-    // تفعيل تأثيرات عند التحميل
+    // ========== تهيئة الأرقام المتحركة عند التحميل ==========
     setTimeout(() => {
         animateStats();
-        animateSkills();
     }, 500);
 });
