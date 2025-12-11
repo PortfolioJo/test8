@@ -1,329 +1,397 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-theme="dark">
+<html lang="ar" dir="rtl" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aseel | Visual Designer - Modern Portfolio</title>
-    <meta name="description" content="Aseel - Visual designer specializing in modern digital experiences and brand identity.">
+    <title>Aseel | Creative Designer - Modern Visual Identity</title>
+    <meta name="description" content="Aseel - Creative designer specializing in modern visual identity, web design, and digital art.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&family=Almarai:wght@300;400;700&family=Cairo:wght@300;400;600&display=swap" rel="stylesheet">
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>A</text></svg>">
     
     <!-- Styles -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Circular Cursor -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
+    <!-- Floating Elements -->
+    <div class="floating-elements">
+        <div class="floating-element element-1"></div>
+        <div class="floating-element element-2"></div>
+        <div class="floating-element element-3"></div>
+        <div class="floating-element element-4"></div>
+    </div>
 
     <!-- Navigation -->
-    <nav class="floating-nav">
+    <nav class="glass-nav" id="nav">
         <div class="nav-container">
-            <div class="nav-logo">
-                <span class="logo-text">A</span>
+            <div class="nav-brand">
+                <span class="nav-logo">Aseel</span>
+                <span class="nav-subtitle">Creative Designer</span>
             </div>
             
-            <div class="nav-center">
-                <div class="nav-info">
-                    <span class="nav-name">Aseel</span>
-                    <span class="nav-title">Visual Designer</span>
+            <div class="nav-menu" id="navMenu">
+                <div class="nav-links">
+                    <a href="#hero" class="nav-link active" data-section="hero">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="#about" class="nav-link" data-section="about">
+                        <i class="fas fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    <a href="#work" class="nav-link" data-section="work">
+                        <i class="fas fa-briefcase"></i>
+                        <span>Work</span>
+                    </a>
+                    <a href="#services" class="nav-link" data-section="services">
+                        <i class="fas fa-palette"></i>
+                        <span>Services</span>
+                    </a>
+                    <a href="#contact" class="nav-link" data-section="contact">
+                        <i class="fas fa-envelope"></i>
+                        <span>Contact</span>
+                    </a>
                 </div>
             </div>
             
-            <div class="nav-right">
-                <button class="menu-toggle" id="menuToggle">
-                    <span class="menu-text">Menu</span>
-                    <div class="menu-icon">
-                        <span></span>
-                        <span></span>
-                    </div>
+            <div class="nav-actions">
+                <div class="theme-switch">
+                    <button class="theme-btn" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+                
+                <div class="language-switch">
+                    <button class="lang-btn" id="languageToggle">
+                        <span class="lang-text">EN</span>
+                        <i class="fas fa-globe"></i>
+                    </button>
+                </div>
+                
+                <button class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </button>
             </div>
         </div>
     </nav>
 
-    <!-- Fullscreen Menu -->
-    <div class="fullscreen-menu" id="fullscreenMenu">
-        <div class="menu-container">
-            <div class="menu-header">
-                <span class="menu-header-title">Navigation</span>
-                <button class="menu-close" id="menuClose">
-                    <span>Close</span>
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            
-            <div class="menu-links">
-                <a href="#hero" class="menu-link" data-number="01">
-                    <span class="link-number">01</span>
-                    <span class="link-text">Home</span>
-                </a>
-                <a href="#projects" class="menu-link" data-number="02">
-                    <span class="link-number">02</span>
-                    <span class="link-text">Projects</span>
-                </a>
-                <a href="#about" class="menu-link" data-number="03">
-                    <span class="link-number">03</span>
-                    <span class="link-text">About</span>
-                </a>
-                <a href="#services" class="menu-link" data-number="04">
-                    <span class="link-number">04</span>
-                    <span class="link-text">Services</span>
-                </a>
-                <a href="#contact" class="menu-link" data-number="05">
-                    <span class="link-number">05</span>
-                    <span class="link-text">Contact</span>
-                </a>
-            </div>
-            
-            <div class="menu-footer">
-                <div class="menu-social">
-                    <a href="#" class="social-link">Behance</a>
-                    <a href="#" class="social-link">Dribbble</a>
-                    <a href="#" class="social-link">Instagram</a>
-                    <a href="#" class="social-link">LinkedIn</a>
-                </div>
-                
-                <div class="menu-theme">
-                    <button class="theme-switch" id="themeSwitch">
-                        <span class="theme-text">Dark Mode</span>
-                        <div class="theme-toggle">
-                            <div class="theme-toggle-inner"></div>
-                        </div>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Hero Section -->
-    <section class="hero-scattered" id="hero">
-        <div class="hero-container">
-            <div class="scattered-cards">
-                <div class="card card-1" data-tilt>
-                    <div class="card-content">
-                        <span class="card-label">Visual Designer</span>
-                        <h1 class="card-title">Creating Digital Experiences</h1>
-                    </div>
-                </div>
-                
-                <div class="card card-2" data-tilt>
-                    <div class="card-content">
-                        <span class="card-label">Based in Middle East</span>
-                        <p class="card-text">Working with global brands since 2019</p>
-                    </div>
-                </div>
-                
-                <div class="card card-3" data-tilt>
-                    <div class="card-content">
-                        <span class="card-label">Specializing in</span>
-                        <p class="card-text">Brand Identity & Digital Design</p>
-                    </div>
-                </div>
-                
-                <div class="card card-4" data-tilt>
-                    <div class="card-content">
-                        <a href="#projects" class="card-link">
-                            <span>View Projects</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+    <section class="hero-section" id="hero">
+        <div class="hero-content">
+            <div class="hero-badge">Creative Designer</div>
+            <h1 class="hero-title">
+                <span class="title-line">Create with</span>
+                <span class="title-line accent">Modern Designs</span>
+                <span class="title-line">That Inspire</span>
+            </h1>
+            <p class="hero-description">
+                I design unique visual experiences that combine digital art with modern technology,
+                creating distinctive visual identities that leave a lasting impact.
+            </p>
             
-            <div class="hero-scroll">
-                <div class="scroll-text">Scroll</div>
-                <div class="scroll-line"></div>
+            <div class="hero-actions">
+                <a href="#work" class="btn-primary">
+                    <span>View My Work</span>
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <a href="#contact" class="btn-secondary">
+                    <span>Let's Work Together</span>
+                    <i class="fas fa-handshake"></i>
+                </a>
             </div>
         </div>
-    </section>
-
-    <!-- Projects Grid -->
-    <section class="projects-grid" id="projects">
-        <div class="grid-container">
-            <div class="grid-header">
-                <h2 class="grid-title">Selected Projects</h2>
-                <p class="grid-subtitle">A curated selection of recent work</p>
+        
+        <div class="hero-visual">
+            <div class="visual-container">
+                <div class="visual-element v1"></div>
+                <div class="visual-element v2"></div>
+                <div class="visual-element v3"></div>
+                <div class="visual-element v4"></div>
             </div>
-            
-            <div class="grid-items">
-                <div class="grid-item item-1" data-category="branding">
-                    <div class="item-image">
-                        <div class="image-overlay">
-                            <span class="overlay-year">2024</span>
-                            <h3 class="overlay-title">Luxury Fashion Identity</h3>
-                        </div>
-                    </div>
-                    <div class="item-info">
-                        <span class="item-category">Brand Identity</span>
-                        <h3 class="item-title">Modern Fashion Brand</h3>
-                    </div>
-                </div>
-                
-                <div class="grid-item item-2" data-category="web">
-                    <div class="item-image">
-                        <div class="image-overlay">
-                            <span class="overlay-year">2024</span>
-                            <h3 class="overlay-title">Art Platform Design</h3>
-                        </div>
-                    </div>
-                    <div class="item-info">
-                        <span class="item-category">Web Design</span>
-                        <h3 class="item-title">Digital Art Gallery</h3>
-                    </div>
-                </div>
-                
-                <div class="grid-item item-3" data-category="branding">
-                    <div class="item-image">
-                        <div class="image-overlay">
-                            <span class="overlay-year">2023</span>
-                            <h3 class="overlay-title">Beverage Campaign</h3>
-                        </div>
-                    </div>
-                    <div class="item-info">
-                        <span class="item-category">Brand Campaign</span>
-                        <h3 class="item-title">Premium Beverage Brand</h3>
-                    </div>
-                </div>
-                
-                <div class="grid-item item-4" data-category="digital">
-                    <div class="item-image">
-                        <div class="image-overlay">
-                            <span class="overlay-year">2023</span>
-                            <h3 class="overlay-title">Abstract Art Series</h3>
-                        </div>
-                    </div>
-                    <div class="item-info">
-                        <span class="item-category">Digital Art</span>
-                        <h3 class="item-title">Contemporary Art Collection</h3>
-                    </div>
-                </div>
-            </div>
+        </div>
+        
+        <div class="hero-scroll">
+            <span>Discover More</span>
+            <div class="scroll-line"></div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section class="about-minimal" id="about">
-        <div class="about-container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2 class="about-title">
-                        <span class="title-line">Design Philosophy</span>
-                        <span class="title-line accent">& Creative Approach</span>
-                    </h2>
-                    
-                    <div class="about-description">
-                        <p>I believe in creating designs that are not only visually stunning but also strategically sound. Every project begins with understanding the core message and ends with a solution that communicates effectively.</p>
-                        
-                        <p>With a background in both traditional art and digital design, I bring a unique perspective to every project, blending artistic sensibility with technical precision.</p>
-                    </div>
-                    
-                    <div class="about-stats">
-                        <div class="stat">
-                            <span class="stat-number">50+</span>
-                            <span class="stat-label">Projects Completed</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">5+</span>
-                            <span class="stat-label">Years Experience</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">30+</span>
-                            <span class="stat-label">Happy Clients</span>
+    <section class="section about-section" id="about">
+        <div class="section-header">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Design Philosophy</h2>
+            <p class="section-subtitle">Where creativity meets function</p>
+        </div>
+        
+        <div class="about-content">
+            <div class="about-image">
+                <div class="image-frame">
+                    <div class="frame-border"></div>
+                    <div class="frame-content">
+                        <div class="artist-badge">
+                            <i class="fas fa-paint-brush"></i>
+                            <span>Visual Artist</span>
                         </div>
                     </div>
                 </div>
+            </div>
+            
+            <div class="about-text">
+                <div class="about-stats">
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Successful Projects</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">30+</span>
+                        <span class="stat-label">Happy Clients</span>
+                    </div>
+                </div>
                 
-                <div class="about-image">
-                    <div class="image-container">
-                        <div class="image-placeholder">
-                            <span class="placeholder-text">Visual Storyteller</span>
-                        </div>
+                <h3 class="about-heading">Design with Meaning</h3>
+                
+                <div class="about-description">
+                    <p>
+                        I believe that good design is not just about beautiful forms, but about solving problems
+                        and telling compelling stories. Every line and color in my work carries a message
+                        and clear purpose.
+                    </p>
+                    
+                    <p>
+                        With over 5 years of experience in the digital field, I've developed a unique
+                        style that combines artistic intuition with professional methodology, ensuring
+                        results that exceed expectations.
+                    </p>
+                </div>
+                
+                <div class="signature">
+                    <span class="sig-name">Aseel</span>
+                    <span class="sig-title">Creative Designer</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section class="section work-section" id="work">
+        <div class="section-header">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Work Gallery</h2>
+            <p class="section-subtitle">Selected creations that express my style</p>
+        </div>
+        
+        <div class="work-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="branding">Brand Identity</button>
+            <button class="filter-btn" data-filter="web">Web Design</button>
+            <button class="filter-btn" data-filter="illustration">Digital Illustration</button>
+        </div>
+        
+        <div class="work-grid">
+            <!-- Project 1 -->
+            <div class="project-card" data-category="branding">
+                <div class="project-image">
+                    <div class="image-overlay">
+                        <button class="view-project" data-project="1">
+                            <i class="fas fa-expand"></i>
+                            <span>View Project</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <span class="project-category">Brand Identity</span>
+                    <h3 class="project-title">Luxury Brand Identity</h3>
+                    <p class="project-description">
+                        Complete visual identity design for a luxury fashion brand focusing on elegance and simplicity
+                    </p>
+                    <div class="project-tags">
+                        <span>Logo Design</span>
+                        <span>Brand Colors</span>
+                        <span>Marketing Materials</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="project-card" data-category="web">
+                <div class="project-image">
+                    <div class="image-overlay">
+                        <button class="view-project" data-project="2">
+                            <i class="fas fa-expand"></i>
+                            <span>View Project</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <span class="project-category">Web Design</span>
+                    <h3 class="project-title">Interactive Art Platform</h3>
+                    <p class="project-description">
+                        Modern user interface for an art platform with smooth and engaging browsing experience
+                    </p>
+                    <div class="project-tags">
+                        <span>UI/UX</span>
+                        <span>Interactive</span>
+                        <span>Responsive Design</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 3 -->
+            <div class="project-card" data-category="illustration">
+                <div class="project-image">
+                    <div class="image-overlay">
+                        <button class="view-project" data-project="3">
+                            <i class="fas fa-expand"></i>
+                            <span>View Project</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <span class="project-category">Digital Illustration</span>
+                    <h3 class="project-title">Abstract Art Series</h3>
+                    <p class="project-description">
+                        Collection of digital artworks inspired by contemporary Arabic culture
+                    </p>
+                    <div class="project-tags">
+                        <span>Digital Art</span>
+                        <span>Digital Coloring</span>
+                        <span>Abstract Art</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Showcase -->
-    <section class="services-showcase" id="services">
-        <div class="showcase-container">
-            <div class="showcase-header">
-                <h2 class="showcase-title">Design Services</h2>
-                <p class="showcase-subtitle">Comprehensive creative solutions</p>
+    <!-- Services Section -->
+    <section class="section services-section" id="services">
+        <div class="section-header">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Services</h2>
+            <p class="section-subtitle">Comprehensive design solutions tailored to your needs</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h3 class="service-title">Brand Identity Design</h3>
+                <p class="service-description">
+                    Complete visual identity systems that express your brand values and create memorable impressions
+                </p>
+                <ul class="service-features">
+                    <li>Logo & Brand Mark Design</li>
+                    <li>Color & Typography System</li>
+                    <li>Brand Guidelines</li>
+                    <li>Promotional Materials</li>
+                </ul>
             </div>
             
-            <div class="showcase-items">
-                <div class="showcase-item">
-                    <div class="item-number">01</div>
-                    <h3 class="item-title">Brand Identity</h3>
-                    <p class="item-description">Complete visual systems that define and distinguish brands in competitive markets.</p>
-                    <ul class="item-features">
-                        <li>Logo & Visual Identity</li>
-                        <li>Brand Guidelines</li>
-                        <li>Brand Strategy</li>
-                    </ul>
+            <div class="service-card featured">
+                <div class="service-icon">
+                    <i class="fas fa-laptop-code"></i>
                 </div>
-                
-                <div class="showcase-item">
-                    <div class="item-number">02</div>
-                    <h3 class="item-title">Digital Design</h3>
-                    <p class="item-description">User-centered digital experiences that engage and convert across all platforms.</p>
-                    <ul class="item-features">
-                        <li>UI/UX Design</li>
-                        <li>Web & App Design</li>
-                        <li>Interactive Design</li>
-                    </ul>
+                <h3 class="service-title">Web & App Design</h3>
+                <p class="service-description">
+                    Modern user interfaces that provide exceptional experiences across all devices
+                </p>
+                <ul class="service-features">
+                    <li>UI/UX Design</li>
+                    <li>User Experience</li>
+                    <li>Responsive Design</li>
+                    <li>Mobile App Design</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-paint-brush"></i>
                 </div>
-                
-                <div class="showcase-item">
-                    <div class="item-number">03</div>
-                    <h3 class="item-title">Visual Content</h3>
-                    <p class="item-description">Compelling visual assets that tell stories and drive engagement across channels.</p>
-                    <ul class="item-features">
-                        <li>Digital Illustration</li>
-                        <li>Motion Graphics</li>
-                        <li>Social Media Assets</li>
-                    </ul>
-                </div>
+                <h3 class="service-title">Digital Art & Illustration</h3>
+                <p class="service-description">
+                    Creating unique digital artworks for advertising, content, and social media
+                </p>
+                <ul class="service-features">
+                    <li>Digital Illustration</li>
+                    <li>Graphic Design</li>
+                    <li>Social Media Content</li>
+                    <li>Advertising Design</li>
+                </ul>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact-modern" id="contact">
+    <section class="section contact-section" id="contact">
         <div class="contact-container">
-            <div class="contact-content">
-                <div class="contact-header">
-                    <h2 class="contact-title">Let's Create Together</h2>
-                    <p class="contact-subtitle">Have a project in mind? Let's discuss how we can bring your vision to life.</p>
+            <div class="contact-info">
+                <div class="section-header">
+                    <h2 class="section-title">Let's Start a Creative Project</h2>
+                    <p class="section-subtitle">
+                        Let's discuss your idea and turn it into tangible reality
+                    </p>
                 </div>
                 
-                <div class="contact-info">
-                    <div class="info-item">
-                        <span class="info-label">Email</span>
-                        <a href="mailto:hello@aseel.design" class="info-value">hello@aseel.design</a>
-                    </div>
-                    
-                    <div class="info-item">
-                        <span class="info-label">Location</span>
-                        <span class="info-value">Available Worldwide</span>
-                    </div>
-                    
-                    <div class="info-item">
-                        <span class="info-label">Social</span>
-                        <div class="social-links">
-                            <a href="#" class="social-link">Behance</a>
-                            <a href="#" class="social-link">Dribbble</a>
-                            <a href="#" class="social-link">Instagram</a>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-content">
+                            <h4>Email</h4>
+                            <a href="mailto:hello@aseel.design">hello@aseel.design</a>
                         </div>
                     </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-content">
+                            <h4>Phone</h4>
+                            <a href="tel:+966555555555">+966 55 555 5555</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-content">
+                            <h4>Location</h4>
+                            <span>Available for remote work worldwide</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-behance"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-dribbble"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
                 </div>
             </div>
             
@@ -331,21 +399,35 @@
                 <form id="contactForm">
                     <div class="form-group">
                         <input type="text" id="name" name="name" required>
-                        <label for="name">Your Name</label>
+                        <label for="name">Full Name</label>
+                        <div class="form-line"></div>
                     </div>
                     
                     <div class="form-group">
                         <input type="email" id="email" name="email" required>
                         <label for="email">Email Address</label>
+                        <div class="form-line"></div>
                     </div>
                     
                     <div class="form-group">
-                        <textarea id="message" name="message" rows="3" required></textarea>
+                        <select id="service" name="service">
+                            <option value="">Select Required Service</option>
+                            <option value="branding">Brand Identity Design</option>
+                            <option value="web">Web & App Design</option>
+                            <option value="illustration">Digital Art & Illustration</option>
+                            <option value="other">Other Service</option>
+                        </select>
+                        <div class="form-line"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="4" required></textarea>
                         <label for="message">Project Details</label>
+                        <div class="form-line"></div>
                     </div>
                     
                     <button type="submit" class="submit-btn">
-                        <span>Send Message</span>
+                        <span>Send Request</span>
                         <i class="fas fa-paper-plane"></i>
                     </button>
                 </form>
@@ -354,23 +436,43 @@
     </section>
 
     <!-- Footer -->
-    <footer class="minimal-footer">
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-left">
-                    <span class="footer-logo">Aseel</span>
-                    <span class="footer-title">Visual Designer</span>
-                </div>
-                
-                <div class="footer-right">
-                    <span class="footer-copyright">© 2024 All rights reserved</span>
-                </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo">Aseel</span>
+                <p class="footer-description">
+                    Creative designer specializing in creating unique visual experiences
+                </p>
             </div>
+            
+            <div class="footer-links">
+                <a href="#hero">Home</a>
+                <a href="#about">About</a>
+                <a href="#work">Work</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+            </div>
+            
+            <div class="footer-social">
+                <a href="#" class="social-btn">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-btn">
+                    <i class="fab fa-behance"></i>
+                </a>
+                <a href="#" class="social-btn">
+                    <i class="fab fa-dribbble"></i>
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p class="copyright">© <span id="currentYear"></span> Aseel. All rights reserved.</p>
+            <p class="made-with">Made with ❤️ in the Arab World</p>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/gh/micku7zu/vanilla-tilt.js@1.7.2/dist/vanilla-tilt.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
