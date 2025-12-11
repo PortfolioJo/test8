@@ -1,2072 +1,1154 @@
-/* ===========================================
-   CSS Variables - Gen Z Modern Style
-   =========================================== */
+// ===========================================
+// التطبيق الرئيسي - ترجمة كاملة للعربية والإنجليزية
+// ===========================================
 
-:root {
-    /* Gen Z Color Palette */
-    --primary-color: #FF6EC7; /* Pink */
-    --primary-light: #FFA8E0;
-    --primary-dark: #D94FA8;
+document.addEventListener('DOMContentLoaded', function() {
+    // تهيئة جميع المكونات
+    initNavigation();
+    initThemeSwitcher();
+    initLanguageSwitcher();
+    initCurrentYear();
+    initScrollAnimations();
+    initProjectFilter();
+    initProjectModal();
+    initContactForm();
+    initScrollProgress();
+    initSmoothScrolling();
+    initPageAnimations();
+    initFloatingParticles();
     
-    --secondary-color: #B57FFF; /* Purple */
-    --secondary-light: #D4B5FF;
-    --secondary-dark: #8A4FD6;
-    
-    --accent-color: #A0FFE6; /* Mint */
-    --accent-light: #D4FFF4;
-    --accent-dark: #6CD9C3;
-    
-    --neon-blue: #A7D8FF;
-    --neon-yellow: #FFF8A6;
-    --neon-orange: #FFB347;
-    
-    /* Background Colors */
-    --bg-primary: #FFFFFF;
-    --bg-secondary: #F5F5F7;
-    --bg-tertiary: #EDEDED;
-    --bg-card: #FFFFFF;
-    
-    /* Text Colors */
-    --text-primary: #0E0E0E;
-    --text-secondary: #666666;
-    --text-tertiary: #999999;
-    --text-white: #FFFFFF;
-    
-    /* Borders */
-    --border-color: rgba(255, 110, 199, 0.2);
-    --border-light: rgba(14, 14, 14, 0.08);
-    --border-heavy: rgba(255, 110, 199, 0.4);
-    
-    /* Gradients */
-    --gradient-1: linear-gradient(135deg, #FF6EC7, #B57FFF);
-    --gradient-2: linear-gradient(135deg, #A0FFE6, #B57FFF);
-    --gradient-3: linear-gradient(135deg, #FF6EC7, #A0FFE6);
-    --gradient-4: linear-gradient(135deg, #FFB347, #FF6EC7);
-    
-    /* Shadows */
-    --shadow-sm: 0 2px 8px rgba(255, 110, 199, 0.1);
-    --shadow-md: 0 8px 24px rgba(255, 110, 199, 0.15);
-    --shadow-lg: 0 16px 48px rgba(255, 110, 199, 0.2);
-    --shadow-xl: 0 24px 64px rgba(255, 110, 199, 0.25);
-    --shadow-neon: 0 0 20px rgba(255, 110, 199, 0.3);
-    
-    /* Glass Effect */
-    --glass-bg: rgba(255, 255, 255, 0.9);
-    --glass-border: rgba(255, 110, 199, 0.1);
-    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    
-    /* Modern Fonts */
-    --font-heading: 'Outfit', sans-serif;
-    --font-body: 'Outfit', sans-serif;
-    --font-mono: 'Space Grotesk', monospace;
-    
-    /* Layout */
-    --container-max: 1200px;
-    --container-padding: 2rem;
-    --section-spacing: 8rem;
-    --card-radius: 24px;
-    --element-radius: 16px;
-    --button-radius: 100px;
-    
-    /* Animations */
-    --transition-fast: 0.15s ease;
-    --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
+    // تعيين اللغة الافتراضية إلى العربية
+    setTimeout(() => {
+        const currentLang = document.documentElement.getAttribute('lang') || 'ar';
+        if (currentLang === 'ar') {
+            setLanguage('ar');
+            updateLangText('ar');
+        }
+    }, 100);
+});
 
-/* Dark Theme */
-[data-theme="dark"] {
-    --bg-primary: #0E0E0E;
-    --bg-secondary: #1A1A1A;
-    --bg-tertiary: #222222;
-    --bg-card: #1E1E1E;
-    
-    --text-primary: #FFFFFF;
-    --text-secondary: #CCCCCC;
-    --text-tertiary: #888888;
-    
-    --border-color: rgba(255, 110, 199, 0.2);
-    --border-light: rgba(255, 255, 255, 0.08);
-    
-    --glass-bg: rgba(30, 30, 30, 0.9);
-    --glass-border: rgba(255, 110, 199, 0.1);
-}
+// ===========================================
+// الترجمات الكاملة للعربية والإنجليزية
+// ===========================================
 
-/* ===========================================
-   Base Styles
-   =========================================== */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 80px;
-}
-
-body {
-    font-family: var(--font-body);
-    font-size: 16px;
-    line-height: 1.6;
-    color: var(--text-primary);
-    background-color: var(--bg-primary);
-    overflow-x: hidden;
-    font-weight: 400;
-    letter-spacing: 0.01em;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.container {
-    max-width: var(--container-max);
-    margin: 0 auto;
-    padding: 0 var(--container-padding);
-}
-
-.section {
-    padding: var(--section-spacing) 0;
-    position: relative;
-}
-
-/* ===========================================
-   Minimal Navigation - Gen Z Style
-   =========================================== */
-
-.minimal-nav {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    background: var(--glass-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--glass-border);
-    padding: 1rem 0;
-    z-index: 1000;
-    transition: all var(--transition-normal);
-    height: 80px;
-    display: flex;
-    align-items: center;
-}
-
-.minimal-nav.scrolled {
-    background: var(--bg-card);
-    box-shadow: var(--shadow-md);
-}
-
-.nav-container {
-    max-width: var(--container-max);
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 var(--container-padding);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-}
-
-.nav-brand {
-    display: flex;
-    flex-direction: column;
-    gap: 0.15rem;
-}
-
-.nav-logo {
-    font-family: var(--font-heading);
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--primary-color);
-    line-height: 1;
-    letter-spacing: -0.5px;
-}
-
-.nav-subtitle {
-    font-size: 0.7rem;
-    color: var(--text-tertiary);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    font-weight: 600;
-}
-
-.nav-menu {
-    flex: 1;
-}
-
-.nav-links {
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
-    list-style: none;
-}
-
-.nav-link {
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 600;
-    padding: 0.5rem 0;
-    position: relative;
-    transition: color var(--transition-normal);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 0;
-    height: 3px;
-    background: var(--gradient-1);
-    border-radius: 2px;
-    transition: width var(--transition-normal);
-}
-
-.nav-link:hover,
-.nav-link.active {
-    color: var(--text-primary);
-}
-
-.nav-link:hover::after,
-.nav-link.active::after {
-    width: 100%;
-}
-
-.nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.theme-btn,
-.lang-btn {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: 2px solid var(--border-color);
-    background: var(--bg-card);
-    color: var(--text-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all var(--transition-normal);
-    font-size: 1rem;
-}
-
-.theme-btn:hover,
-.lang-btn:hover {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-    transform: scale(1.05);
-    box-shadow: var(--shadow-sm);
-}
-
-.lang-btn {
-    width: auto;
-    padding: 0 1.25rem;
-    gap: 0.5rem;
-}
-
-.lang-text {
-    font-size: 0.85rem;
-    font-weight: 700;
-}
-
-.nav-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 4px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-    z-index: 1001;
-}
-
-.nav-toggle span {
-    width: 24px;
-    height: 3px;
-    background: var(--text-primary);
-    border-radius: 2px;
-    transition: all var(--transition-normal);
-}
-
-/* ===========================================
-   Hero Section - Gen Z Style
-   =========================================== */
-
-.hero-section {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8rem 2rem 4rem;
-    position: relative;
-    text-align: center;
-    background: var(--bg-primary);
-}
-
-.hero-content {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.hero-badge {
-    display: inline-block;
-    background: var(--gradient-1);
-    color: white;
-    padding: 0.6rem 1.5rem;
-    border-radius: var(--button-radius);
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    margin-bottom: 2.5rem;
-    text-transform: uppercase;
-    animation: float 3s ease-in-out infinite;
-    box-shadow: var(--shadow-neon);
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-10px) scale(1.05); }
-}
-
-.hero-title {
-    font-family: var(--font-heading);
-    font-size: 4.5rem;
-    font-weight: 900;
-    line-height: 1;
-    margin-bottom: 1.5rem;
-    letter-spacing: -2px;
-}
-
-.title-line {
-    display: block;
-}
-
-.title-line.accent {
-    background: var(--gradient-1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.hero-description {
-    font-size: 1.25rem;
-    color: var(--text-secondary);
-    margin-bottom: 3rem;
-    line-height: 1.6;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    font-weight: 400;
-}
-
-.hero-actions {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 3rem;
-}
-
-.btn-primary,
-.btn-secondary,
-.btn-tertiary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 1rem 2.5rem;
-    border-radius: var(--button-radius);
-    font-size: 0.95rem;
-    font-weight: 700;
-    text-decoration: none;
-    transition: all var(--transition-normal);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border: none;
-    cursor: pointer;
-    font-family: var(--font-heading);
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-primary {
-    background: var(--gradient-1);
-    color: white;
-    box-shadow: var(--shadow-lg);
-}
-
-.btn-primary:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: var(--shadow-xl);
-}
-
-.btn-primary::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s ease;
-}
-
-.btn-primary:hover::after {
-    left: 100%;
-}
-
-.btn-secondary {
-    background: transparent;
-    color: var(--text-primary);
-    border: 2px solid var(--primary-color);
-    backdrop-filter: blur(10px);
-}
-
-.btn-secondary:hover {
-    background: var(--primary-color);
-    color: white;
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-}
-
-.btn-tertiary {
-    background: var(--bg-secondary);
-    color: var(--text-primary);
-    border: 2px solid transparent;
-}
-
-.btn-tertiary:hover {
-    border-color: var(--primary-color);
-    background: var(--bg-primary);
-    transform: translateY(-4px);
-}
-
-.hero-scroll {
-    position: absolute;
-    bottom: 3rem;
-    right: 50%;
-    transform: translateX(50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
-    color: var(--text-tertiary);
-    font-size: 0.8rem;
-    letter-spacing: 1.5px;
-    font-weight: 600;
-    text-transform: uppercase;
-}
-
-.scroll-line {
-    width: 1px;
-    height: 50px;
-    background: linear-gradient(to bottom, var(--primary-color), transparent);
-    animation: scrollLine 2s infinite;
-}
-
-@keyframes scrollLine {
-    0%, 100% {
-        height: 50px;
-        opacity: 0.6;
+const translations = {
+    en: {
+        // الموقع
+        'site.title': 'Aseel | Creative Digital Designer',
+        
+        // شريط التنقل
+        'nav.logo': 'Aseel',
+        'nav.designer': 'Digital Designer',
+        'nav.home': 'Home',
+        'nav.about': 'About',
+        'nav.work': 'Work',
+        'nav.process': 'Process',
+        'nav.contact': 'Contact',
+        'lang.ar': 'AR',
+        'lang.en': 'EN',
+        
+        // قسم البطل
+        'hero.badge': 'Digital Art',
+        'hero.greeting': "Hi, I'm",
+        'hero.name': 'Aseel',
+        'hero.title': 'Creative Digital Designer',
+        'hero.description': 'I design clean visuals & fast experiences for Gen Z brands',
+        'hero.viewWork': 'View Work',
+        'hero.contact': 'Contact Me',
+        'hero.downloadCV': 'Download CV',
+        'hero.explore': 'Explore',
+        
+        // الإحصائيات
+        'stats.experience': 'Years Experience',
+        'stats.projects': 'Projects Done',
+        'stats.fast': 'Fast',
+        'stats.design': 'Web & Mobile Design',
+        'stats.location': 'Amman',
+        'stats.based': 'Based in Jordan',
+        
+        // قسم عنّي
+        'about.title': 'About Me',
+        'about.subtitle': 'Where creativity meets purpose',
+        'about.badge': 'Visual Artist',
+        'about.quote': '"I design clean and fast digital identities that fit stores and startups. My goal is to simplify design and provide a smart experience connected to Gen Z."',
+        'about.philosophy': 'Design Philosophy',
+        'about.philosophyText': 'I believe in creating designs that not only look beautiful but also solve problems and tell compelling stories. Every element in my work carries meaning and purpose.',
+        'about.experience': 'Experience',
+        'about.experienceText': 'With over 5 years of digital design experience, I have developed a unique approach that combines artistic intuition with professional methodology.',
+        'about.tools': 'Main Tools',
+        
+        // قسم الأعمال
+        'work.title': 'My Featured Work',
+        'work.subtitle': 'Selected projects showcasing design excellence',
+        'work.filters.all': 'All',
+        'work.filters.branding': 'Branding',
+        'work.filters.web': 'Web Design',
+        'work.filters.art': 'Digital Art',
+        'work.view': 'View Project',
+        'work.project1.category': 'Brand Identity',
+        'work.project1.title': 'Luxury Fashion Brand',
+        'work.project1.description': 'Complete visual identity for a high-end fashion brand blending heritage with modernity',
+        'work.project2.category': 'Web Design',
+        'work.project2.title': 'Interactive Art Platform',
+        'work.project2.description': 'Modern user interface for an art platform with seamless browsing experience',
+        'work.project3.category': 'Digital Art',
+        'work.project3.title': 'Abstract Art Series',
+        'work.project3.description': 'Collection of digital artworks inspired by contemporary Arabic culture',
+        'work.result1': '40% Brand Awareness Increase',
+        'work.result2': 'Better Customer Experience',
+        'work.result3': 'Enhanced Visual Identity',
+        'work.result4': '60% Browsing Time Increase',
+        'work.result5': 'Improved Conversion Rates',
+        'work.result6': 'Enhanced User Experience',
+        'work.result7': 'Successful Art Exhibition',
+        'work.result8': 'All Artworks Sold',
+        'work.result9': 'Wide Media Coverage',
+        
+        // قسم طريقة العمل
+        'process.title': 'How I Work',
+        'process.subtitle': 'Simple process, amazing results',
+        'process.step1.title': 'Discovery',
+        'process.step1.description': 'Understanding your brand and goals',
+        'process.step2.title': 'Moodboard',
+        'process.step2.description': 'Creating visual direction & style guide',
+        'process.step3.title': 'Design',
+        'process.step3.description': 'Crafting beautiful, functional designs',
+        'process.step4.title': 'Deliver',
+        'process.step4.description': 'Final files + support & updates',
+        
+        // قسم الخدمات
+        'services.title': 'My Services',
+        'services.subtitle': 'Comprehensive design solutions for your needs',
+        'services.service1.title': 'Brand Identity',
+        'services.service1.description': 'Complete visual identity systems that express brand values',
+        'services.service2.title': 'Web & App Design',
+        'services.service2.description': 'Modern user interfaces for exceptional experiences',
+        'services.service3.title': 'Digital Art',
+        'services.service3.description': 'Creating unique digital artworks for social media',
+        'services.popular': 'Most Popular',
+        'services.startingFrom': 'Starting from',
+        
+        // قسم آراء العملاء
+        'testimonials.title': 'Client Testimonials',
+        'testimonials.subtitle': 'What clients say about working with me',
+        'testimonials.testimonial1': '"Aseel completely transformed our brand! The designs are not only beautiful but also increased our conversions by 40%. Working with her was smooth and professional."',
+        'testimonials.testimonial2': '"The social media packages she created went viral! Perfect blend of Gen Z aesthetics and brand identity. Highly recommend for any modern brand."',
+        'testimonials.position1': 'CEO, StartupX',
+        'testimonials.position2': 'Marketing Director',
+        
+        // قسم الدعوة للعمل
+        'cta.title': 'Ready to Build Something Cool?',
+        'cta.subtitle': "Let's create something amazing together",
+        'cta.button': "Let's Work Together",
+        
+        // قسم الاتصال
+        'contact.title': "Let's Create Together",
+        'contact.subtitle': "Let's discuss your idea and turn it into reality",
+        'contact.email': 'Email',
+        'contact.phone': 'Phone',
+        'contact.location': 'Location',
+        'contact.remote': 'Available for remote work worldwide',
+        'contact.form.name': 'Full Name',
+        'contact.form.email': 'Email Address',
+        'contact.form.select': 'Select Service',
+        'contact.form.branding': 'Brand Identity',
+        'contact.form.web': 'Web & App Design',
+        'contact.form.art': 'Digital Art',
+        'contact.form.other': 'Other Service',
+        'contact.form.message': 'Project Details',
+        'contact.form.submit': 'Send Message',
+        
+        // الفوتر
+        'footer.logo': 'Aseel',
+        'footer.tagline': 'Creative Digital Designer',
+        'footer.home': 'Home',
+        'footer.about': 'About',
+        'footer.work': 'Work',
+        'footer.process': 'Process',
+        'footer.contact': 'Contact',
+        'footer.name': 'Aseel',
+        'footer.rights': 'All rights reserved',
+        
+        // نافذة المشروع
+        'modal.about': 'About Project',
+        'modal.technologies': 'Technologies Used',
+        'modal.results': 'Results',
+        'modal.start': 'Start Similar Project'
+    },
+    ar: {
+        // الموقع
+        'site.title': 'أسيل | مصممة رقمية إبداعية',
+        
+        // شريط التنقل
+        'nav.logo': 'أسيل',
+        'nav.designer': 'مصممة رقمية',
+        'nav.home': 'الرئيسية',
+        'nav.about': 'عنّي',
+        'nav.work': 'أعمالي',
+        'nav.process': 'طريقة العمل',
+        'nav.contact': 'اتصل بي',
+        'lang.ar': 'عربي',
+        'lang.en': 'EN',
+        
+        // قسم البطل
+        'hero.badge': 'فن رقمي',
+        'hero.greeting': 'مرحباً، أنا',
+        'hero.name': 'أسيل',
+        'hero.title': 'مصممة رقمية إبداعية',
+        'hero.description': 'أصمم هويات بصرية نظيفة وسريعة تناسب علامات جيل Z',
+        'hero.viewWork': 'عرض الأعمال',
+        'hero.contact': 'تواصل معي',
+        'hero.downloadCV': 'تحميل السيرة الذاتية',
+        'hero.explore': 'استكشف',
+        
+        // الإحصائيات
+        'stats.experience': 'سنوات خبرة',
+        'stats.projects': 'مشروع منجز',
+        'stats.fast': 'سريع',
+        'stats.design': 'تصميم ويب وجوال',
+        'stats.location': 'عمان',
+        'stats.based': 'مقيمة في الأردن',
+        
+        // قسم عنّي
+        'about.title': 'عنّي',
+        'about.subtitle': 'حيث يلتقي الإبداع بالغرض',
+        'about.badge': 'فنانة بصرية',
+        'about.quote': '"أصمم هويات رقمية نظيفة وسريعة تتناسب مع المتاجر والشركات الناشئة. هدفي تبسيط التصميم وتقديم تجربة ذكية مرتبطة بجيل Z."',
+        'about.philosophy': 'فلسفة التصميم',
+        'about.philosophyText': 'أؤمن بإنشاء تصاميم لا تبدو جميلة فقط بل تحل المشكلات وتروي قصصاً مؤثرة. كل عنصر في عملي يحمل معنى وغرضاً.',
+        'about.experience': 'الخبرة',
+        'about.experienceText': 'مع خبرة تزيد عن 5 سنوات في التصميم الرقمي، طورت أسلوباً فريداً يجمع بين الحدس الفني والمنهجية الاحترافية.',
+        'about.tools': 'الأدوات الرئيسية',
+        
+        // قسم الأعمال
+        'work.title': 'أعمالي المميزة',
+        'work.subtitle': 'مشاريع مختارة تعرض التميز في التصميم',
+        'work.filters.all': 'الكل',
+        'work.filters.branding': 'هوية بصرية',
+        'work.filters.web': 'تصميم ويب',
+        'work.filters.art': 'فن رقمي',
+        'work.view': 'عرض المشروع',
+        'work.project1.category': 'هوية بصرية',
+        'work.project1.title': 'علامة أزياء فاخرة',
+        'work.project1.description': 'هوية بصرية كاملة لعلامة أزياء فاخرة تجمع بين التراث والحداثة',
+        'work.project2.category': 'تصميم ويب',
+        'work.project2.title': 'منصة فنية تفاعلية',
+        'work.project2.description': 'واجهة مستخدم حديثة لمنصة فنية مع تجربة تصفح سلسة',
+        'work.project3.category': 'فن رقمي',
+        'work.project3.title': 'سلسلة فن تجريدي',
+        'work.project3.description': 'مجموعة من الأعمال الفنية الرقمية المستوحاة من الثقافة العربية المعاصرة',
+        'work.result1': 'زيادة الوعي بالعلامة 40%',
+        'work.result2': 'تحسين تجربة العملاء',
+        'work.result3': 'تعزيز الهوية البصرية',
+        'work.result4': 'زيادة وقت التصفح 60%',
+        'work.result5': 'تحسين معدلات التحويل',
+        'work.result6': 'تعزيز تجربة المستخدم',
+        'work.result7': 'معرض فني ناجح',
+        'work.result8': 'بيع جميع الأعمال',
+        'work.result9': 'تغطية إعلامية واسعة',
+        
+        // قسم طريقة العمل
+        'process.title': 'كيف أشتغل',
+        'process.subtitle': 'عملية بسيطة، نتائج مذهلة',
+        'process.step1.title': 'اكتشاف',
+        'process.step1.description': 'فهم علامتك التجارية وأهدافك',
+        'process.step2.title': 'لوحة الإلهام',
+        'process.step2.description': 'إنشاء اتجاه بصري ودليل نمط',
+        'process.step3.title': 'تصميم',
+        'process.step3.description': 'صنع تصاميم جميلة وعملية',
+        'process.step4.title': 'تسليم',
+        'process.step4.description': 'الملفات النهائية + الدعم والتحديثات',
+        
+        // قسم الخدمات
+        'services.title': 'خدماتي',
+        'services.subtitle': 'حلول تصميمية شاملة تناسب احتياجاتك',
+        'services.service1.title': 'الهوية البصرية',
+        'services.service1.description': 'أنظمة هوية بصرية كاملة تعبر عن قيم العلامة التجارية',
+        'services.service2.title': 'تصميم الويب والتطبيقات',
+        'services.service2.description': 'واجهات مستخدم حديثة لتجارب استثنائية',
+        'services.service3.title': 'الفن الرقمي',
+        'services.service3.description': 'إنشاء أعمال فنية رقمية فريدة لوسائل التواصل',
+        'services.popular': 'الأكثر طلباً',
+        'services.startingFrom': 'تبدأ من',
+        
+        // قسم آراء العملاء
+        'testimonials.title': 'آراء العملاء',
+        'testimonials.subtitle': 'ماذا يقول العملاء عن العمل معي',
+        'testimonials.testimonial1': '"أسيل حولت علامتنا التجارية بالكامل! التصاميم ليست جميلة فقط بل زادت من تحويلاتنا بنسبة 40%. العمل معها كان سلساً ومحترفاً."',
+        'testimonials.testimonial2': '"حزم وسائل التواصل الاجتماعي التي أنشأتها أصبحت viral! مزيج مثالي من جماليات Gen Z وهوية العلامة التجارية. أوصي بها بشدة لأي علامة حديثة."',
+        'testimonials.position1': 'مديرة تنفيذية، StartupX',
+        'testimonials.position2': 'مدير تسويق',
+        
+        // قسم الدعوة للعمل
+        'cta.title': 'جاهز لبناء شيء رائع؟',
+        'cta.subtitle': 'لنخلق شيئاً مذهلاً معاً',
+        'cta.button': 'لنعمل معاً',
+        
+        // قسم الاتصال
+        'contact.title': 'لنبدع معاً',
+        'contact.subtitle': 'لنتناقش حول فكرتك ونحولها إلى واقع',
+        'contact.email': 'البريد الإلكتروني',
+        'contact.phone': 'الهاتف',
+        'contact.location': 'الموقع',
+        'contact.remote': 'متاح للعمل عن بُعد عالمياً',
+        'contact.form.name': 'الاسم الكامل',
+        'contact.form.email': 'البريد الإلكتروني',
+        'contact.form.select': 'اختر الخدمة',
+        'contact.form.branding': 'الهوية البصرية',
+        'contact.form.web': 'تصميم الويب والتطبيقات',
+        'contact.form.art': 'الفن الرقمي',
+        'contact.form.other': 'خدمة أخرى',
+        'contact.form.message': 'تفاصيل المشروع',
+        'contact.form.submit': 'إرسال الرسالة',
+        
+        // الفوتر
+        'footer.logo': 'أسيل',
+        'footer.tagline': 'مصممة رقمية إبداعية',
+        'footer.home': 'الرئيسية',
+        'footer.about': 'عنّي',
+        'footer.work': 'أعمالي',
+        'footer.process': 'طريقة العمل',
+        'footer.contact': 'اتصل بي',
+        'footer.name': 'أسيل',
+        'footer.rights': 'جميع الحقوق محفوظة',
+        
+        // نافذة المشروع
+        'modal.about': 'عن المشروع',
+        'modal.technologies': 'التقنيات المستخدمة',
+        'modal.results': 'النتائج',
+        'modal.start': 'ابدأ مشروعاً مماثلاً'
     }
-    50% {
-        height: 25px;
-        opacity: 1;
+};
+
+// ===========================================
+// شريط التنقل
+// ===========================================
+
+function initNavigation() {
+    const nav = document.getElementById('nav');
+    const navMenu = document.getElementById('navMenu');
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section[id]');
+
+    // تبديل قائمة الجوال
+    navToggle.addEventListener('click', function() {
+        this.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        
+        // تحويل الهامبرغر إلى X
+        const spans = this.querySelectorAll('span');
+        if (this.classList.contains('active')) {
+            spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+            spans[1].style.opacity = '0';
+            spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+        } else {
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+        }
+    });
+
+    // إغلاق قائمة الجوال عند النقر على رابط
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            if (navMenu.classList.contains('active')) {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+                
+                // إعادة تعيين تحويل الهامبرغر
+                const spans = navToggle.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+    });
+
+    // تأثير التمرير على الهيدر
+    window.addEventListener('scroll', function() {
+        const scrolled = window.scrollY > 50;
+        nav.classList.toggle('scrolled', scrolled);
+        
+        // تحديث رابط التنقل النشط بناءً على موضع التمرير
+        updateActiveNavLink(sections, navLinks);
+    });
+
+    function updateActiveNavLink(sections, links) {
+        let current = '';
+        const scrollPos = window.scrollY + 100;
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            const sectionId = section.getAttribute('id');
+
+            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                current = sectionId;
+            }
+        });
+
+        links.forEach(link => {
+            link.classList.remove('active');
+            const section = link.getAttribute('data-section');
+            if (section === current || (current === '' && section === 'hero')) {
+                link.classList.add('active');
+            }
+        });
     }
 }
 
-/* ===========================================
-   Sections Common Styles
-   =========================================== */
-
-.section-header {
-    text-align: center;
-    margin-bottom: 5rem;
-    position: relative;
-}
-
-.section-number {
-    font-size: 8rem;
-    font-weight: 900;
-    color: var(--primary-color);
-    opacity: 0.05;
-    position: absolute;
-    top: -2.5rem;
-    right: 50%;
-    transform: translateX(50%);
-    z-index: -1;
-    font-family: var(--font-mono);
-}
-
-.section-title {
-    font-family: var(--font-heading);
-    font-size: 3rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
-    color: var(--text-primary);
-    letter-spacing: -1px;
-}
-
-.section-subtitle {
-    font-size: 1.2rem;
-    color: var(--text-secondary);
-    max-width: 600px;
-    margin: 0 auto;
-    font-weight: 400;
-}
-
-/* ===========================================
-   About Snapshot Section
-   =========================================== */
-
-.snapshot-section {
-    background: var(--bg-secondary);
-    border-radius: var(--card-radius);
-    margin: 0 var(--container-padding) 4rem;
-    padding: 4rem 0;
-}
-
-.about-snapshot {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-bottom: 4rem;
-}
-
-.snapshot-card {
-    background: var(--bg-card);
-    border-radius: var(--card-radius);
-    padding: 2.5rem 2rem;
-    text-align: center;
-    border: 1px solid var(--border-light);
-    transition: all var(--transition-normal);
-    position: relative;
-    overflow: hidden;
-}
-
-.snapshot-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 5px;
-    background: var(--gradient-1);
-}
-
-.snapshot-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-xl);
-    border-color: var(--border-color);
-}
-
-.snapshot-icon {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
-    display: block;
-}
-
-.snapshot-number {
-    font-size: 3rem;
-    font-weight: 800;
-    color: var(--primary-color);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-    font-family: var(--font-mono);
-}
-
-.snapshot-label {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-weight: 600;
-}
-
-.about-quote {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 3rem;
-    background: var(--gradient-1);
-    border-radius: var(--card-radius);
-    color: white;
-    position: relative;
-    overflow: hidden;
-}
-
-.about-quote::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
-    background-size: cover;
-}
-
-.about-quote p {
-    font-size: 1.5rem;
-    font-weight: 500;
-    line-height: 1.6;
-    position: relative;
-    z-index: 1;
-}
-
-/* ===========================================
-   About Section
-   =========================================== */
-
-.about-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
-}
-
-.about-image {
-    position: relative;
-}
-
-.image-frame {
-    position: relative;
-    border-radius: var(--card-radius);
-    overflow: hidden;
-    aspect-ratio: 3/4;
-    background: var(--gradient-1);
-    padding: 3rem;
-}
-
-.frame-content {
-    width: 100%;
-    height: 100%;
-    background: var(--bg-card);
-    border-radius: calc(var(--card-radius) - 10px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-}
-
-.artist-badge {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    text-align: center;
-}
-
-.artist-badge i {
-    font-size: 3.5rem;
-    color: var(--primary-color);
-}
-
-.artist-badge span {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text-primary);
-}
-
-.about-text {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.about-heading {
-    font-family: var(--font-heading);
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--primary-color);
-    line-height: 1.2;
-}
-
-.about-description p {
-    color: var(--text-secondary);
-    margin-bottom: 1.5rem;
-    font-size: 1.1rem;
-    line-height: 1.8;
-}
-
-.tools-section {
-    margin-top: 2rem;
-}
-
-.tools-section h4 {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 1rem;
-}
-
-.tools-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-}
-
-.tool-tag {
-    padding: 0.5rem 1.25rem;
-    background: var(--bg-secondary);
-    color: var(--text-primary);
-    border-radius: var(--button-radius);
-    font-size: 0.9rem;
-    font-weight: 600;
-    border: 1px solid var(--border-light);
-    transition: all var(--transition-normal);
-}
-
-.tool-tag:hover {
-    background: var(--primary-color);
-    color: white;
-    border-color: var(--primary-color);
-    transform: translateY(-2px);
-}
-
-/* ===========================================
-   Work Section - Gen Z Grid
-   =========================================== */
-
-.work-filters {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 4rem;
-    flex-wrap: wrap;
-}
-
-.filter-btn {
-    padding: 0.75rem 1.75rem;
-    background: transparent;
-    border: 2px solid var(--border-color);
-    border-radius: var(--button-radius);
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all var(--transition-normal);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.filter-btn:hover,
-.filter-btn.active {
-    background: var(--gradient-1);
-    color: white;
-    border-color: transparent;
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-}
-
-.work-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 3rem;
-}
-
-.project-card {
-    background: var(--bg-card);
-    border-radius: var(--card-radius);
-    overflow: hidden;
-    transition: all var(--transition-normal);
-    border: 1px solid var(--border-light);
-    position: relative;
-}
-
-.project-card:hover {
-    transform: translateY(-15px);
-    box-shadow: var(--shadow-xl);
-    border-color: var(--border-color);
-}
-
-.project-image {
-    aspect-ratio: 16/9;
-    position: relative;
-    overflow: hidden;
-}
-
-.project-1 {
-    background: linear-gradient(135deg, #FF6EC7, #FFB347);
-}
-
-.project-2 {
-    background: linear-gradient(135deg, #A0FFE6, #A7D8FF);
-}
-
-.project-3 {
-    background: linear-gradient(135deg, #B57FFF, #FF6EC7);
-}
-
-.project-label {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: var(--button-radius);
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    z-index: 2;
-}
-
-.image-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity var(--transition-normal);
-}
-
-.project-card:hover .image-overlay {
-    opacity: 1;
-}
-
-.view-project {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 1rem 2rem;
-    background: var(--gradient-1);
-    color: white;
-    border: none;
-    border-radius: var(--button-radius);
-    font-size: 0.9rem;
-    font-weight: 700;
-    cursor: pointer;
-    transform: translateY(20px);
-    transition: all var(--transition-normal);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.project-card:hover .view-project {
-    transform: translateY(0);
-}
-
-.project-info {
-    padding: 2rem;
-}
-
-.project-title {
-    font-size: 1.75rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
-    color: var(--text-primary);
-    line-height: 1.2;
-}
-
-.project-description {
-    color: var(--text-secondary);
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
-    font-size: 1rem;
-}
-
-.project-results {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-
-.project-results span {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.9rem;
-    color: var(--text-primary);
-    font-weight: 500;
-}
-
-.project-results i {
-    color: var(--primary-color);
-    font-size: 1rem;
-}
-
-/* ===========================================
-   Process Section - Gen Z Timeline
-   =========================================== */
-
-.process-section {
-    background: var(--gradient-2);
-    border-radius: var(--card-radius);
-    margin: 0 var(--container-padding) 4rem;
-    padding: 6rem 0;
-    position: relative;
-    overflow: hidden;
-}
-
-.process-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
-    background-size: cover;
-}
-
-.process-section .section-header {
-    color: white;
-}
-
-.process-section .section-title,
-.process-section .section-subtitle {
-    color: white;
-}
-
-.process-section .section-number {
-    color: rgba(255, 255, 255, 0.1);
-}
-
-.process-timeline {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2.5rem;
-    position: relative;
-    z-index: 1;
-}
-
-.process-step {
-    text-align: center;
-    padding: 2.5rem;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: var(--card-radius);
-    position: relative;
-    transition: all var(--transition-normal);
-    border: 2px solid transparent;
-}
-
-.process-step:hover {
-    transform: translateY(-10px);
-    border-color: var(--primary-color);
-    box-shadow: var(--shadow-xl);
-}
-
-.step-number {
-    width: 70px;
-    height: 70px;
-    background: var(--gradient-1);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    font-weight: 900;
-    margin: 0 auto 1.5rem;
-    font-family: var(--font-mono);
-}
-
-.step-icon {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
-    display: block;
-}
-
-.process-step h3 {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--text-primary);
-    margin-bottom: 1rem;
-}
-
-.process-step p {
-    color: var(--text-secondary);
-    font-size: 1rem;
-    line-height: 1.6;
-}
-
-/* ===========================================
-   Services Section - Gen Z Cards
-   =========================================== */
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2.5rem;
-}
-
-.service-card {
-    background: var(--bg-card);
-    border-radius: var(--card-radius);
-    padding: 3rem 2.5rem;
-    text-align: center;
-    transition: all var(--transition-normal);
-    border: 1px solid var(--border-light);
-    position: relative;
-    overflow: hidden;
-}
-
-.service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-xl);
-    border-color: var(--border-color);
-}
-
-.service-card.featured {
-    background: var(--gradient-1);
-    color: white;
-    border: none;
-    transform: scale(1.05);
-}
-
-.service-card.featured:hover {
-    transform: scale(1.05) translateY(-10px);
-}
-
-.service-card.featured * {
-    color: white;
-}
-
-.service-badge {
-    position: absolute;
-    top: 1.5rem;
-    left: 1.5rem;
-    background: white;
-    color: var(--primary-color);
-    padding: 0.5rem 1rem;
-    border-radius: var(--button-radius);
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.service-icon {
-    width: 80px;
-    height: 80px;
-    background: var(--bg-primary);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 2rem;
-    font-size: 2rem;
-    color: var(--primary-color);
-}
-
-.service-card.featured .service-icon {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-}
-
-.service-title {
-    font-size: 2rem;
-    font-weight: 800;
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-}
-
-.service-description {
-    color: var(--text-secondary);
-    margin-bottom: 2rem;
-    line-height: 1.6;
-    font-size: 1.1rem;
-}
-
-.service-card.featured .service-description {
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.service-price {
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border-light);
-}
-
-.service-price span:first-child {
-    display: block;
-    font-size: 0.9rem;
-    color: var(--text-tertiary);
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.price {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--primary-color);
-    font-family: var(--font-mono);
-}
-
-.service-card.featured .price {
-    color: white;
-}
-
-/* ===========================================
-   Testimonials Section - Chat Bubbles
-   =========================================== */
-
-.testimonials-section {
-    background: var(--bg-secondary);
-    border-radius: var(--card-radius);
-    margin: 0 var(--container-padding) 4rem;
-    padding: 6rem 0;
-}
-
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2.5rem;
-}
-
-.testimonial-bubble {
-    background: var(--bg-card);
-    border-radius: var(--card-radius);
-    padding: 2.5rem;
-    position: relative;
-    border: 1px solid var(--border-light);
-    transition: all var(--transition-normal);
-}
-
-.testimonial-bubble:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-xl);
-    border-color: var(--border-color);
-}
-
-.testimonial-bubble::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    right: 40px;
-    width: 20px;
-    height: 20px;
-    background: var(--bg-card);
-    transform: rotate(45deg);
-    border-top: 1px solid var(--border-light);
-    border-right: 1px solid var(--border-light);
-}
-
-.bubble-content p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--text-secondary);
-    margin-bottom: 2rem;
-    font-style: italic;
-}
-
-.client-info {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-    margin-top: 2rem;
-}
-
-.client-avatar {
-    width: 60px;
-    height: 60px;
-    background: var(--gradient-1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 800;
-    flex-shrink: 0;
-}
-
-.client-info h4 {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 0.25rem;
-}
-
-.client-info p {
-    font-size: 0.9rem;
-    color: var(--text-tertiary);
-    margin: 0;
-}
-
-/* ===========================================
-   Big CTA Section - Gen Z Style
-   =========================================== */
-
-.cta-section {
-    padding-bottom: 0;
-}
-
-.big-cta {
-    background: var(--gradient-1);
-    border-radius: var(--card-radius);
-    padding: 8rem 4rem;
-    text-align: center;
-    color: white;
-    position: relative;
-    overflow: hidden;
-    margin-bottom: -4rem;
-}
-
-.big-cta::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
-    background-size: cover;
-}
-
-.cta-title {
-    font-size: 4rem;
-    font-weight: 900;
-    margin-bottom: 1.5rem;
-    position: relative;
-    z-index: 1;
-    line-height: 1.1;
-}
-
-.cta-subtitle {
-    font-size: 1.3rem;
-    margin-bottom: 3rem;
-    position: relative;
-    z-index: 1;
-    opacity: 0.9;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.cta-button {
-    background: white;
-    color: var(--primary-color);
-    padding: 1.25rem 4rem;
-    border-radius: var(--button-radius);
-    font-size: 1.1rem;
-    font-weight: 800;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 1rem;
-    position: relative;
-    z-index: 1;
-    transition: all var(--transition-normal);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: var(--shadow-lg);
-}
-
-.cta-button:hover {
-    transform: scale(1.05);
-    box-shadow: var(--shadow-xl);
-}
-
-/* ===========================================
-   Contact Section
-   =========================================== */
-
-.contact-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    background: var(--bg-card);
-    border-radius: var(--card-radius);
-    padding: 4rem;
-    box-shadow: var(--shadow-lg);
-    border: 1px solid var(--border-light);
-}
-
-.contact-info .section-header {
-    text-align: right;
-    margin-bottom: 3rem;
-}
-
-.contact-details {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin-bottom: 3rem;
-}
-
-.contact-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 1.25rem;
-}
-
-.contact-icon {
-    width: 56px;
-    height: 56px;
-    background: rgba(255, 110, 199, 0.1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    flex-shrink: 0;
-}
-
-.contact-content h4 {
-    font-size: 0.9rem;
-    color: var(--text-tertiary);
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-}
-
-.contact-content a,
-.contact-content span {
-    font-size: 1.1rem;
-    color: var(--text-primary);
-    text-decoration: none;
-    transition: color var(--transition-normal);
-    font-weight: 500;
-}
-
-.contact-content a:hover {
-    color: var(--primary-color);
-}
-
-.social-links {
-    display: flex;
-    gap: 1rem;
-}
-
-.social-link {
-    width: 50px;
-    height: 50px;
-    background: var(--bg-tertiary);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-primary);
-    text-decoration: none;
-    transition: all var(--transition-normal);
-    font-size: 1.2rem;
-}
-
-.social-link:hover {
-    background: var(--gradient-1);
-    color: white;
-    transform: translateY(-3px) scale(1.1);
-}
-
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.form-group {
-    position: relative;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select {
-    width: 100%;
-    padding: 1rem 0;
-    font-size: 1rem;
-    color: var(--text-primary);
-    background: transparent;
-    border: none;
-    border-bottom: 2px solid var(--border-color);
-    font-family: var(--font-body);
-    transition: all var(--transition-normal);
-}
-
-.form-group textarea {
-    resize: vertical;
-    min-height: 120px;
-}
-
-.form-group select {
-    appearance: none;
-    cursor: pointer;
-}
-
-.form-group label {
-    position: absolute;
-    top: 1rem;
-    right: 0;
-    font-size: 1rem;
-    color: var(--text-tertiary);
-    pointer-events: none;
-    transition: all var(--transition-normal);
-    font-weight: 500;
-}
-
-.form-line {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 0;
-    height: 3px;
-    background: var(--gradient-1);
-    transition: width var(--transition-normal);
-    border-radius: 2px;
-}
-
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
-    outline: none;
-    border-bottom-color: transparent;
-}
-
-.form-group input:focus ~ .form-line,
-.form-group textarea:focus ~ .form-line,
-.form-group select:focus ~ .form-line,
-.form-group input:not(:placeholder-shown) ~ .form-line,
-.form-group textarea:not(:placeholder-shown) ~ .form-line,
-.form-group select:valid ~ .form-line {
-    width: 100%;
-}
-
-.form-group input:focus ~ label,
-.form-group textarea:focus ~ label,
-.form-group select:focus ~ label,
-.form-group input:not(:placeholder-shown) ~ label,
-.form-group textarea:not(:placeholder-shown) ~ label,
-.form-group select:valid ~ label {
-    top: -1.5rem;
-    font-size: 0.85rem;
-    color: var(--primary-color);
-    font-weight: 700;
-}
-
-.submit-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    padding: 1.25rem 3rem;
-    background: var(--gradient-1);
-    color: white;
-    border: none;
-    border-radius: var(--button-radius);
-    font-size: 1rem;
-    font-weight: 800;
-    cursor: pointer;
-    transition: all var(--transition-normal);
-    margin-top: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    width: 100%;
-}
-
-.submit-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-lg);
-}
-
-/* ===========================================
-   Modern Footer - Gen Z Style
-   =========================================== */
-
-.footer {
-    background: var(--bg-secondary);
-    padding: 5rem 0 2rem;
-    margin-top: 8rem;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 3rem;
-    flex-wrap: wrap;
-    gap: 2rem;
-}
-
-.footer-brand {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    flex: 1;
-}
-
-.footer-logo {
-    font-family: var(--font-heading);
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: var(--primary-color);
-    letter-spacing: -1px;
-}
-
-.footer-description {
-    color: var(--text-secondary);
-    font-size: 1rem;
-    line-height: 1.6;
-    max-width: 300px;
-}
-
-.footer-links {
-    display: flex;
-    gap: 2.5rem;
-    flex-wrap: wrap;
-}
-
-.footer-links a {
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: color var(--transition-normal);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-weight: 600;
-}
-
-.footer-links a:hover {
-    color: var(--primary-color);
-}
-
-.footer-social {
-    display: flex;
-    gap: 1rem;
-}
-
-.social-btn {
-    width: 50px;
-    height: 50px;
-    background: var(--bg-tertiary);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-primary);
-    text-decoration: none;
-    transition: all var(--transition-normal);
-    font-size: 1.2rem;
-}
-
-.social-btn:hover {
-    background: var(--gradient-1);
-    color: white;
-    transform: translateY(-3px) scale(1.1);
-}
-
-.footer-bottom {
-    border-top: 1px solid var(--border-light);
-    padding-top: 2rem;
-    text-align: center;
-}
-
-.copyright {
-    color: var(--text-tertiary);
-    font-size: 0.9rem;
-}
-
-/* ===========================================
-   Modal - Gen Z Style
-   =========================================== */
-
-.modal {
-    position: fixed;
-    inset: 0;
-    z-index: 2000;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem;
-}
-
-.modal.active {
-    display: flex;
-}
-
-.modal-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.9);
-    backdrop-filter: blur(10px);
-    animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.modal-content {
-    position: relative;
-    background: var(--bg-card);
-    border-radius: var(--card-radius);
-    max-width: 800px;
-    width: 100%;
-    max-height: 90vh;
-    overflow-y: auto;
-    animation: modalSlide 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: var(--shadow-xl);
-    border: 1px solid var(--border-light);
-}
-
-@keyframes modalSlide {
-    from {
-        opacity: 0;
-        transform: translateY(40px) scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
+// ===========================================
+// مبدل السمة
+// ===========================================
+
+function initThemeSwitcher() {
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('i');
+    
+    // الحصول على السمة المحفوظة أو استخدام الافتراضية
+    const savedTheme = localStorage.getItem('aseel-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+    
+    // تبديل السمة
+    themeToggle.addEventListener('click', function() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        // تحديث السمة
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('aseel-theme', newTheme);
+        updateThemeIcon(newTheme);
+        
+        // إضافة حركة
+        this.style.transform = 'rotate(180deg) scale(1.1)';
+        setTimeout(() => {
+            this.style.transform = 'rotate(0deg) scale(1)';
+        }, 300);
+    });
+    
+    function updateThemeIcon(theme) {
+        if (theme === 'dark') {
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        } else {
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
     }
 }
 
-.modal-close {
-    position: absolute;
-    top: 1.5rem;
-    left: 1.5rem;
-    width: 44px;
-    height: 44px;
-    background: var(--bg-tertiary);
-    border: none;
-    border-radius: 50%;
-    color: var(--text-primary);
-    cursor: pointer;
-    z-index: 2001;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all var(--transition-normal);
-    font-size: 1rem;
-}
+// ===========================================
+// مبدل اللغة
+// ===========================================
 
-.modal-close:hover {
-    background: var(--primary-color);
-    color: white;
-    transform: rotate(90deg) scale(1.1);
-}
-
-.modal-header {
-    padding: 3rem 3rem 2rem;
-    border-bottom: 1px solid var(--border-light);
-}
-
-.modal-category {
-    display: inline-block;
-    font-size: 0.8rem;
-    color: var(--primary-color);
-    background: rgba(255, 110, 199, 0.1);
-    padding: 0.5rem 1.25rem;
-    border-radius: var(--button-radius);
-    margin-bottom: 1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-}
-
-.modal-title {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--text-primary);
-    line-height: 1.2;
-}
-
-.modal-body {
-    padding: 2rem 3rem;
-}
-
-.modal-image {
-    width: 100%;
-    height: 300px;
-    background: var(--gradient-1);
-    border-radius: var(--element-radius);
-    margin-bottom: 2rem;
-}
-
-.modal-section {
-    margin-bottom: 2rem;
-}
-
-.modal-section h3 {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--text-primary);
-    margin-bottom: 1rem;
-}
-
-.modal-section p {
-    color: var(--text-secondary);
-    line-height: 1.8;
-    font-size: 1.1rem;
-}
-
-.modal-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-}
-
-.modal-tags span {
-    font-size: 0.85rem;
-    color: var(--primary-color);
-    background: rgba(255, 110, 199, 0.1);
-    padding: 0.5rem 1rem;
-    border-radius: var(--button-radius);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 600;
-}
-
-.modal-results {
-    list-style: none;
-    padding-right: 0;
-}
-
-.modal-results li {
-    color: var(--text-secondary);
-    margin-bottom: 0.75rem;
-    padding-right: 1.5rem;
-    position: relative;
-    font-size: 1rem;
-    line-height: 1.6;
-}
-
-.modal-results li:before {
-    content: '✓';
-    position: absolute;
-    right: 0;
-    color: var(--primary-color);
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-.modal-footer {
-    padding: 2rem 3rem;
-    border-top: 1px solid var(--border-light);
-    text-align: center;
-}
-
-/* ===========================================
-   Scroll Animations
-   =========================================== */
-
-.scroll-animate {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.scroll-animate.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ===========================================
-   Responsive Design
-   =========================================== */
-
-@media (max-width: 1200px) {
-    .hero-title {
-        font-size: 3.5rem;
+function initLanguageSwitcher() {
+    const langToggle = document.getElementById('languageToggle');
+    const langText = langToggle.querySelector('.lang-text');
+    
+    // الحصول على اللغة المحفوظة أو استخدام الافتراضية
+    const savedLang = localStorage.getItem('aseel-lang') || 'ar';
+    setLanguage(savedLang);
+    updateLangText(savedLang);
+    
+    // تبديل اللغة
+    langToggle.addEventListener('click', function() {
+        const currentLang = document.documentElement.getAttribute('lang') || 'ar';
+        const newLang = currentLang === 'ar' ? 'en' : 'ar';
+        
+        this.style.transform = 'rotate(180deg) scale(1.1)';
+        setTimeout(() => {
+            setLanguage(newLang);
+            updateLangText(newLang);
+            localStorage.setItem('aseel-lang', newLang);
+            this.style.transform = 'rotate(0deg) scale(1)';
+        }, 300);
+    });
+    
+    function setLanguage(lang) {
+        document.documentElement.setAttribute('lang', lang);
+        document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+        updateTexts(lang);
+        updatePageTitle(lang);
+        
+        // إضافة انتقال للصفحة
+        document.body.style.opacity = '0.8';
+        setTimeout(() => {
+            document.body.style.opacity = '1';
+            document.body.style.transition = 'opacity 0.3s ease';
+        }, 100);
     }
     
-    .cta-title {
-        font-size: 3rem;
+    function updateLangText(lang) {
+        langText.textContent = translations[lang]['lang.ar'];
     }
     
-    .section-title {
-        font-size: 2.5rem;
-    }
-    
-    .section-number {
-        font-size: 6rem;
+    function updatePageTitle(lang) {
+        document.title = translations[lang]['site.title'];
     }
 }
 
-@media (max-width: 992px) {
-    .container {
-        padding: 0 1.5rem;
-    }
-    
-    .section {
-        padding: 6rem 0;
-    }
-    
-    .hero-section {
-        padding: 6rem 1.5rem 3rem;
-    }
-    
-    .hero-title {
-        font-size: 2.75rem;
-    }
-    
-    .about-content,
-    .contact-container {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
-    
-    .work-grid,
-    .services-grid,
-    .testimonials-grid {
-        grid-template-columns: 1fr;
-        max-width: 500px;
-        margin: 0 auto;
-    }
-    
-    .process-timeline {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .big-cta {
-        padding: 6rem 3rem;
-        margin-bottom: -6rem;
-    }
-    
-    .cta-title {
-        font-size: 2.5rem;
-    }
-    
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 3rem;
-    }
-    
-    .footer-links {
-        justify-content: center;
+function updateTexts(lang) {
+    const elements = document.querySelectorAll('[data-i18n]');
+    elements.forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+            element.textContent = translations[lang][key];
+        }
+    });
+}
+
+// ===========================================
+// السنة الحالية
+// ===========================================
+
+function initCurrentYear() {
+    const yearElement = document.getElementById('currentYear');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
     }
 }
 
-@media (max-width: 768px) {
-    :root {
-        --container-padding: 1rem;
-        --section-spacing: 4rem;
+// ===========================================
+// حركات التمرير
+// ===========================================
+
+function initScrollAnimations() {
+    const animatedElements = document.querySelectorAll('.scroll-animate');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    animatedElements.forEach(element => {
+        observer.observe(element);
+    });
+}
+
+// ===========================================
+// فلترة المشاريع
+// ===========================================
+
+function initProjectFilter() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // إزالة النشط من جميع الأزرار
+            filterBtns.forEach(b => b.classList.remove('active'));
+            
+            // إضافة النشط للزر المختار
+            this.classList.add('active');
+            
+            // الحصول على قيمة الفلتر
+            const filter = this.getAttribute('data-filter');
+            
+            // تصفية المشاريع
+            projectCards.forEach(card => {
+                if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
+}
+
+// ===========================================
+// نافذة المشروع
+// ===========================================
+
+function initProjectModal() {
+    const modal = document.getElementById('projectModal');
+    const modalClose = document.getElementById('modalClose');
+    const viewProjectBtns = document.querySelectorAll('.view-project');
+    
+    // بيانات المشاريع
+    const projects = {
+        1: {
+            category: 'هوية بصرية',
+            title: 'علامة أزياء فاخرة',
+            description: 'هوية بصرية كاملة لعلامة أزياء فاخرة تجمع بين التراث والحداثة. تضمن المشروع إنشاء نظام علامة تجارية شامل يعمل عبر نقاط التواصل الرقمية والمادية.',
+            tags: ['تصميم الشعار', 'الهوية البصرية', 'المواد المطبوعة', 'دليل العلامة التجارية', 'نظام الألوان', 'الطباعة'],
+            results: [
+                'زيادة الوعي بالعلامة بنسبة 40%',
+                'تحسين تجربة العملاء عبر جميع نقاط التواصل',
+                'تعزيز الهوية البصرية بجاذبية حديثة'
+            ]
+        },
+        2: {
+            category: 'تصميم ويب',
+            title: 'منصة فنية تفاعلية',
+            description: 'واجهة مستخدم حديثة لمنصة فنية مع تجربة تصفح سلسة. يركز التصميم على التنقل سهل الاستخدام والعرض البصري الاستثنائي لمحبي الفن.',
+            tags: ['تصميم واجهة المستخدم', 'عناصر تفاعلية', 'تصميم متجاوب', 'تجربة المستخدم', 'موبايل أولاً'],
+            results: [
+                'زيادة وقت التصفح بنسبة 60%',
+                'تحسين معدلات التحويل بنسبة 35%',
+                'تعزيز تجربة المستخدم بالتنقل البديهي'
+            ]
+        },
+        3: {
+            category: 'فن رقمي',
+            title: 'سلسلة فن تجريدي',
+            description: 'مجموعة من الأعمال الفنية الرقمية المستوحاة من الثقافة العربية المعاصرة. تحمل كل قطعة رسالة فنية فريدة تجمع بين التراث والحداثة.',
+            tags: ['فن رقمي', 'رسم', 'فن تجريدي', 'الثقافة العربية', 'تصميم حديث'],
+            results: [
+                'معرض فني ناجح مع أكثر من 500 زائر',
+                'بيع جميع الأعمال الفنية خلال الأسبوع الأول',
+                'تغطية إعلامية واسعة في منشورات التصميم'
+            ]
+        }
+    };
+    
+    // فتح النافذة عند النقر على المشروع
+    viewProjectBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const projectId = this.getAttribute('data-project');
+            openProjectModal(projectId);
+        });
+    });
+    
+    // إغلاق النافذة
+    modalClose.addEventListener('click', closeModal);
+    modal.querySelector('.modal-overlay').addEventListener('click', closeModal);
+    
+    // إغلاق بمفتاح Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+    
+    function openProjectModal(projectId) {
+        const project = projects[projectId];
+        if (!project) return;
+        
+        // تحديث محتوى النافذة
+        document.getElementById('modalCategory').textContent = project.category;
+        document.getElementById('modalTitle').textContent = project.title;
+        document.getElementById('modalDescription').textContent = project.description;
+        
+        // تحديث الوسوم
+        const tagsContainer = document.getElementById('modalTags');
+        tagsContainer.innerHTML = '';
+        project.tags.forEach(tag => {
+            const tagElement = document.createElement('span');
+            tagElement.textContent = tag;
+            tagsContainer.appendChild(tagElement);
+        });
+        
+        // تحديث النتائج
+        const resultsContainer = document.getElementById('modalResults');
+        resultsContainer.innerHTML = '';
+        project.results.forEach(result => {
+            const li = document.createElement('li');
+            li.textContent = result;
+            resultsContainer.appendChild(li);
+        });
+        
+        // تحديث الصورة بناءً على المشروع
+        const modalImage = document.getElementById('modalImage');
+        modalImage.style.background = getProjectGradient(projectId);
+        
+        // إظهار النافذة
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
     }
     
-    .minimal-nav {
-        padding: 0.75rem 0;
-        height: 70px;
+    function closeModal() {
+        const modal = document.getElementById('projectModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
     }
     
-    .nav-container {
-        gap: 1rem;
+    function getProjectGradient(id) {
+        const gradients = [
+            'linear-gradient(135deg, #FF6EC7, #FFB347)',
+            'linear-gradient(135deg, #A0FFE6, #A7D8FF)',
+            'linear-gradient(135deg, #B57FFF, #FF6EC7)'
+        ];
+        return gradients[id - 1] || gradients[0];
+    }
+}
+
+// ===========================================
+// نموذج الاتصال
+// ===========================================
+
+function initContactForm() {
+    const contactForm = document.getElementById('contactForm');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // الحصول على بيانات النموذج
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // عرض حالة التحميل
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.querySelector('span').textContent;
+            const originalIcon = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            submitBtn.disabled = true;
+            
+            // محاكاة استدعاء API
+            setTimeout(() => {
+                // عرض رسالة النجاح
+                const currentLang = document.documentElement.getAttribute('lang') || 'ar';
+                const successMsg = currentLang === 'ar' 
+                    ? 'تم إرسال رسالتك بنجاح! سأتصل بك قريباً.' 
+                    : 'Your message has been sent successfully! I will contact you soon.';
+                showNotification(successMsg, 'success');
+                
+                // إعادة تعيين النموذج
+                this.reset();
+                
+                // إعادة تعيين الزر
+                submitBtn.innerHTML = originalIcon;
+                submitBtn.querySelector('span').textContent = originalText;
+                submitBtn.disabled = false;
+                
+                // إعادة تعيين تسميات النموذج
+                resetFormLabels();
+            }, 1500);
+        });
     }
     
-    .nav-toggle {
-        display: flex;
-    }
+    // حركات إدخال النموذج
+    const formGroups = document.querySelectorAll('.form-group');
+    formGroups.forEach(group => {
+        const input = group.querySelector('input, textarea, select');
+        const label = group.querySelector('label');
+        
+        if (input && label) {
+            // التهيئة بناءً على القيمة الحالية
+            if (input.value) {
+                label.style.top = '-1.5rem';
+                label.style.fontSize = '0.85rem';
+                label.style.color = 'var(--primary-color)';
+                label.style.fontWeight = '700';
+            }
+            
+            input.addEventListener('focus', function() {
+                label.style.top = '-1.5rem';
+                label.style.fontSize = '0.85rem';
+                label.style.color = 'var(--primary-color)';
+                label.style.fontWeight = '700';
+            });
+            
+            input.addEventListener('blur', function() {
+                if (!this.value) {
+                    label.style.top = '1rem';
+                    label.style.fontSize = '1rem';
+                    label.style.color = 'var(--text-tertiary)';
+                    label.style.fontWeight = '500';
+                }
+            });
+            
+            // التعامل مع تغيير الاختيار
+            if (input.tagName === 'SELECT') {
+                input.addEventListener('change', function() {
+                    if (this.value) {
+                        label.style.top = '-1.5rem';
+                        label.style.fontSize = '0.85rem';
+                        label.style.color = 'var(--primary-color)';
+                        label.style.fontWeight = '700';
+                    } else {
+                        label.style.top = '1rem';
+                        label.style.fontSize = '1rem';
+                        label.style.color = 'var(--text-tertiary)';
+                        label.style.fontWeight = '500';
+                    }
+                });
+            }
+        }
+    });
     
-    .nav-menu {
+    function resetFormLabels() {
+        const labels = document.querySelectorAll('.form-group label');
+        labels.forEach(label => {
+            label.style.top = '1rem';
+            label.style.fontSize = '1rem';
+            label.style.color = 'var(--text-tertiary)';
+            label.style.fontWeight = '500';
+        });
+    }
+}
+
+// ===========================================
+// شريط تقدم التمرير
+// ===========================================
+
+function initScrollProgress() {
+    // إنشاء شريط التقدم
+    const progressBar = document.createElement('div');
+    progressBar.className = 'scroll-progress';
+    progressBar.style.cssText = `
         position: fixed;
         top: 0;
-        right: -100%;
-        width: 280px;
-        height: 100vh;
-        background: var(--glass-bg);
-        backdrop-filter: blur(20px);
-        border-left: 1px solid var(--glass-border);
-        padding: 6rem 2rem 2rem;
-        transition: right var(--transition-normal);
-        z-index: 999;
-    }
-    
-    .nav-menu.active {
         right: 0;
-    }
+        width: 0%;
+        height: 3px;
+        background: var(--gradient-1);
+        z-index: 9998;
+        transition: width 0.1s ease;
+        pointer-events: none;
+    `;
+    document.body.appendChild(progressBar);
     
-    .nav-links {
-        flex-direction: column;
-        gap: 1.5rem;
-        align-items: flex-end;
-    }
+    // تحديث التقدم عند التمرير
+    window.addEventListener('scroll', function() {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        progressBar.style.width = scrolled + '%';
+    });
+}
+
+// ===========================================
+// التمرير السلس
+// ===========================================
+
+function initSmoothScrolling() {
+    // إضافة تمرير سلس للروابط
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            
+            if (href === '#') return;
+            
+            e.preventDefault();
+            const targetId = href.substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                const headerHeight = document.querySelector('.minimal-nav').offsetHeight;
+                const targetPosition = targetElement.offsetTop - headerHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+// ===========================================
+// حركات الصفحة
+// ===========================================
+
+function initPageAnimations() {
+    // إضافة حركة للعناصر عند التحميل
+    const animatedElements = [
+        '.hero-badge',
+        '.hero-title .title-line',
+        '.hero-description',
+        '.hero-actions',
+        '.stat-card',
+        '.about-image',
+        '.about-text',
+        '.section-header',
+        '.project-card',
+        '.process-step',
+        '.service-card',
+        '.testimonial-bubble',
+        '.big-cta',
+        '.contact-item',
+        '.social-link',
+        '.form-group'
+    ];
     
-    .nav-link {
-        font-size: 1rem;
-    }
+    animatedElements.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach((element, index) => {
+            element.style.animationDelay = `${index * 0.1}s`;
+            element.classList.add('scroll-animate');
+        });
+    });
     
-    .hero-title {
-        font-size: 2.25rem;
-    }
-    
-    .hero-description {
-        font-size: 1.1rem;
-    }
-    
-    .hero-actions {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .btn-primary,
-    .btn-secondary,
-    .btn-tertiary {
-        width: 100%;
-        max-width: 300px;
-        justify-content: center;
-    }
-    
-    .section-title {
-        font-size: 2rem;
-    }
-    
-    .section-number {
-        font-size: 4rem;
-        top: -1.5rem;
-    }
-    
-    .about-snapshot {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .snapshot-section,
-    .process-section,
-    .testimonials-section {
-        margin: 0 1rem 2rem;
-        padding: 4rem 0;
-    }
-    
-    .process-timeline {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
-    .contact-container {
-        padding: 2.5rem;
-    }
-    
-    .contact-item {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-    }
-    
-    .contact-icon {
-        margin: 0 auto;
-    }
-    
-    .big-cta {
-        padding: 4rem 2rem;
-        margin-bottom: -4rem;
-    }
-    
-    .cta-title {
-        font-size: 2rem;
-    }
-    
-    .modal-header,
-    .modal-body,
-    .modal-footer {
-        padding: 2rem;
-    }
-    
-    .modal-title {
-        font-size: 2rem;
-    }
-    
-    .footer {
-        padding: 4rem 0 2rem;
-        margin-top: 6rem;
+    // تهيئة حركات التمرير
+    initScrollAnimations();
+}
+
+// ===========================================
+// جسيمات عائمة
+// ===========================================
+
+function initFloatingParticles() {
+    if (!document.getElementById('floatingParticles')) {
+        const particlesContainer = document.createElement('div');
+        particlesContainer.id = 'floatingParticles';
+        particlesContainer.className = 'floating-particles';
+        
+        // إنشاء الجسيمات
+        const colors = ['var(--primary-color)', 'var(--secondary-color)', 'var(--accent-color)'];
+        
+        for (let i = 0; i < 15; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            
+            const size = Math.random() * 100 + 50;
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            const left = Math.random() * 100;
+            const top = Math.random() * 100;
+            const duration = Math.random() * 10 + 20;
+            const delay = Math.random() * 5;
+            
+            particle.style.cssText = `
+                width: ${size}px;
+                height: ${size}px;
+                background: ${color};
+                left: ${left}%;
+                top: ${top}%;
+                animation-delay: ${delay}s;
+                animation-duration: ${duration}s;
+                filter: blur(40px);
+                opacity: 0.1;
+            `;
+            
+            particlesContainer.appendChild(particle);
+        }
+        
+        document.body.appendChild(particlesContainer);
     }
 }
 
-@media (max-width: 480px) {
-    .hero-title {
-        font-size: 1.75rem;
+// ===========================================
+// دالة تحميل السيرة الذاتية
+// ===========================================
+
+function downloadCV() {
+    // إنشاء تحميل PDF محاكى
+    const currentLang = document.documentElement.getAttribute('lang') || 'ar';
+    const loadingMsg = currentLang === 'ar' 
+        ? 'جاري تحميل السيرة الذاتية...' 
+        : 'Downloading CV...';
+    
+    showNotification(loadingMsg, 'info');
+    
+    // محاكاة تأخير التحميل
+    setTimeout(() => {
+        // في السيناريو الحقيقي، هذا سيكون ملف PDF الفعلي الخاص بك
+        const dummyPDF = `
+        %PDF-1.4
+        1 0 obj
+        << /Type /Catalog /Pages 2 0 R >>
+        endobj
+        2 0 obj
+        << /Type /Pages /Kids [3 0 R] /Count 1 >>
+        endobj
+        3 0 obj
+        << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R >>
+        endobj
+        4 0 obj
+        << /Length 44 >>
+        stream
+        BT /F1 12 Tf 72 720 Td (Aseel - Creative Digital Designer) Tj ET
+        endstream
+        endobj
+        xref
+        0 5
+        0000000000 65535 f 
+        0000000010 00000 n 
+        0000000053 00000 n 
+        0000000101 00000 n 
+        0000000176 00000 n 
+        trailer
+        << /Size 5 /Root 1 0 R >>
+        startxref
+        281
+        %%EOF
+        `;
+        
+        // إنشاء blob ورابط التحميل
+        const blob = new Blob([dummyPDF], { type: 'application/pdf' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        
+        link.href = url;
+        link.download = currentLang === 'ar' ? 'أسيل_السيرة_الذاتية.pdf' : 'Aseel_CV_Portfolio.pdf';
+        link.style.display = 'none';
+        
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+        
+        // عرض إشعار النجاح
+        const successMsg = currentLang === 'ar' 
+            ? 'تم تحميل السيرة الذاتية بنجاح!' 
+            : 'CV downloaded successfully!';
+        showNotification(successMsg, 'success');
+    }, 1000);
+}
+
+// ===========================================
+// نظام الإشعارات
+// ===========================================
+
+function showNotification(message, type = 'info') {
+    // إزالة الإشعارات الموجودة
+    const existingNotifications = document.querySelectorAll('.notification');
+    existingNotifications.forEach(notification => notification.remove());
+    
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    
+    const icon = type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle';
+    notification.innerHTML = `
+        <i class="fas fa-${icon}"></i>
+        <span>${message}</span>
+    `;
+    
+    // إضافة الأنماط
+    Object.assign(notification.style, {
+        position: 'fixed',
+        top: '100px',
+        right: '20px',
+        background: 'var(--bg-card)',
+        border: '2px solid var(--border-color)',
+        borderRadius: 'var(--element-radius)',
+        padding: '1.25rem 1.5rem',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '1rem',
+        zIndex: '9999',
+        animation: 'slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+        boxShadow: 'var(--shadow-lg)',
+        maxWidth: '350px',
+        fontWeight: '600'
+    });
+    
+    if (type === 'success') {
+        notification.style.borderLeft = '4px solid var(--primary-color)';
+        notification.querySelector('i').style.color = 'var(--primary-color)';
+    } else if (type === 'error') {
+        notification.style.borderLeft = '4px solid #ff4d4d';
+        notification.querySelector('i').style.color = '#ff4d4d';
+    } else {
+        notification.style.borderLeft = '4px solid var(--accent-color)';
+        notification.querySelector('i').style.color = 'var(--accent-color)';
     }
     
-    .section-title {
-        font-size: 1.75rem;
-    }
+    document.body.appendChild(notification);
     
-    .about-snapshot {
-        grid-template-columns: 1fr;
-    }
+    // الإزالة التلقائية بعد 3 ثوانٍ
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards';
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
     
-    .snapshot-card {
-        padding: 2rem 1.5rem;
-    }
+    // إضافة أنماط الحركات إذا لم تكن مضافة بالفعل
+    addNotificationAnimations();
     
-    .work-filters {
-        gap: 0.5rem;
-    }
-    
-    .filter-btn {
-        padding: 0.6rem 1.25rem;
-        font-size: 0.8rem;
-    }
-    
-    .contact-container {
-        padding: 2rem;
-    }
-    
-    .social-links,
-    .footer-social {
-        gap: 0.75rem;
-    }
-    
-    .social-link,
-    .social-btn {
-        width: 44px;
-        height: 44px;
-        font-size: 1rem;
-    }
-    
-    .cta-title {
-        font-size: 1.75rem;
-    }
-    
-    .cta-button {
-        padding: 1rem 3rem;
+    // الإغلاق عند النقر
+    notification.addEventListener('click', () => {
+        notification.style.animation = 'slideOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards';
+        setTimeout(() => notification.remove(), 300);
+    });
+}
+
+function addNotificationAnimations() {
+    if (!document.getElementById('notification-styles')) {
+        const style = document.createElement('style');
+        style.id = 'notification-styles';
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%) translateY(-20px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0) translateY(0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes slideOut {
+                from {
+                    transform: translateX(0) translateY(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%) translateY(-20px);
+                    opacity: 0;
+                }
+            }
+            
+            .notification {
+                cursor: pointer;
+                transition: transform 0.2s ease;
+            }
+            
+            .notification:hover {
+                transform: translateY(-2px);
+                box-shadow: var(--shadow-xl);
+            }
+            
+            @media (max-width: 768px) {
+                .notification {
+                    right: 10px;
+                    left: 10px;
+                    top: 80px;
+                    max-width: calc(100% - 20px);
+                }
+            }
+        `;
+        document.head.appendChild(style);
     }
 }
 
-/* ===========================================
-   LTR Support
-   =========================================== */
+// ===========================================
+// تأثيرات إضافية
+// ===========================================
 
-[dir="ltr"] .nav-link::after,
-[dir="ltr"] .form-group input:focus ~ .form-line,
-[dir="ltr"] .form-group textarea:focus ~ .form-line,
-[dir="ltr"] .form-group select:focus ~ .form-line {
-    right: auto;
-    left: 0;
-}
+// إضافة تأثير اهتزاز خفيف للأزرار
+document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-tertiary, .cta-button');
+    
+    buttons.forEach(button => {
+        button.addEventListener('mouseenter', function() {
+            this.style.transform = this.style.transform + ' scale(1.02)';
+        });
+        
+        button.addEventListener('mouseleave', function() {
+            this.style.transform = this.style.transform.replace(' scale(1.02)', '');
+        });
+    });
+});
 
-[dir="ltr"] .form-group label {
-    right: auto;
-    left: 0;
-}
+// تأثير تحميل الصفحة
+window.addEventListener('load', function() {
+    document.body.style.animation = 'fadeIn 1s ease-out';
+});
 
-[dir="ltr"] .form-group input:focus ~ label,
-[dir="ltr"] .form-group textarea:focus ~ label,
-[dir="ltr"] .form-group select:focus ~ label,
-[dir="ltr"] .form-group input:not(:placeholder-shown) ~ label,
-[dir="ltr"] .form-group textarea:not(:placeholder-shown) ~ label,
-[dir="ltr"] .form-group select:valid ~ label {
-    right: auto;
-    left: 0;
-}
-
-[dir="ltr"] .modal-results li {
-    padding-right: 0;
-    padding-left: 1.5rem;
-}
-
-[dir="ltr"] .modal-results li:before {
-    right: auto;
-    left: 0;
-}
-
-[dir="ltr"] .testimonial-bubble::before {
-    right: auto;
-    left: 40px;
-    border-top: 1px solid var(--border-light);
-    border-right: none;
-    border-left: 1px solid var(--border-light);
-}
+// تحديث ديناميكي للترجمات عند تغيير اللغة
+window.addEventListener('languageChange', function() {
+    const lang = document.documentElement.getAttribute('lang') || 'ar';
+    updateTexts(lang);
+});
