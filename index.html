@@ -3,48 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aseel | Creative Digital Designer for Gen Z Brands</title>
-    <meta name="description" content="Aseel - Creative digital designer specializing in modern visual identity, web design, and digital art for Gen Z audiences.">
+    <title data-i18n="site.title">أسيل | مصممة رقمية إبداعية</title>
+    <meta name="description" content="مصممة رقمية إبداعية متخصصة في الهوية البصرية الحديثة وتصميم الويب والفن الرقمي">
     
-    <!-- Modern Fonts -->
+    <!-- الخطوط -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     
-    <!-- Icons -->
+    <!-- الأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%23FF6EC7%22>A</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%23FF6EC7%22>أ</text></svg>">
     
-    <!-- Styles -->
+    <!-- الأنماط -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- شريط التنقل -->
     <nav class="minimal-nav" id="nav">
         <div class="nav-container">
             <div class="nav-brand">
-                <span class="nav-logo">Aseel</span>
-                <span class="nav-subtitle" data-i18n="nav.designer">Digital Designer</span>
+                <span class="nav-logo" data-i18n="nav.logo">أسيل</span>
+                <span class="nav-subtitle" data-i18n="nav.designer">مصممة رقمية</span>
             </div>
             
             <div class="nav-menu" id="navMenu">
                 <div class="nav-links">
                     <a href="#hero" class="nav-link active" data-section="hero">
-                        <span data-i18n="nav.home">Home</span>
+                        <span data-i18n="nav.home">الرئيسية</span>
                     </a>
                     <a href="#about" class="nav-link" data-section="about">
-                        <span data-i18n="nav.about">About</span>
+                        <span data-i18n="nav.about">عنّي</span>
                     </a>
                     <a href="#work" class="nav-link" data-section="work">
-                        <span data-i18n="nav.work">Work</span>
+                        <span data-i18n="nav.work">أعمالي</span>
                     </a>
                     <a href="#process" class="nav-link" data-section="process">
-                        <span>Process</span>
+                        <span data-i18n="nav.process">طريقة العمل</span>
                     </a>
                     <a href="#contact" class="nav-link" data-section="contact">
-                        <span data-i18n="nav.contact">Contact</span>
+                        <span data-i18n="nav.contact">اتصل بي</span>
                     </a>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                 
                 <div class="language-switch">
                     <button class="lang-btn" id="languageToggle">
-                        <span class="lang-text" data-i18n="lang.ar">AR</span>
+                        <span class="lang-text" data-i18n="lang.ar">عربي</span>
                         <i class="fas fa-globe"></i>
                     </button>
                 </div>
@@ -72,79 +72,87 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- قسم البطل -->
     <section class="hero-section" id="hero">
         <div class="hero-content">
-            <div class="hero-badge" data-i18n="hero.subtitle">Digital Art</div>
+            <div class="hero-badge" data-i18n="hero.badge">فن رقمي</div>
             <h1 class="hero-title">
-                <span class="title-line">I'm Aseel —</span>
-                <span class="title-line accent">Creative Digital Designer</span>
+                <span class="title-line" data-i18n="hero.greeting">مرحباً، أنا</span>
+                <span class="title-line accent" data-i18n="hero.name">أسيل</span>
+                <span class="title-line" data-i18n="hero.title">مصممة رقمية إبداعية</span>
             </h1>
-            <p class="hero-description">
-                I design clean visuals & fast experiences for Gen Z brands
+            <p class="hero-description" data-i18n="hero.description">
+                أصمم هويات بصرية معاصرة تجمع بين البساطة وسرد القصص العاطفية والابتكار الرقمي
             </p>
             
             <div class="hero-actions">
                 <a href="#work" class="btn-primary">
-                    <span>View Work</span>
+                    <span data-i18n="hero.viewWork">عرض الأعمال</span>
                     <i class="fas fa-arrow-left"></i>
                 </a>
                 <a href="#contact" class="btn-secondary">
-                    <span>Contact Me</span>
+                    <span data-i18n="hero.contact">تواصل معي</span>
                     <i class="fas fa-message"></i>
                 </a>
                 <button class="btn-tertiary" onclick="downloadCV()">
-                    <span>Download CV</span>
+                    <span data-i18n="hero.downloadCV">تحميل السيرة الذاتية</span>
                     <i class="fas fa-download"></i>
                 </button>
             </div>
         </div>
         
         <div class="hero-scroll">
-            <span>Explore</span>
+            <span data-i18n="hero.explore">استكشف</span>
             <div class="scroll-line"></div>
         </div>
     </section>
 
-    <!-- About Snapshot -->
-    <section class="section snapshot-section">
+    <!-- الإحصائيات السريعة -->
+    <section class="section stats-section">
         <div class="container">
-            <div class="about-snapshot">
-                <div class="snapshot-card">
-                    <div class="snapshot-icon">🚀</div>
-                    <div class="snapshot-number">3+</div>
-                    <div class="snapshot-label">Years Experience</div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">🚀</div>
+                    <div class="stat-content">
+                        <h3 class="stat-number">3+</h3>
+                        <p class="stat-label" data-i18n="stats.experience">سنوات خبرة</p>
+                    </div>
                 </div>
-                <div class="snapshot-card">
-                    <div class="snapshot-icon">🎯</div>
-                    <div class="snapshot-number">50+</div>
-                    <div class="snapshot-label">Projects Done</div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-content">
+                        <h3 class="stat-number">50+</h3>
+                        <p class="stat-label" data-i18n="stats.projects">مشروع منجز</p>
+                    </div>
                 </div>
-                <div class="snapshot-card">
-                    <div class="snapshot-icon">⚡</div>
-                    <div class="snapshot-number">Fast</div>
-                    <div class="snapshot-label">Web & Mobile Design</div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">⚡</div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" data-i18n="stats.fast">سريع</h3>
+                        <p class="stat-label" data-i18n="stats.design">تصميم ويب وجوال</p>
+                    </div>
                 </div>
-                <div class="snapshot-card">
-                    <div class="snapshot-icon">📍</div>
-                    <div class="snapshot-number">Amman</div>
-                    <div class="snapshot-label">Based in Jordan</div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">📍</div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" data-i18n="stats.location">عمان</h3>
+                        <p class="stat-label" data-i18n="stats.based">مقيمة في الأردن</p>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="about-quote">
-                <p>"أصمم هويات رقمية نظيفة وسريعة تتناسب مع المتاجر والشركات الناشئة. هدفي تبسيط التصميم وتقديم تجربة ذكية مرتبطة بجيل Z."</p>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- قسم عنّي -->
     <section class="section about-section" id="about">
         <div class="container">
             <div class="section-header">
                 <span class="section-number">01</span>
-                <h2 class="section-title" data-i18n="about.title">Design Philosophy</h2>
-                <p class="section-subtitle" data-i18n="about.subtitle">Where creativity meets purpose</p>
+                <h2 class="section-title" data-i18n="about.title">عنّي</h2>
+                <p class="section-subtitle" data-i18n="about.subtitle">حيث يلتقي الإبداع بالغرض</p>
             </div>
             
             <div class="about-content">
@@ -153,29 +161,37 @@
                         <div class="frame-content">
                             <div class="artist-badge">
                                 <i class="fas fa-palette"></i>
-                                <span data-i18n="about.badge">Visual Artist</span>
+                                <span data-i18n="about.badge">فنانة بصرية</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="about-text">
-                    <h3 class="about-heading" data-i18n="about.heading">Design with Purpose</h3>
-                    
-                    <div class="about-description">
-                        <p data-i18n="about.description1">
-                            I believe in creating designs that not only look beautiful but also solve problems 
-                            and tell compelling stories. Every element in my work carries meaning and purpose.
-                        </p>
-                        
-                        <p data-i18n="about.description2">
-                            With over 5 years of digital design experience, I've developed a unique approach 
-                            that combines artistic intuition with professional methodology.
+                    <div class="about-quote">
+                        <p data-i18n="about.quote">
+                            "أصمم هويات رقمية نظيفة وسريعة تتناسب مع المتاجر والشركات الناشئة. هدفي تبسيط التصميم وتقديم تجربة ذكية مرتبطة بجيل Z."
                         </p>
                     </div>
                     
+                    <div class="about-details">
+                        <div class="detail-item">
+                            <h4 data-i18n="about.philosophy">فلسفة التصميم</h4>
+                            <p data-i18n="about.philosophyText">
+                                أؤمن بإنشاء تصاميم لا تبدو جميلة فقط بل تحل المشكلات وتروي قصصاً مؤثرة. كل عنصر في عملي يحمل معنى وغرضاً.
+                            </p>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <h4 data-i18n="about.experience">الخبرة</h4>
+                            <p data-i18n="about.experienceText">
+                                مع خبرة تزيد عن 5 سنوات في التصميم الرقمي، طورت أسلوباً فريداً يجمع بين الحدس الفني والمنهجية الاحترافية.
+                            </p>
+                        </div>
+                    </div>
+                    
                     <div class="tools-section">
-                        <h4>Main Tools</h4>
+                        <h4 data-i18n="about.tools">الأدوات الرئيسية</h4>
                         <div class="tools-grid">
                             <span class="tool-tag">Figma</span>
                             <span class="tool-tag">Photoshop</span>
@@ -188,91 +204,91 @@
         </div>
     </section>
 
-    <!-- Work Section -->
+    <!-- قسم الأعمال -->
     <section class="section work-section" id="work">
         <div class="container">
             <div class="section-header">
                 <span class="section-number">02</span>
-                <h2 class="section-title" data-i18n="work.title">Featured Work</h2>
-                <p class="section-subtitle" data-i18n="work.subtitle">Selected projects showcasing design excellence</p>
+                <h2 class="section-title" data-i18n="work.title">أعمالي المميزة</h2>
+                <p class="section-subtitle" data-i18n="work.subtitle">مشاريع مختارة تعرض التميز في التصميم</p>
             </div>
             
             <div class="work-filters">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="branding">Branding</button>
-                <button class="filter-btn" data-filter="web">Web Design</button>
-                <button class="filter-btn" data-filter="art">Digital Art</button>
+                <button class="filter-btn active" data-filter="all" data-i18n="work.filters.all">الكل</button>
+                <button class="filter-btn" data-filter="branding" data-i18n="work.filters.branding">هوية بصرية</button>
+                <button class="filter-btn" data-filter="web" data-i18n="work.filters.web">تصميم ويب</button>
+                <button class="filter-btn" data-filter="art" data-i18n="work.filters.art">فن رقمي</button>
             </div>
             
             <div class="work-grid">
-                <!-- Project 1 -->
+                <!-- المشروع 1 -->
                 <div class="project-card" data-category="branding">
                     <div class="project-image project-1">
-                        <div class="project-label">Brand Identity</div>
+                        <div class="project-label" data-i18n="work.project1.category">هوية بصرية</div>
                         <div class="image-overlay">
                             <button class="view-project" data-project="1">
                                 <i class="fas fa-expand"></i>
-                                <span>View Full Case</span>
+                                <span data-i18n="work.view">عرض المشروع</span>
                             </button>
                         </div>
                     </div>
                     <div class="project-info">
-                        <h3 class="project-title">Luxury Fashion Brand</h3>
-                        <p class="project-description">
-                            Complete visual identity for a high-end fashion brand blending heritage with modernity
+                        <h3 class="project-title" data-i18n="work.project1.title">علامة أزياء فاخرة</h3>
+                        <p class="project-description" data-i18n="work.project1.description">
+                            هوية بصرية كاملة لعلامة أزياء فاخرة تجمع بين التراث والحداثة
                         </p>
                         <div class="project-results">
-                            <span><i class="fas fa-chart-line"></i> +40% Brand Awareness</span>
-                            <span><i class="fas fa-users"></i> Better Customer Experience</span>
-                            <span><i class="fas fa-palette"></i> Enhanced Visual Identity</span>
+                            <span><i class="fas fa-chart-line"></i> <span data-i18n="work.result1">زيادة الوعي بالعلامة 40%</span></span>
+                            <span><i class="fas fa-users"></i> <span data-i18n="work.result2">تحسين تجربة العملاء</span></span>
+                            <span><i class="fas fa-palette"></i> <span data-i18n="work.result3">تعزيز الهوية البصرية</span></span>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Project 2 -->
+                <!-- المشروع 2 -->
                 <div class="project-card" data-category="web">
                     <div class="project-image project-2">
-                        <div class="project-label">Web Design</div>
+                        <div class="project-label" data-i18n="work.project2.category">تصميم ويب</div>
                         <div class="image-overlay">
                             <button class="view-project" data-project="2">
                                 <i class="fas fa-expand"></i>
-                                <span>View Full Case</span>
+                                <span data-i18n="work.view">عرض المشروع</span>
                             </button>
                         </div>
                     </div>
                     <div class="project-info">
-                        <h3 class="project-title">Interactive Art Platform</h3>
-                        <p class="project-description">
-                            Modern user interface for an art platform with seamless browsing experience
+                        <h3 class="project-title" data-i18n="work.project2.title">منصة فنية تفاعلية</h3>
+                        <p class="project-description" data-i18n="work.project2.description">
+                            واجهة مستخدم حديثة لمنصة فنية مع تجربة تصفح سلسة
                         </p>
                         <div class="project-results">
-                            <span><i class="fas fa-clock"></i> +60% Browsing Time</span>
-                            <span><i class="fas fa-exchange-alt"></i> Better Conversion Rates</span>
-                            <span><i class="fas fa-smile"></i> Enhanced User Experience</span>
+                            <span><i class="fas fa-clock"></i> <span data-i18n="work.result4">زيادة وقت التصفح 60%</span></span>
+                            <span><i class="fas fa-exchange-alt"></i> <span data-i18n="work.result5">تحسين معدلات التحويل</span></span>
+                            <span><i class="fas fa-smile"></i> <span data-i18n="work.result6">تعزيز تجربة المستخدم</span></span>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Project 3 -->
+                <!-- المشروع 3 -->
                 <div class="project-card" data-category="art">
                     <div class="project-image project-3">
-                        <div class="project-label">Digital Art</div>
+                        <div class="project-label" data-i18n="work.project3.category">فن رقمي</div>
                         <div class="image-overlay">
                             <button class="view-project" data-project="3">
                                 <i class="fas fa-expand"></i>
-                                <span>View Full Case</span>
+                                <span data-i18n="work.view">عرض المشروع</span>
                             </button>
                         </div>
                     </div>
                     <div class="project-info">
-                        <h3 class="project-title">Abstract Art Series</h3>
-                        <p class="project-description">
-                            Collection of digital artworks inspired by contemporary Arabic culture
+                        <h3 class="project-title" data-i18n="work.project3.title">سلسلة فن تجريدي</h3>
+                        <p class="project-description" data-i18n="work.project3.description">
+                            مجموعة من الأعمال الفنية الرقمية المستوحاة من الثقافة العربية المعاصرة
                         </p>
                         <div class="project-results">
-                            <span><i class="fas fa-images"></i> Successful Exhibition</span>
-                            <span><i class="fas fa-check-circle"></i> All Artworks Sold</span>
-                            <span><i class="fas fa-newspaper"></i> Wide Media Coverage</span>
+                            <span><i class="fas fa-images"></i> <span data-i18n="work.result7">معرض فني ناجح</span></span>
+                            <span><i class="fas fa-check-circle"></i> <span data-i18n="work.result8">بيع جميع الأعمال</span></span>
+                            <span><i class="fas fa-newspaper"></i> <span data-i18n="work.result9">تغطية إعلامية واسعة</span></span>
                         </div>
                     </div>
                 </div>
@@ -280,13 +296,13 @@
         </div>
     </section>
 
-    <!-- Process Section -->
+    <!-- قسم طريقة العمل -->
     <section class="section process-section" id="process">
         <div class="container">
             <div class="section-header">
                 <span class="section-number">03</span>
-                <h2 class="section-title">How I Work</h2>
-                <p class="section-subtitle">Simple process, amazing results</p>
+                <h2 class="section-title" data-i18n="process.title">كيف أشتغل</h2>
+                <p class="section-subtitle" data-i18n="process.subtitle">عملية بسيطة، نتائج مذهلة</p>
             </div>
             
             <div class="process-timeline">
@@ -295,44 +311,44 @@
                     <div class="step-icon">
                         <i class="fas fa-search"></i>
                     </div>
-                    <h3>Discovery</h3>
-                    <p>Understanding your brand and goals</p>
+                    <h3 data-i18n="process.step1.title">اكتشاف</h3>
+                    <p data-i18n="process.step1.description">فهم علامتك التجارية وأهدافك</p>
                 </div>
                 <div class="process-step">
                     <div class="step-number">2</div>
                     <div class="step-icon">
                         <i class="fas fa-palette"></i>
                     </div>
-                    <h3>Moodboard</h3>
-                    <p>Creating visual direction & style guide</p>
+                    <h3 data-i18n="process.step2.title">لوحة الإلهام</h3>
+                    <p data-i18n="process.step2.description">إنشاء اتجاه بصري ودليل نمط</p>
                 </div>
                 <div class="process-step">
                     <div class="step-number">3</div>
                     <div class="step-icon">
                         <i class="fas fa-paint-brush"></i>
                     </div>
-                    <h3>Design</h3>
-                    <p>Crafting beautiful, functional designs</p>
+                    <h3 data-i18n="process.step3.title">تصميم</h3>
+                    <p data-i18n="process.step3.description">صنع تصاميم جميلة وعملية</p>
                 </div>
                 <div class="process-step">
                     <div class="step-number">4</div>
                     <div class="step-icon">
                         <i class="fas fa-rocket"></i>
                     </div>
-                    <h3>Deliver</h3>
-                    <p>Final files + support & updates</p>
+                    <h3 data-i18n="process.step4.title">تسليم</h3>
+                    <p data-i18n="process.step4.description">الملفات النهائية + الدعم والتحديثات</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- قسم الخدمات -->
     <section class="section services-section" id="services">
         <div class="container">
             <div class="section-header">
                 <span class="section-number">04</span>
-                <h2 class="section-title" data-i18n="services.title">Services</h2>
-                <p class="section-subtitle" data-i18n="services.subtitle">Comprehensive design solutions for your needs</p>
+                <h2 class="section-title" data-i18n="services.title">خدماتي</h2>
+                <p class="section-subtitle" data-i18n="services.subtitle">حلول تصميمية شاملة تناسب احتياجاتك</p>
             </div>
             
             <div class="services-grid">
@@ -340,27 +356,27 @@
                     <div class="service-icon">
                         <i class="fas fa-palette"></i>
                     </div>
-                    <h3 class="service-title" data-i18n="services.service1.title">Brand Identity</h3>
+                    <h3 class="service-title" data-i18n="services.service1.title">الهوية البصرية</h3>
                     <p class="service-description" data-i18n="services.service1.description">
-                        Complete visual identity systems that express brand values
+                        أنظمة هوية بصرية كاملة تعبر عن قيم العلامة التجارية
                     </p>
                     <div class="service-price">
-                        <span>Starting from</span>
+                        <span data-i18n="services.startingFrom">تبدأ من</span>
                         <span class="price">$800</span>
                     </div>
                 </div>
                 
                 <div class="service-card featured">
-                    <div class="service-badge">Most Popular</div>
+                    <div class="service-badge" data-i18n="services.popular">الأكثر طلباً</div>
                     <div class="service-icon">
                         <i class="fas fa-laptop-code"></i>
                     </div>
-                    <h3 class="service-title" data-i18n="services.service2.title">Web & App Design</h3>
+                    <h3 class="service-title" data-i18n="services.service2.title">تصميم الويب والتطبيقات</h3>
                     <p class="service-description" data-i18n="services.service2.description">
-                        Modern user interfaces for exceptional experiences
+                        واجهات مستخدم حديثة لتجارب استثنائية
                     </p>
                     <div class="service-price">
-                        <span>Starting from</span>
+                        <span data-i18n="services.startingFrom">تبدأ من</span>
                         <span class="price">$1,200</span>
                     </div>
                 </div>
@@ -369,12 +385,12 @@
                     <div class="service-icon">
                         <i class="fas fa-paint-brush"></i>
                     </div>
-                    <h3 class="service-title" data-i18n="services.service3.title">Digital Art</h3>
+                    <h3 class="service-title" data-i18n="services.service3.title">الفن الرقمي</h3>
                     <p class="service-description" data-i18n="services.service3.description">
-                        Creating unique digital artworks for social media
+                        إنشاء أعمال فنية رقمية فريدة لوسائل التواصل
                     </p>
                     <div class="service-price">
-                        <span>Starting from</span>
+                        <span data-i18n="services.startingFrom">تبدأ من</span>
                         <span class="price">$400</span>
                     </div>
                 </div>
@@ -382,51 +398,42 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- قسم آراء العملاء -->
     <section class="section testimonials-section">
         <div class="container">
             <div class="section-header">
                 <span class="section-number">05</span>
-                <h2 class="section-title">Client Love</h2>
-                <p class="section-subtitle">What brands say about working with me</p>
+                <h2 class="section-title" data-i18n="testimonials.title">آراء العملاء</h2>
+                <p class="section-subtitle" data-i18n="testimonials.subtitle">ماذا يقول العملاء عن العمل معي</p>
             </div>
             
             <div class="testimonials-grid">
                 <div class="testimonial-bubble">
                     <div class="bubble-content">
-                        <p>"Aseel transformed our brand completely! The designs are not only beautiful but also increased our conversions by 40%. Working with her was smooth and professional."</p>
+                        <p data-i18n="testimonials.testimonial1">
+                            "أسيل حولت علامتنا التجارية بالكامل! التصاميم ليست جميلة فقط بل زادت من تحويلاتنا بنسبة 40%. العمل معها كان سلساً ومحترفاً."
+                        </p>
                     </div>
                     <div class="client-info">
-                        <div class="client-avatar">S</div>
+                        <div class="client-avatar">س</div>
                         <div>
-                            <h4>Sarah M.</h4>
-                            <p>CEO, StartupX</p>
+                            <h4>سارة م.</h4>
+                            <p data-i18n="testimonials.position1">مديرة تنفيذية، StartupX</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="testimonial-bubble">
                     <div class="bubble-content">
-                        <p>"The social media packages she created went viral! Perfect blend of Gen Z aesthetics and brand identity. Highly recommend for any modern brand."</p>
+                        <p data-i18n="testimonials.testimonial2">
+                            "حزم وسائل التواصل الاجتماعي التي أنشأتها أصبحت viral! مزيج مثالي من جماليات Gen Z وهوية العلامة التجارية. أوصي بها بشدة لأي علامة حديثة."
+                        </p>
                     </div>
                     <div class="client-info">
-                        <div class="client-avatar">A</div>
+                        <div class="client-avatar">أ</div>
                         <div>
-                            <h4>Ahmed R.</h4>
-                            <p>Marketing Director</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-bubble">
-                    <div class="bubble-content">
-                        <p>"Fast delivery, creative solutions, and amazing communication. Aseel understood our vision perfectly and delivered beyond expectations."</p>
-                    </div>
-                    <div class="client-info">
-                        <div class="client-avatar">L</div>
-                        <div>
-                            <h4>Lina K.</h4>
-                            <p>Founder, TechGadgets</p>
+                            <h4>أحمد ر.</h4>
+                            <p data-i18n="testimonials.position2">مدير تسويق</p>
                         </div>
                     </div>
                 </div>
@@ -434,29 +441,29 @@
         </div>
     </section>
 
-    <!-- Big CTA Section -->
+    <!-- قسم الدعوة للعمل -->
     <section class="section cta-section">
         <div class="container">
             <div class="big-cta">
-                <h2 class="cta-title">Ready to Build Something Cool?</h2>
-                <p class="cta-subtitle">Let's create something amazing together</p>
+                <h2 class="cta-title" data-i18n="cta.title">جاهز لبناء شيء رائع؟</h2>
+                <p class="cta-subtitle" data-i18n="cta.subtitle">لنخلق شيئاً مذهلاً معاً</p>
                 <a href="#contact" class="cta-button">
-                    Let's Work Together
-                    <i class="fas fa-arrow-right"></i>
+                    <span data-i18n="cta.button">لنعمل معاً</span>
+                    <i class="fas fa-arrow-left"></i>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- قسم الاتصال -->
     <section class="section contact-section" id="contact">
         <div class="container">
             <div class="contact-container">
                 <div class="contact-info">
                     <div class="section-header">
-                        <h2 class="section-title" data-i18n="contact.title">Let's Create Together</h2>
+                        <h2 class="section-title" data-i18n="contact.title">لنبدع معاً</h2>
                         <p class="section-subtitle" data-i18n="contact.subtitle">
-                            Let's discuss your idea and turn it into reality
+                            لنتناقش حول فكرتك ونحولها إلى واقع
                         </p>
                     </div>
                     
@@ -466,7 +473,7 @@
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <div class="contact-content">
-                                <h4 data-i18n="contact.email">Email</h4>
+                                <h4 data-i18n="contact.email">البريد الإلكتروني</h4>
                                 <a href="mailto:hello@aseel.design">hello@aseel.design</a>
                             </div>
                         </div>
@@ -476,7 +483,7 @@
                                 <i class="fas fa-phone"></i>
                             </div>
                             <div class="contact-content">
-                                <h4 data-i18n="contact.phone">Phone</h4>
+                                <h4 data-i18n="contact.phone">الهاتف</h4>
                                 <a href="tel:+966555555555">+966 55 555 5555</a>
                             </div>
                         </div>
@@ -486,8 +493,8 @@
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div class="contact-content">
-                                <h4 data-i18n="contact.location">Location</h4>
-                                <span data-i18n="contact.remote">Available for remote work worldwide</span>
+                                <h4 data-i18n="contact.location">الموقع</h4>
+                                <span data-i18n="contact.remote">متاح للعمل عن بُعد عالمياً</span>
                             </div>
                         </div>
                     </div>
@@ -512,35 +519,35 @@
                     <form id="contactForm">
                         <div class="form-group">
                             <input type="text" id="name" name="name" required>
-                            <label for="name" data-i18n="contact.form.name">Full Name</label>
+                            <label for="name" data-i18n="contact.form.name">الاسم الكامل</label>
                             <div class="form-line"></div>
                         </div>
                         
                         <div class="form-group">
                             <input type="email" id="email" name="email" required>
-                            <label for="email" data-i18n="contact.form.email">Email Address</label>
+                            <label for="email" data-i18n="contact.form.email">البريد الإلكتروني</label>
                             <div class="form-line"></div>
                         </div>
                         
                         <div class="form-group">
                             <select id="service" name="service">
-                                <option value="" data-i18n="contact.form.select">Select Service</option>
-                                <option value="branding" data-i18n="contact.form.branding">Brand Identity</option>
-                                <option value="web" data-i18n="contact.form.web">Web & App Design</option>
-                                <option value="art" data-i18n="contact.form.art">Digital Art</option>
-                                <option value="other" data-i18n="contact.form.other">Other Service</option>
+                                <option value="" data-i18n="contact.form.select">اختر الخدمة</option>
+                                <option value="branding" data-i18n="contact.form.branding">الهوية البصرية</option>
+                                <option value="web" data-i18n="contact.form.web">تصميم الويب والتطبيقات</option>
+                                <option value="art" data-i18n="contact.form.art">الفن الرقمي</option>
+                                <option value="other" data-i18n="contact.form.other">خدمة أخرى</option>
                             </select>
                             <div class="form-line"></div>
                         </div>
                         
                         <div class="form-group">
                             <textarea id="message" name="message" rows="4" required></textarea>
-                            <label for="message" data-i18n="contact.form.message">Project Details</label>
+                            <label for="message" data-i18n="contact.form.message">تفاصيل المشروع</label>
                             <div class="form-line"></div>
                         </div>
                         
                         <button type="submit" class="submit-btn">
-                            <span data-i18n="contact.form.submit">Send Message</span>
+                            <span data-i18n="contact.form.submit">إرسال الرسالة</span>
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </form>
@@ -549,21 +556,21 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- الفوتر -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <span class="footer-logo">Aseel</span>
-                    <p class="footer-description" data-i18n="footer.tagline">Creative Digital Designer</p>
+                    <span class="footer-logo" data-i18n="footer.logo">أسيل</span>
+                    <p class="footer-description" data-i18n="footer.tagline">مصممة رقمية إبداعية</p>
                 </div>
                 
                 <div class="footer-links">
-                    <a href="#hero" data-i18n="footer.home">Home</a>
-                    <a href="#about" data-i18n="footer.about">About</a>
-                    <a href="#work" data-i18n="footer.work">Work</a>
-                    <a href="#process">Process</a>
-                    <a href="#contact" data-i18n="footer.contact">Contact</a>
+                    <a href="#hero" data-i18n="footer.home">الرئيسية</a>
+                    <a href="#about" data-i18n="footer.about">عنّي</a>
+                    <a href="#work" data-i18n="footer.work">أعمالي</a>
+                    <a href="#process" data-i18n="footer.process">طريقة العمل</a>
+                    <a href="#contact" data-i18n="footer.contact">اتصل بي</a>
                 </div>
                 
                 <div class="footer-social">
@@ -580,12 +587,12 @@
             </div>
             
             <div class="footer-bottom">
-                <p class="copyright">© <span id="currentYear"></span> Aseel. <span data-i18n="footer.rights">All rights reserved</span>.</p>
+                <p class="copyright">© <span id="currentYear"></span> <span data-i18n="footer.name">أسيل</span>. <span data-i18n="footer.rights">جميع الحقوق محفوظة</span>.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Project Modal -->
+    <!-- نافذة المشروع -->
     <div class="modal" id="projectModal">
         <div class="modal-overlay"></div>
         <div class="modal-content">
@@ -594,8 +601,8 @@
             </button>
             
             <div class="modal-header">
-                <span class="modal-category" id="modalCategory">Brand Identity</span>
-                <h2 class="modal-title" id="modalTitle">Luxury Fashion Brand</h2>
+                <span class="modal-category" id="modalCategory">هوية بصرية</span>
+                <h2 class="modal-title" id="modalTitle">علامة أزياء فاخرة</h2>
             </div>
             
             <div class="modal-body">
@@ -603,19 +610,19 @@
                 
                 <div class="modal-info">
                     <div class="modal-section">
-                        <h3 data-i18n="modal.about">About Project</h3>
+                        <h3 data-i18n="modal.about">عن المشروع</h3>
                         <p id="modalDescription">
-                            Complete visual identity for a high-end fashion brand blending heritage with modernity
+                            هوية بصرية كاملة لعلامة أزياء فاخرة تجمع بين التراث والحداثة
                         </p>
                     </div>
                     
                     <div class="modal-section">
-                        <h3 data-i18n="modal.technologies">Technologies Used</h3>
+                        <h3 data-i18n="modal.technologies">التقنيات المستخدمة</h3>
                         <div class="modal-tags" id="modalTags"></div>
                     </div>
                     
                     <div class="modal-section">
-                        <h3 data-i18n="modal.results">Results</h3>
+                        <h3 data-i18n="modal.results">النتائج</h3>
                         <ul class="modal-results" id="modalResults"></ul>
                     </div>
                 </div>
@@ -623,14 +630,14 @@
             
             <div class="modal-footer">
                 <a href="#contact" class="btn-primary">
-                    <span data-i18n="modal.start">Start Similar Project</span>
+                    <span data-i18n="modal.start">ابدأ مشروعاً مماثلاً</span>
                     <i class="fas fa-star"></i>
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- Scripts -->
+    <!-- السكريبتات -->
     <script src="script.js"></script>
 </body>
 </html>
