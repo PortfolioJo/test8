@@ -1,73 +1,85 @@
 // ===========================================
-// Main Application - Modern Interactive Portfolio
+// Main Application - نفس الكود السابق
 // ===========================================
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all components
-    initCustomCursor();
+    initLoadingScreen();
     initNavigation();
-    initMenuToggle();
     initThemeSwitcher();
-    initCardTilt();
-    initScrollAnimations();
-    initContactForm();
+    initLanguageSwitcher();
     initCurrentYear();
+    initScrollAnimations();
+    initProjectFilter();
+    initProjectModal();
+    initContactForm();
     initScrollProgress();
-    initHoverEffects();
+    initFloatingElements();
     initSmoothScrolling();
+    initPageAnimations();
+    initConfettiEffect();
 });
 
 // ===========================================
-// Custom Cursor
+// Loading Screen
 // ===========================================
 
-function initCustomCursor() {
-    const cursorDot = document.querySelector('.cursor-dot');
-    const cursorOutline = document.querySelector('.cursor-outline');
+function initLoadingScreen() {
+    const loadingScreen = document.createElement('div');
+    loadingScreen.className = 'loading-screen';
+    loadingScreen.innerHTML = `
+        <div class="loader">
+            <div class="loader-circle"></div>
+        </div>
+    `;
     
-    if (window.innerWidth > 768) {
-        document.addEventListener('mousemove', (e) => {
-            cursorDot.style.left = e.clientX + 'px';
-            cursorDot.style.top = e.clientY + 'px';
-            
-            cursorOutline.style.left = e.clientX + 'px';
-            cursorOutline.style.top = e.clientY + 'px';
-        });
-        
-        // Cursor hover effects
-        const hoverElements = document.querySelectorAll('a, button, .card, .grid-item, .menu-link');
-        
-        hoverElements.forEach(element => {
-            element.addEventListener('mouseenter', () => {
-                cursorDot.style.width = '16px';
-                cursorDot.style.height = '16px';
-                cursorOutline.style.width = '60px';
-                cursorOutline.style.height = '60px';
-                cursorOutline.style.borderColor = 'var(--primary-color)';
-                cursorOutline.style.opacity = '0.8';
-            });
-            
-            element.addEventListener('mouseleave', () => {
-                cursorDot.style.width = '8px';
-                cursorDot.style.height = '8px';
-                cursorOutline.style.width = '40px';
-                cursorOutline.style.height = '40px';
-                cursorOutline.style.borderColor = 'var(--primary-color)';
-                cursorOutline.style.opacity = '0.5';
-            });
-        });
-        
-        // Click effect
-        document.addEventListener('click', () => {
-            cursorOutline.style.transform = 'translate(-50%, -50%) scale(0.8)';
+    document.body.appendChild(loadingScreen);
+    
+    // Hide loading screen after page loads
+    window.addEventListener('load', function() {
+        setTimeout(() => {
+            loadingScreen.classList.add('hidden');
             setTimeout(() => {
-                cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
-            }, 100);
-        });
-    } else {
-        cursorDot.style.display = 'none';
-        cursorOutline.style.display = 'none';
-    }
+                loadingScreen.remove();
+                // Show welcome animation
+                showWelcomeAnimation();
+            }, 500);
+        }, 1000);
+    });
+}
+
+function showWelcomeAnimation() {
+    const welcomeMsg = document.createElement('div');
+    welcomeMsg.className = 'welcome-message';
+    welcomeMsg.innerHTML = `
+        <div style="
+            position: fixed;
+            top: 50%;
+            right: 50%;
+            transform: translate(50%, -50%);
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            padding: 2rem 3rem;
+            border-radius: var(--card-radius);
+            text-align: center;
+            z-index: 9999;
+            animation: fadeIn 0.5s ease;
+            box-shadow: var(--shadow-xl);
+        ">
+            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Welcome to Creativity World</h3>
+            <p style="color: var(--text-secondary);">Enjoy a unique design experience</p>
+        </div>
+    `;
+    
+    document.body.appendChild(welcomeMsg);
+    
+    setTimeout(() => {
+        welcomeMsg.style.animation = 'fadeIn 0.5s ease reverse';
+        setTimeout(() => welcomeMsg.remove(), 500);
+        
+        triggerConfetti();
+    }, 2000);
 }
 
 // ===========================================
@@ -75,45 +87,61 @@ function initCustomCursor() {
 // ===========================================
 
 function initNavigation() {
-    const nav = document.querySelector('.floating-nav');
-    
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-            nav.style.transform = 'translateX(-50%) translateY(-20px)';
-            nav.style.opacity = '0.9';
-        } else {
-            nav.style.transform = 'translateX(-50%) translateY(0)';
-            nav.style.opacity = '1';
-        }
-    });
-}
+    const nav = document.getElementById('nav');
+    const navMenu = document.getElementById('navMenu');
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section[id]');
 
-// ===========================================
-// Menu Toggle
-// ===========================================
+    navToggle.addEventListener('click', function() {
+        this.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+    });
 
-function initMenuToggle() {
-    const menuToggle = document.getElementById('menuToggle');
-    const menuClose = document.getElementById('menuClose');
-    const fullscreenMenu = document.getElementById('fullscreenMenu');
-    const menuLinks = document.querySelectorAll('.menu-link');
-    
-    menuToggle.addEventListener('click', () => {
-        fullscreenMenu.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    });
-    
-    menuClose.addEventListener('click', () => {
-        fullscreenMenu.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-    
-    menuLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            fullscreenMenu.classList.remove('active');
-            document.body.style.overflow = '';
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            if (navMenu.classList.contains('active')) {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
         });
     });
+
+    window.addEventListener('scroll', function() {
+        const scrolled = window.scrollY > 50;
+        nav.classList.toggle('scrolled', scrolled);
+        
+        updateActiveNavLink(sections, navLinks);
+    });
+
+    function updateActiveNavLink(sections, links) {
+        let current = '';
+        const scrollPos = window.scrollY + 100;
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            const sectionId = section.getAttribute('id');
+
+            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                current = sectionId;
+            }
+        });
+
+        links.forEach(link => {
+            link.classList.remove('active');
+            const section = link.getAttribute('data-section');
+            if (section === current || (current === '' && section === 'hero')) {
+                link.classList.add('active');
+                link.style.animation = 'none';
+                setTimeout(() => {
+                    link.style.animation = 'badgePulse 0.3s ease';
+                }, 10);
+            }
+        });
+    }
 }
 
 // ===========================================
@@ -121,65 +149,95 @@ function initMenuToggle() {
 // ===========================================
 
 function initThemeSwitcher() {
-    const themeSwitch = document.getElementById('themeSwitch');
-    const themeText = themeSwitch.querySelector('.theme-text');
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('i');
     
-    // Get saved theme or use default
     const savedTheme = localStorage.getItem('aseel-theme') || 'dark';
     document.documentElement.setAttribute('data-theme', savedTheme);
-    updateThemeText(savedTheme);
+    updateThemeIcon(savedTheme);
     
-    themeSwitch.addEventListener('click', () => {
+    themeToggle.addEventListener('click', function() {
         const currentTheme = document.documentElement.getAttribute('data-theme');
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
         
-        // Update theme
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('aseel-theme', newTheme);
-        updateThemeText(newTheme);
+        this.style.animation = 'flip 0.6s ease';
         
-        // Add animation
-        themeSwitch.style.transform = 'scale(0.95)';
         setTimeout(() => {
-            themeSwitch.style.transform = 'scale(1)';
-        }, 150);
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('aseel-theme', newTheme);
+            updateThemeIcon(newTheme);
+            this.style.animation = '';
+            
+            document.body.style.opacity = '0.8';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+                document.body.style.transition = 'opacity 0.3s ease';
+            }, 100);
+        }, 300);
     });
     
-    function updateThemeText(theme) {
-        themeText.textContent = theme === 'dark' ? 'Dark Mode' : 'Light Mode';
+    function updateThemeIcon(theme) {
+        if (theme === 'dark') {
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        } else {
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
     }
 }
 
 // ===========================================
-// Card Tilt Effect
+// Language Switcher
 // ===========================================
 
-function initCardTilt() {
-    const cards = document.querySelectorAll('.card[data-tilt]');
+function initLanguageSwitcher() {
+    const langToggle = document.getElementById('languageToggle');
+    const langText = langToggle.querySelector('.lang-text');
     
-    cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const rotateY = (x - centerX) / 25;
-            const rotateX = (centerY - y) / 25;
-            
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
-        });
+    const savedLang = localStorage.getItem('aseel-lang') || 'en';
+    setLanguage(savedLang);
+    updateLangText(savedLang);
+    
+    langToggle.addEventListener('click', function() {
+        const currentLang = document.documentElement.getAttribute('lang') || 'en';
+        const newLang = currentLang === 'en' ? 'ar' : 'en';
         
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
-            card.style.transition = 'transform 0.5s ease';
-            setTimeout(() => {
-                card.style.transition = '';
-            }, 500);
-        });
+        this.style.animation = 'flip 0.6s ease';
+        
+        setTimeout(() => {
+            setLanguage(newLang);
+            updateLangText(newLang);
+            localStorage.setItem('aseel-lang', newLang);
+            this.style.animation = '';
+        }, 300);
     });
+    
+    function setLanguage(lang) {
+        document.documentElement.setAttribute('lang', lang);
+        document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+        
+        document.body.style.opacity = '0.8';
+        setTimeout(() => {
+            document.body.style.opacity = '1';
+            document.body.style.transition = 'opacity 0.3s ease';
+        }, 100);
+    }
+    
+    function updateLangText(lang) {
+        langText.textContent = lang === 'ar' ? 'AR' : 'EN';
+    }
+}
+
+// ===========================================
+// Current Year
+// ===========================================
+
+function initCurrentYear() {
+    const yearElement = document.getElementById('currentYear');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
 }
 
 // ===========================================
@@ -187,12 +245,12 @@ function initCardTilt() {
 // ===========================================
 
 function initScrollAnimations() {
-    const animatedElements = document.querySelectorAll('.card, .grid-item, .showcase-item, .about-content > *');
+    const animatedElements = document.querySelectorAll('.scroll-animate');
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
+                entry.target.classList.add('visible');
                 observer.unobserve(entry.target);
             }
         });
@@ -207,6 +265,148 @@ function initScrollAnimations() {
 }
 
 // ===========================================
+// Project Filter
+// ===========================================
+
+function initProjectFilter() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            const filter = this.getAttribute('data-filter');
+            
+            projectCards.forEach(card => {
+                if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
+}
+
+// ===========================================
+// Project Modal
+// ===========================================
+
+function initProjectModal() {
+    const modal = document.getElementById('projectModal');
+    const modalClose = document.getElementById('modalClose');
+    const viewProjectBtns = document.querySelectorAll('.view-project');
+    
+    const projects = {
+        1: {
+            category: 'Brand Identity',
+            title: 'Luxury Brand Identity',
+            description: 'Complete visual identity design for a luxury fashion brand focusing on elegance and simplicity. The project involved creating a comprehensive brand system.',
+            tags: ['Logo Design', 'Brand Identity', 'Marketing Materials', 'Brand Guidelines'],
+            results: [
+                'Increased brand awareness by 40%',
+                'Improved customer experience',
+                'Enhanced visual identity'
+            ]
+        },
+        2: {
+            category: 'Web Design',
+            title: 'Interactive Art Platform',
+            description: 'Modern user interface for an art platform with smooth and engaging browsing experience. The design focuses on user-friendly navigation.',
+            tags: ['UI/UX Design', 'Interactive', 'Responsive Design', 'User Experience'],
+            results: [
+                'Increased browsing time by 60%',
+                'Improved conversion rates',
+                'Enhanced user experience'
+            ]
+        },
+        3: {
+            category: 'Digital Illustration',
+            title: 'Abstract Art Series',
+            description: 'Collection of digital artworks inspired by contemporary Arabic culture. Each piece carries a unique artistic message.',
+            tags: ['Digital Art', 'Illustration', 'Abstract Art', 'Arabic Culture'],
+            results: [
+                'Successful art exhibition',
+                'All artworks sold',
+                'Wide media coverage'
+            ]
+        }
+    };
+    
+    viewProjectBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const projectId = this.getAttribute('data-project');
+            openProjectModal(projectId);
+        });
+    });
+    
+    modalClose.addEventListener('click', closeModal);
+    modal.querySelector('.modal-overlay').addEventListener('click', closeModal);
+    
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+    
+    function openProjectModal(projectId) {
+        const project = projects[projectId];
+        if (!project) return;
+        
+        document.getElementById('modalCategory').textContent = project.category;
+        document.getElementById('modalTitle').textContent = project.title;
+        document.getElementById('modalDescription').textContent = project.description;
+        
+        const tagsContainer = document.getElementById('modalTags');
+        tagsContainer.innerHTML = '';
+        project.tags.forEach(tag => {
+            const tagElement = document.createElement('span');
+            tagElement.textContent = tag;
+            tagsContainer.appendChild(tagElement);
+        });
+        
+        const resultsContainer = document.getElementById('modalResults');
+        resultsContainer.innerHTML = '';
+        project.results.forEach(result => {
+            const li = document.createElement('li');
+            li.textContent = result;
+            resultsContainer.appendChild(li);
+        });
+        
+        const modalImage = document.getElementById('modalImage');
+        modalImage.style.background = getProjectGradient(projectId);
+        
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModal() {
+        const modal = document.getElementById('projectModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    function getProjectGradient(id) {
+        const gradients = [
+            'linear-gradient(135deg, var(--primary-color), var(--secondary-color))',
+            'linear-gradient(135deg, var(--accent-color), var(--primary-light))',
+            'linear-gradient(135deg, var(--secondary-color), var(--accent-light))'
+        ];
+        return gradients[id - 1] || gradients[0];
+    }
+}
+
+// ===========================================
 // Contact Form
 // ===========================================
 
@@ -214,71 +414,54 @@ function initContactForm() {
     const contactForm = document.getElementById('contactForm');
     
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form data
-            const formData = new FormData(contactForm);
+            const formData = new FormData(this);
             const data = Object.fromEntries(formData);
             
-            // Show loading state
-            const submitBtn = contactForm.querySelector('.submit-btn');
+            const submitBtn = this.querySelector('.submit-btn');
             const originalText = submitBtn.querySelector('span').textContent;
             const originalIcon = submitBtn.innerHTML;
             
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
             submitBtn.disabled = true;
             
-            // Simulate API call
             setTimeout(() => {
-                // Show success message
-                showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
+                showNotification('Your request has been sent successfully! I will contact you soon.', 'success');
                 
-                // Reset form
-                contactForm.reset();
+                this.reset();
                 
-                // Reset button
                 submitBtn.innerHTML = originalIcon;
                 submitBtn.querySelector('span').textContent = originalText;
                 submitBtn.disabled = false;
+                
+                triggerConfetti();
             }, 1500);
         });
     }
     
-    // Form input animations
     const formGroups = document.querySelectorAll('.form-group');
     formGroups.forEach(group => {
-        const input = group.querySelector('input, textarea');
+        const input = group.querySelector('input, textarea, select');
         const label = group.querySelector('label');
         
         if (input && label) {
-            input.addEventListener('focus', () => {
-                label.style.top = '-0.5rem';
+            input.addEventListener('focus', function() {
+                label.style.top = '-1.5rem';
                 label.style.fontSize = '0.875rem';
                 label.style.color = 'var(--primary-color)';
             });
             
-            input.addEventListener('blur', () => {
-                if (!input.value) {
-                    label.style.top = '1rem';
+            input.addEventListener('blur', function() {
+                if (!this.value) {
+                    label.style.top = '0.9rem';
                     label.style.fontSize = '1rem';
                     label.style.color = 'var(--text-tertiary)';
                 }
             });
         }
     });
-}
-
-// ===========================================
-// Current Year
-// ===========================================
-
-function initCurrentYear() {
-    const yearElement = document.querySelector('.footer-copyright');
-    if (yearElement) {
-        const currentYear = new Date().getFullYear();
-        yearElement.textContent = yearElement.textContent.replace('2024', currentYear);
-    }
 }
 
 // ===========================================
@@ -291,17 +474,17 @@ function initScrollProgress() {
     progressBar.style.cssText = `
         position: fixed;
         top: 0;
-        left: 0;
+        right: 0;
         width: 0%;
-        height: 2px;
-        background: var(--gradient-primary);
-        z-index: 9997;
+        height: 3px;
+        background: var(--gradient-1);
+        z-index: 9998;
         transition: width 0.1s ease;
         pointer-events: none;
     `;
     document.body.appendChild(progressBar);
     
-    window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', function() {
         const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         const scrolled = (winScroll / height) * 100;
@@ -310,35 +493,26 @@ function initScrollProgress() {
 }
 
 // ===========================================
-// Hover Effects
+// Floating Elements Animation
 // ===========================================
 
-function initHoverEffects() {
-    // Grid item hover effect
-    const gridItems = document.querySelectorAll('.grid-item');
+function initFloatingElements() {
+    const elements = document.querySelectorAll('.floating-element');
     
-    gridItems.forEach(item => {
-        item.addEventListener('mouseenter', () => {
-            const image = item.querySelector('.item-image');
-            image.style.transform = 'scale(1.05)';
-            image.style.transition = 'transform 0.5s ease';
+    elements.forEach((element, index) => {
+        const randomX = Math.random() * 80 + 10;
+        const randomY = Math.random() * 80 + 10;
+        element.style.right = randomX + '%';
+        element.style.top = randomY + '%';
+        
+        element.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.2)';
+            this.style.opacity = '0.2';
         });
         
-        item.addEventListener('mouseleave', () => {
-            const image = item.querySelector('.item-image');
-            image.style.transform = 'scale(1)';
-        });
-    });
-    
-    // Link hover effect
-    const links = document.querySelectorAll('a:not(.menu-link)');
-    links.forEach(link => {
-        link.addEventListener('mouseenter', () => {
-            link.style.letterSpacing = '1px';
-        });
-        
-        link.addEventListener('mouseleave', () => {
-            link.style.letterSpacing = 'normal';
+        element.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+            this.style.opacity = '0.1';
         });
     });
 }
@@ -349,8 +523,8 @@ function initHoverEffects() {
 
 function initSmoothScrolling() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', (e) => {
-            const href = anchor.getAttribute('href');
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
             
             if (href === '#') return;
             
@@ -359,8 +533,8 @@ function initSmoothScrolling() {
             const targetElement = document.getElementById(targetId);
             
             if (targetElement) {
-                const navHeight = document.querySelector('.floating-nav').offsetHeight;
-                const targetPosition = targetElement.offsetTop - navHeight - 20;
+                const headerHeight = document.querySelector('.glass-nav').offsetHeight;
+                const targetPosition = targetElement.offsetTop - headerHeight - 20;
                 
                 window.scrollTo({
                     top: targetPosition,
@@ -369,6 +543,84 @@ function initSmoothScrolling() {
             }
         });
     });
+}
+
+// ===========================================
+// Page Animations
+// ===========================================
+
+function initPageAnimations() {
+    const animatedElements = [
+        '.hero-title .title-line',
+        '.hero-description',
+        '.hero-actions',
+        '.hero-badge',
+        '.section-header',
+        '.service-card',
+        '.project-card'
+    ];
+    
+    animatedElements.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach((element, index) => {
+            element.style.animationDelay = `${index * 0.1}s`;
+            element.classList.add('scroll-animate');
+        });
+    });
+    
+    initScrollAnimations();
+}
+
+// ===========================================
+// Confetti Effect
+// ===========================================
+
+function initConfettiEffect() {
+    const confettiBtn = document.createElement('button');
+    confettiBtn.className = 'confetti-btn';
+    confettiBtn.innerHTML = '<i class="fas fa-sparkles"></i>';
+    confettiBtn.style.cssText = `
+        position: fixed;
+        bottom: 2rem;
+        left: 2rem;
+        width: 50px;
+        height: 50px;
+        background: var(--gradient-1);
+        border: none;
+        border-radius: 50%;
+        color: white;
+        font-size: 1.25rem;
+        cursor: pointer;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: var(--shadow-md);
+        transition: all var(--transition-normal);
+    `;
+    
+    confettiBtn.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.1) rotate(15deg)';
+    });
+    
+    confettiBtn.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1) rotate(0deg)';
+    });
+    
+    confettiBtn.addEventListener('click', triggerConfetti);
+    
+    document.body.appendChild(confettiBtn);
+}
+
+function triggerConfetti() {
+    if (typeof confetti === 'function') {
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 },
+            colors: ['#8A4FFF', '#FF6B8B', '#00D4C6', '#B28AFF']
+        });
+    }
 }
 
 // ===========================================
@@ -383,11 +635,10 @@ function showNotification(message, type = 'info') {
         <span>${message}</span>
     `;
     
-    // Add styles
     Object.assign(notification.style, {
         position: 'fixed',
-        bottom: '2rem',
-        right: '2rem',
+        top: '100px',
+        right: '20px',
         background: 'var(--bg-card)',
         border: '1px solid var(--border-color)',
         borderRadius: 'var(--element-radius)',
@@ -396,72 +647,73 @@ function showNotification(message, type = 'info') {
         alignItems: 'center',
         gap: '0.75rem',
         zIndex: '9999',
-        animation: 'slideIn 0.3s ease',
+        animation: 'slideInRight 0.3s ease',
         boxShadow: 'var(--shadow-lg)',
-        maxWidth: '350px'
+        maxWidth: '400px'
     });
     
     if (type === 'success') {
-        notification.style.borderLeft = '3px solid var(--accent-color)';
+        notification.style.borderLeft = '4px solid var(--primary-color)';
     }
     
     document.body.appendChild(notification);
     
-    // Auto remove after 3 seconds
     setTimeout(() => {
-        notification.style.animation = 'slideOut 0.3s ease forwards';
+        notification.style.animation = 'slideInRight 0.3s ease reverse';
         setTimeout(() => notification.remove(), 300);
     }, 3000);
-    
-    // Add animation styles
-    addNotificationAnimations();
 }
 
-function addNotificationAnimations() {
-    if (!document.getElementById('notification-animations')) {
-        const style = document.createElement('style');
-        style.id = 'notification-animations';
-        style.textContent = `
-            @keyframes slideIn {
-                from {
-                    transform: translateX(100%);
-                    opacity: 0;
-                }
-                to {
-                    transform: translateX(0);
-                    opacity: 1;
-                }
+// ===========================================
+// Add Custom Animations
+// ===========================================
+
+function addCustomAnimations() {
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes flip {
+            0% { transform: rotateY(0); }
+            50% { transform: rotateY(90deg); }
+            100% { transform: rotateY(0); }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
             }
-            
-            @keyframes slideOut {
-                from {
-                    transform: translateX(0);
-                    opacity: 1;
-                }
-                to {
-                    transform: translateX(100%);
-                    opacity: 0;
-                }
+            to {
+                transform: translateX(0);
+                opacity: 1;
             }
-            
-            .notification i {
-                color: var(--accent-color);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .notification-success {
+            border-color: rgba(138, 79, 255, 0.3);
+            color: var(--primary-color);
+        }
+        
+        .notification-success i {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .confetti-btn {
+                bottom: 1rem;
+                left: 1rem;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
             }
-            
-            .notification span {
-                font-family: var(--font-mono);
-                font-size: 0.875rem;
-            }
-            
-            @media (max-width: 768px) {
-                .notification {
-                    right: 1rem;
-                    left: 1rem;
-                    bottom: 1rem;
-                    max-width: calc(100% - 2rem);
-                }
-            }
-        `;
-        document.head.appendChild(style);
-    }
+        }
+    `;
+    document.head.appendChild(style);
 }
+
+// Initialize custom animations
+addCustomAnimations();
