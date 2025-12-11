@@ -1,587 +1,467 @@
-// ملف JavaScript للثيم الفني العصري
+// ===========================================
+// Main Application - Modern Interactive Portfolio
+// ===========================================
+
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize all components
+    initCustomCursor();
+    initNavigation();
+    initMenuToggle();
+    initThemeSwitcher();
+    initCardTilt();
+    initScrollAnimations();
+    initContactForm();
+    initCurrentYear();
+    initScrollProgress();
+    initHoverEffects();
+    initSmoothScrolling();
+});
+
+// ===========================================
+// Custom Cursor
+// ===========================================
+
+function initCustomCursor() {
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorOutline = document.querySelector('.cursor-outline');
     
-    // ========== شاشة التحميل ==========
-    const loader = document.querySelector('.loader');
-    
-    setTimeout(() => {
-        loader.classList.add('fade-out');
+    if (window.innerWidth > 768) {
+        document.addEventListener('mousemove', (e) => {
+            cursorDot.style.left = e.clientX + 'px';
+            cursorDot.style.top = e.clientY + 'px';
+            
+            cursorOutline.style.left = e.clientX + 'px';
+            cursorOutline.style.top = e.clientY + 'px';
+        });
         
-        setTimeout(() => {
-            loader.style.display = 'none';
+        // Cursor hover effects
+        const hoverElements = document.querySelectorAll('a, button, .card, .grid-item, .menu-link');
+        
+        hoverElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursorDot.style.width = '16px';
+                cursorDot.style.height = '16px';
+                cursorOutline.style.width = '60px';
+                cursorOutline.style.height = '60px';
+                cursorOutline.style.borderColor = 'var(--primary-color)';
+                cursorOutline.style.opacity = '0.8';
+            });
             
-            // عرض النافذة المنبثقة بعد 3 ثواني
+            element.addEventListener('mouseleave', () => {
+                cursorDot.style.width = '8px';
+                cursorDot.style.height = '8px';
+                cursorOutline.style.width = '40px';
+                cursorOutline.style.height = '40px';
+                cursorOutline.style.borderColor = 'var(--primary-color)';
+                cursorOutline.style.opacity = '0.5';
+            });
+        });
+        
+        // Click effect
+        document.addEventListener('click', () => {
+            cursorOutline.style.transform = 'translate(-50%, -50%) scale(0.8)';
             setTimeout(() => {
-                showSubscribeModal();
-            }, 3000);
-        }, 500);
-    }, 2000);
+                cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
+            }, 100);
+        });
+    } else {
+        cursorDot.style.display = 'none';
+        cursorOutline.style.display = 'none';
+    }
+}
+
+// ===========================================
+// Navigation
+// ===========================================
+
+function initNavigation() {
+    const nav = document.querySelector('.floating-nav');
     
-    // ========== القائمة المتنقلة ==========
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            nav.style.transform = 'translateX(-50%) translateY(-20px)';
+            nav.style.opacity = '0.9';
+        } else {
+            nav.style.transform = 'translateX(-50%) translateY(0)';
+            nav.style.opacity = '1';
+        }
+    });
+}
+
+// ===========================================
+// Menu Toggle
+// ===========================================
+
+function initMenuToggle() {
+    const menuToggle = document.getElementById('menuToggle');
+    const menuClose = document.getElementById('menuClose');
+    const fullscreenMenu = document.getElementById('fullscreenMenu');
+    const menuLinks = document.querySelectorAll('.menu-link');
     
-    if (menuToggle) {
-        menuToggle.addEventListener('click', function() {
-            this.classList.toggle('active');
-            navLinks.classList.toggle('active');
+    menuToggle.addEventListener('click', () => {
+        fullscreenMenu.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+    
+    menuClose.addEventListener('click', () => {
+        fullscreenMenu.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+    
+    menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            fullscreenMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+}
+
+// ===========================================
+// Theme Switcher
+// ===========================================
+
+function initThemeSwitcher() {
+    const themeSwitch = document.getElementById('themeSwitch');
+    const themeText = themeSwitch.querySelector('.theme-text');
+    
+    // Get saved theme or use default
+    const savedTheme = localStorage.getItem('aseel-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeText(savedTheme);
+    
+    themeSwitch.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        // Update theme
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('aseel-theme', newTheme);
+        updateThemeText(newTheme);
+        
+        // Add animation
+        themeSwitch.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            themeSwitch.style.transform = 'scale(1)';
+        }, 150);
+    });
+    
+    function updateThemeText(theme) {
+        themeText.textContent = theme === 'dark' ? 'Dark Mode' : 'Light Mode';
+    }
+}
+
+// ===========================================
+// Card Tilt Effect
+// ===========================================
+
+function initCardTilt() {
+    const cards = document.querySelectorAll('.card[data-tilt]');
+    
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
             
-            // تحريك الأشرطة
-            const bars = this.querySelectorAll('.artistic-bar');
-            if (this.classList.contains('active')) {
-                bars[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
-                bars[1].style.opacity = '0';
-                bars[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
-            } else {
-                bars[0].style.transform = 'none';
-                bars[1].style.opacity = '1';
-                bars[2].style.transform = 'none';
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateY = (x - centerX) / 25;
+            const rotateX = (centerY - y) / 25;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+            card.style.transition = 'transform 0.5s ease';
+            setTimeout(() => {
+                card.style.transition = '';
+            }, 500);
+        });
+    });
+}
+
+// ===========================================
+// Scroll Animations
+// ===========================================
+
+function initScrollAnimations() {
+    const animatedElements = document.querySelectorAll('.card, .grid-item, .showcase-item, .about-content > *');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+                observer.unobserve(entry.target);
             }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    animatedElements.forEach(element => {
+        observer.observe(element);
+    });
+}
+
+// ===========================================
+// Contact Form
+// ===========================================
+
+function initContactForm() {
+    const contactForm = document.getElementById('contactForm');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData);
+            
+            // Show loading state
+            const submitBtn = contactForm.querySelector('.submit-btn');
+            const originalText = submitBtn.querySelector('span').textContent;
+            const originalIcon = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            submitBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Show success message
+                showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Reset button
+                submitBtn.innerHTML = originalIcon;
+                submitBtn.querySelector('span').textContent = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
         });
     }
     
-    // إغلاق القائمة عند النقر على رابط
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', function() {
-            if (menuToggle) {
-                menuToggle.classList.remove('active');
-            }
-            if (navLinks) {
-                navLinks.classList.remove('active');
-            }
+    // Form input animations
+    const formGroups = document.querySelectorAll('.form-group');
+    formGroups.forEach(group => {
+        const input = group.querySelector('input, textarea');
+        const label = group.querySelector('label');
+        
+        if (input && label) {
+            input.addEventListener('focus', () => {
+                label.style.top = '-0.5rem';
+                label.style.fontSize = '0.875rem';
+                label.style.color = 'var(--primary-color)';
+            });
             
-            if (menuToggle) {
-                const bars = menuToggle.querySelectorAll('.artistic-bar');
-                bars[0].style.transform = 'none';
-                bars[1].style.opacity = '1';
-                bars[2].style.transform = 'none';
-            }
+            input.addEventListener('blur', () => {
+                if (!input.value) {
+                    label.style.top = '1rem';
+                    label.style.fontSize = '1rem';
+                    label.style.color = 'var(--text-tertiary)';
+                }
+            });
+        }
+    });
+}
+
+// ===========================================
+// Current Year
+// ===========================================
+
+function initCurrentYear() {
+    const yearElement = document.querySelector('.footer-copyright');
+    if (yearElement) {
+        const currentYear = new Date().getFullYear();
+        yearElement.textContent = yearElement.textContent.replace('2024', currentYear);
+    }
+}
+
+// ===========================================
+// Scroll Progress
+// ===========================================
+
+function initScrollProgress() {
+    const progressBar = document.createElement('div');
+    progressBar.className = 'scroll-progress';
+    progressBar.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        background: var(--gradient-primary);
+        z-index: 9997;
+        transition: width 0.1s ease;
+        pointer-events: none;
+    `;
+    document.body.appendChild(progressBar);
+    
+    window.addEventListener('scroll', () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        progressBar.style.width = scrolled + '%';
+    });
+}
+
+// ===========================================
+// Hover Effects
+// ===========================================
+
+function initHoverEffects() {
+    // Grid item hover effect
+    const gridItems = document.querySelectorAll('.grid-item');
+    
+    gridItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            const image = item.querySelector('.item-image');
+            image.style.transform = 'scale(1.05)';
+            image.style.transition = 'transform 0.5s ease';
+        });
+        
+        item.addEventListener('mouseleave', () => {
+            const image = item.querySelector('.item-image');
+            image.style.transform = 'scale(1)';
         });
     });
     
-    // ========== التمرير السلس ==========
+    // Link hover effect
+    const links = document.querySelectorAll('a:not(.menu-link)');
+    links.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            link.style.letterSpacing = '1px';
+        });
+        
+        link.addEventListener('mouseleave', () => {
+            link.style.letterSpacing = 'normal';
+        });
+    });
+}
+
+// ===========================================
+// Smooth Scrolling
+// ===========================================
+
+function initSmoothScrolling() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', (e) => {
+            const href = anchor.getAttribute('href');
+            
+            if (href === '#') return;
+            
             e.preventDefault();
+            const targetId = href.substring(1);
+            const targetElement = document.getElementById(targetId);
             
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
             if (targetElement) {
+                const navHeight = document.querySelector('.floating-nav').offsetHeight;
+                const targetPosition = targetElement.offsetTop - navHeight - 20;
+                
                 window.scrollTo({
-                    top: targetElement.offsetTop - 80,
+                    top: targetPosition,
                     behavior: 'smooth'
                 });
             }
         });
     });
+}
+
+// ===========================================
+// Notification System
+// ===========================================
+
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.innerHTML = `
+        <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'}"></i>
+        <span>${message}</span>
+    `;
     
-    // ========== إضافة فئة نشطة للروابط عند التمرير ==========
-    window.addEventListener('scroll', function() {
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-link');
-        
-        let currentSection = '';
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            
-            if (window.pageYOffset >= (sectionTop - 150)) {
-                currentSection = section.getAttribute('id');
-            }
-        });
-        
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${currentSection}`) {
-                link.classList.add('active');
-            }
-        });
-        
-        // زر العودة للأعلى
-        const backToTop = document.getElementById('backToTop');
-        if (backToTop) {
-            if (window.pageYOffset > 500) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        }
-        
-        // تأثيرات التمرير للأرقام
-        animateStats();
+    // Add styles
+    Object.assign(notification.style, {
+        position: 'fixed',
+        bottom: '2rem',
+        right: '2rem',
+        background: 'var(--bg-card)',
+        border: '1px solid var(--border-color)',
+        borderRadius: 'var(--element-radius)',
+        padding: '1rem 1.5rem',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.75rem',
+        zIndex: '9999',
+        animation: 'slideIn 0.3s ease',
+        boxShadow: 'var(--shadow-lg)',
+        maxWidth: '350px'
     });
     
-    // ========== زر العودة للأعلى ==========
-    const backToTop = document.getElementById('backToTop');
-    if (backToTop) {
-        backToTop.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
+    if (type === 'success') {
+        notification.style.borderLeft = '3px solid var(--accent-color)';
     }
     
-    // ========== تأثيرات الأرقام المتحركة ==========
-    function animateStats() {
-        const statNumbers = document.querySelectorAll('.stat-number[data-count]');
-        
-        statNumbers.forEach(stat => {
-            const target = parseInt(stat.getAttribute('data-count'));
-            const current = parseInt(stat.textContent);
-            
-            if (isElementInViewport(stat) && current < target) {
-                // زيادة تدريجية
-                let increment = Math.ceil(target / 50);
-                let newValue = current + increment;
-                
-                if (newValue > target) newValue = target;
-                
-                stat.textContent = newValue;
-                
-                // استمرار حتى الوصول للهدف
-                if (newValue < target) {
-                    setTimeout(() => {
-                        animateStats();
-                    }, 30);
-                }
-            }
-        });
-    }
+    document.body.appendChild(notification);
     
-    // دالة التحقق من ظهور العنصر في الشاشة
-    function isElementInViewport(el) {
-        const rect = el.getBoundingClientRect();
-        return (
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
-    }
-    
-    // ========== علامات التبويب ==========
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    const tabPanes = document.querySelectorAll('.tab-pane');
-    
-    if (tabButtons.length > 0) {
-        tabButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const tabId = this.getAttribute('data-tab');
-                
-                // إزالة النشط من جميع الأزرار
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                // إضافة النشط للزر المحدد
-                this.classList.add('active');
-                
-                // إخفاء جميع المحتويات
-                tabPanes.forEach(pane => pane.classList.remove('active'));
-                // إظهار المحتوى المحدد
-                const targetPane = document.getElementById(tabId);
-                if (targetPane) {
-                    targetPane.classList.add('active');
-                }
-            });
-        });
-    }
-    
-    // ========== قائمة التدقيق ==========
-    const checkboxes = document.querySelectorAll('.checklist-item input[type="checkbox"]');
-    const progressFill = document.getElementById('progressFill');
-    const progressText = document.querySelector('.progress-text');
-    const resetChecklist = document.getElementById('resetChecklist');
-    
-    if (checkboxes.length > 0) {
-        // تحديث شريط التقدم
-        function updateChecklistProgress() {
-            const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
-            const totalCount = checkboxes.length;
-            const percentage = (checkedCount / totalCount) * 100;
-            
-            if (progressFill) {
-                progressFill.style.width = `${percentage}%`;
-            }
-            
-            if (progressText) {
-                progressText.textContent = `${checkedCount}/${totalCount} مكتمل`;
-            }
-        }
-        
-        // إضافة مستمع لكل خانة اختيار
-        checkboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', updateChecklistProgress);
-        });
-        
-        // زر إعادة تعيين القائمة
-        if (resetChecklist) {
-            resetChecklist.addEventListener('click', function() {
-                checkboxes.forEach(checkbox => {
-                    checkbox.checked = false;
-                });
-                updateChecklistProgress();
-                
-                // تأثير بسيط
-                this.style.transform = 'rotate(360deg)';
-                setTimeout(() => {
-                    this.style.transform = 'rotate(0)';
-                }, 500);
-            });
-        }
-        
-        // تحديث التقدم في البداية
-        updateChecklistProgress();
-    }
-    
-    // ========== تأثيرات للعناصر عند التمرير ==========
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
-    };
-    
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                
-                // إضافة تأثيرات خاصة للبطاقات
-                if (entry.target.classList.contains('artistic-card')) {
-                    setTimeout(() => {
-                        entry.target.classList.add('animated');
-                    }, 300);
-                }
-            }
-        });
-    }, observerOptions);
-    
-    // مراقبة العناصر لإضافة تأثيرات
-    document.querySelectorAll('.artistic-card, .reason-card, .tip-item, .stat-box').forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(card);
-    });
-    
-    // ========== تأثيرات التحويم ==========
-    const artisticElements = document.querySelectorAll('.artistic-btn, .artistic-card, .social-icon, .job-card');
-    
-    artisticElements.forEach(element => {
-        element.addEventListener('mouseenter', function() {
-            if (this.classList.contains('beige-btn') || this.classList.contains('border-beige')) {
-                this.style.boxShadow = '0 8px 25px rgba(232, 224, 211, 0.4)';
-            } else if (this.classList.contains('nude-btn') || this.classList.contains('border-nude')) {
-                this.style.boxShadow = '0 8px 25px rgba(205, 182, 172, 0.4)';
-            } else if (this.classList.contains('gold-btn') || this.classList.contains('border-gold')) {
-                this.style.boxShadow = '0 8px 25px rgba(212, 175, 55, 0.3)';
-            } else if (this.classList.contains('border-brown')) {
-                this.style.boxShadow = '0 8px 25px rgba(139, 115, 85, 0.3)';
-            }
-        });
-        
-        element.addEventListener('mouseleave', function() {
-            this.style.boxShadow = '';
-        });
-    });
-    
-    // ========== النماذج ==========
-    const newsletterForm = document.getElementById('newsletterForm');
-    const modalForm = document.getElementById('modalForm');
-    
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const emailInput = this.querySelector('input[type="email"]');
-            const email = emailInput.value.trim();
-            
-            if (email && validateEmail(email)) {
-                showNotification('شكراً لاشتراكك! ستتلقى آخر التحديثات والموارد القيّمة قريباً.', 'success');
-                emailInput.value = '';
-            } else {
-                showNotification('يرجى إدخال بريد إلكتروني صحيح.', 'error');
-            }
-        });
-    }
-    
-    if (modalForm) {
-        modalForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const emailInput = this.querySelector('input[type="email"]');
-            const email = emailInput.value.trim();
-            
-            if (email && validateEmail(email)) {
-                showNotification('تم إرسال القوالب المجانية إلى بريدك الإلكتروني بنجاح! نوصي بالتحقق من مجلد الرسائل غير المرغوب فيها أيضاً.', 'success');
-                emailInput.value = '';
-                hideSubscribeModal();
-            } else {
-                showNotification('يرجى إدخال بريد إلكتروني صحيح.', 'error');
-            }
-        });
-    }
-    
-    // دالة التحقق من صحة البريد الإلكتروني
-    function validateEmail(email) {
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(email);
-    }
-    
-    // ========== النافذة المنبثقة ==========
-    const subscribeModal = document.getElementById('subscribeModal');
-    const closeModal = document.querySelector('.close-modal');
-    
-    function showSubscribeModal() {
-        // التحقق مما إذا كان المستخدم قد شاهد النافذة من قبل
-        if (!localStorage.getItem('subscribeModalShown')) {
-            setTimeout(() => {
-                if (subscribeModal) {
-                    subscribeModal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                }
-            }, 1000);
-        }
-    }
-    
-    function hideSubscribeModal() {
-        if (subscribeModal) {
-            subscribeModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-            localStorage.setItem('subscribeModalShown', 'true');
-        }
-    }
-    
-    if (closeModal) {
-        closeModal.addEventListener('click', hideSubscribeModal);
-    }
-    
-    // إغلاق النافذة عند النقر خارجها
-    if (subscribeModal) {
-        subscribeModal.addEventListener('click', function(e) {
-            if (e.target === this) {
-                hideSubscribeModal();
-            }
-        });
-    }
-    
-    // ========== إشعارات ==========
-    function showNotification(message, type) {
-        const notification = document.createElement('div');
-        notification.className = `notification ${type}`;
-        notification.textContent = message;
-        
-        // إضافة أنماط للإشعار
-        notification.style.position = 'fixed';
-        notification.style.top = '25px';
-        notification.style.right = '25px';
-        notification.style.padding = '1.25rem 1.75rem';
-        notification.style.borderRadius = 'var(--radius-md)';
-        notification.style.color = 'white';
-        notification.style.fontFamily = 'var(--font-body)';
-        notification.style.fontSize = '1.05rem';
-        notification.style.zIndex = '9999';
-        notification.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
-        notification.style.transition = 'all 0.3s ease';
-        notification.style.transform = 'translateY(-100px)';
-        notification.style.opacity = '0';
-        notification.style.maxWidth = '400px';
-        notification.style.lineHeight = '1.5';
-        
-        if (type === 'success') {
-            notification.style.background = 'linear-gradient(45deg, var(--secondary-brown), var(--accent-gold))';
-            notification.style.border = '2px solid var(--accent-gold)';
-        } else {
-            notification.style.background = 'linear-gradient(45deg, #9e2a2a, #b45309)';
-            notification.style.border = '2px solid #b45309';
-        }
-        
-        document.body.appendChild(notification);
-        
-        // ظهور الإشعار
-        setTimeout(() => {
-            notification.style.transform = 'translateY(0)';
-            notification.style.opacity = '1';
-        }, 100);
-        
-        // إزالة الإشعار بعد 4 ثوانٍ
-        setTimeout(() => {
-            notification.style.transform = 'translateY(-100px)';
-            notification.style.opacity = '0';
-            setTimeout(() => {
-                if (notification.parentNode) {
-                    notification.parentNode.removeChild(notification);
-                }
-            }, 300);
-        }, 4000);
-    }
-    
-    // ========== تأثيرات إضافية ==========
-    // تأثير الكتابة للعنوان
-    const artisticTitle = document.querySelector('.artistic-title');
-    if (artisticTitle) {
-        const spans = artisticTitle.querySelectorAll('span');
-        spans.forEach((span, index) => {
-            span.style.opacity = '0';
-            span.style.transform = 'translateY(20px)';
-            
-            setTimeout(() => {
-                span.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-                span.style.opacity = '1';
-                span.style.transform = 'translateY(0)';
-            }, index * 300);
-        });
-    }
-    
-    // تأثيرات للهاتف المحمول
-    const phoneMockup = document.querySelector('.phone-mockup');
-    if (phoneMockup) {
-        phoneMockup.addEventListener('mousemove', function(e) {
-            const rect = this.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const rotateY = (x / rect.width - 0.5) * 8;
-            const rotateX = (0.5 - y / rect.height) * 8;
-            
-            this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        });
-        
-        phoneMockup.addEventListener('mouseleave', function() {
-            this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
-        });
-    }
-    
-    // ========== تأثيرات الصوت (اختياري) ==========
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('artistic-btn') || 
-            e.target.closest('.artistic-btn') || 
-            e.target.classList.contains('tab-btn')) {
-            
-            // تأثير صوتي (يمكن إضافة صوت حقيقي)
-            playClickSound();
-        }
-    });
-    
-    function playClickSound() {
-        // في التطبيق الحقيقي، يمكنك إضافة صوت هنا
-        // const audio = new Audio('click-sound.mp3');
-        // audio.volume = 0.2;
-        // audio.play();
-    }
-    
-    // ========== تأثيرات الخلفية الديناميكية ==========
-    function createFloatingArtisticElements() {
-        const colors = ['beige', 'nude', 'gold'];
-        const section = document.querySelector('.artistic-section');
-        
-        if (!section) return;
-        
-        for (let i = 0; i < 12; i++) {
-            const element = document.createElement('div');
-            element.className = `floating-artistic artistic-${colors[Math.floor(Math.random() * colors.length)]}`;
-            
-            // مواضع عشوائية
-            const size = Math.random() * 15 + 8;
-            const posX = Math.random() * 100;
-            const posY = Math.random() * 100;
-            const duration = Math.random() * 20 + 20;
-            const delay = Math.random() * 5;
-            
-            element.style.width = `${size}px`;
-            element.style.height = `${size}px`;
-            element.style.right = `${posX}%`;
-            element.style.top = `${posY}%`;
-            element.style.animationDuration = `${duration}s`;
-            element.style.animationDelay = `${delay}s`;
-            element.style.position = 'absolute';
-            element.style.borderRadius = '50%';
-            element.style.opacity = '0.1';
-            element.style.zIndex = '0';
-            element.style.pointerEvents = 'none';
-            
-            if (element.className.includes('artistic-beige')) {
-                element.style.backgroundColor = 'var(--primary-beige)';
-            } else if (element.className.includes('artistic-nude')) {
-                element.style.backgroundColor = 'var(--primary-nude)';
-            } else if (element.className.includes('artistic-gold')) {
-                element.style.backgroundColor = 'var(--accent-gold)';
-            }
-            
-            section.appendChild(element);
-        }
-    }
-    
-    // استدعاء دالة العناصر العائمة
-    createFloatingArtisticElements();
-    
-    // ========== رسالة ترحيب في الكونسول ==========
-    console.log('%c🎨 بورتفوليو فني - إصدار جيل Z 2025 🎨', 'background: linear-gradient(45deg, #E8E0D3, #CDB6AC, #8B7355, #D4AF37); color: #1A1A1A; padding: 12px; border-radius: 6px; font-size: 14px; font-weight: bold;');
-    console.log('%c📚 منصة عربية لبناء بورتفوليو احترافي بمظهر فني عصري', 'color: #8B7355; font-size: 12px; padding: 8px; background: #F5EFE4; border-radius: 4px;');
-    
-    // ========== تحميل إضافي عند التمرير ==========
-    let isLoading = false;
-    
-    window.addEventListener('scroll', function() {
-        const scrollPosition = window.innerHeight + window.scrollY;
-        const documentHeight = document.documentElement.scrollHeight;
-        
-        if (scrollPosition >= documentHeight - 100 && !isLoading) {
-            isLoading = true;
-            
-            // محاكاة تحميل المحتوى
-            const loadingIndicator = document.createElement('div');
-            loadingIndicator.className = 'loading-indicator';
-            loadingIndicator.innerHTML = `
-                <div class="loading-spinner"></div>
-                <span>جاري تحميل المزيد من المحتوى القيّم...</span>
-            `;
-            
-            // إضافة الأنماط
-            const loadingStyle = document.createElement('style');
-            loadingStyle.textContent = `
-                .loading-indicator {
-                    text-align: center;
-                    padding: 3rem;
-                    color: var(--text-muted);
-                    font-size: 1.1rem;
-                }
-                .loading-spinner {
-                    border: 3px solid rgba(139, 115, 85, 0.1);
-                    border-top: 3px solid var(--secondary-brown);
-                    border-radius: 50%;
-                    width: 50px;
-                    height: 50px;
-                    animation: spin 1s linear infinite;
-                    margin: 0 auto 1.5rem;
-                }
-                @keyframes spin {
-                    0% { transform: rotate(0deg); }
-                    100% { transform: rotate(360deg); }
-                }
-            `;
-            
-            document.head.appendChild(loadingStyle);
-            const tipsSection = document.querySelector('#tips');
-            if (tipsSection) {
-                tipsSection.appendChild(loadingIndicator);
-            }
-            
-            // محاكاة التأخير
-            setTimeout(() => {
-                if (tipsSection && tipsSection.contains(loadingIndicator)) {
-                    tipsSection.removeChild(loadingIndicator);
-                }
-                document.head.removeChild(loadingStyle);
-                isLoading = false;
-                
-                // رسالة أن كل المحتوى تم تحميله
-                showNotification('تم تحميل جميع المحتويات الإضافية بنجاح! استمر في الاستكشاف. 🎉', 'success');
-            }, 1500);
-        }
-    });
-    
-    // ========== تهيئة الأرقام المتحركة عند التحميل ==========
+    // Auto remove after 3 seconds
     setTimeout(() => {
-        animateStats();
-    }, 500);
-});
+        notification.style.animation = 'slideOut 0.3s ease forwards';
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+    
+    // Add animation styles
+    addNotificationAnimations();
+}
+
+function addNotificationAnimations() {
+    if (!document.getElementById('notification-animations')) {
+        const style = document.createElement('style');
+        style.id = 'notification-animations';
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes slideOut {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+            }
+            
+            .notification i {
+                color: var(--accent-color);
+            }
+            
+            .notification span {
+                font-family: var(--font-mono);
+                font-size: 0.875rem;
+            }
+            
+            @media (max-width: 768px) {
+                .notification {
+                    right: 1rem;
+                    left: 1rem;
+                    bottom: 1rem;
+                    max-width: calc(100% - 2rem);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+}
