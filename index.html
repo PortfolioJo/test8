@@ -1,63 +1,50 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" data-theme="dark">
+<html lang="ar" dir="rtl" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aseel | Creative Designer - Modern Visual Identity</title>
-    <meta name="description" content="Aseel - Creative designer specializing in modern visual identity, web design, and digital art.">
+    <title>Aseel | Creative Digital Designer for Gen Z Brands</title>
+    <meta name="description" content="Aseel - Creative digital designer specializing in modern visual identity, web design, and digital art for Gen Z audiences.">
     
-    <!-- Fonts -->
+    <!-- Modern Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&family=Almarai:wght@300;400;700&family=Cairo:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>A</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%23FF6EC7%22>A</text></svg>">
     
     <!-- Styles -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Floating Elements -->
-    <div class="floating-elements">
-        <div class="floating-element element-1"></div>
-        <div class="floating-element element-2"></div>
-        <div class="floating-element element-3"></div>
-        <div class="floating-element element-4"></div>
-    </div>
-
     <!-- Navigation -->
-    <nav class="glass-nav" id="nav">
+    <nav class="minimal-nav" id="nav">
         <div class="nav-container">
             <div class="nav-brand">
                 <span class="nav-logo">Aseel</span>
-                <span class="nav-subtitle">Creative Designer</span>
+                <span class="nav-subtitle" data-i18n="nav.designer">Digital Designer</span>
             </div>
             
             <div class="nav-menu" id="navMenu">
                 <div class="nav-links">
                     <a href="#hero" class="nav-link active" data-section="hero">
-                        <i class="fas fa-home"></i>
-                        <span>Home</span>
+                        <span data-i18n="nav.home">Home</span>
                     </a>
                     <a href="#about" class="nav-link" data-section="about">
-                        <i class="fas fa-user"></i>
-                        <span>About</span>
+                        <span data-i18n="nav.about">About</span>
                     </a>
                     <a href="#work" class="nav-link" data-section="work">
-                        <i class="fas fa-briefcase"></i>
-                        <span>Work</span>
+                        <span data-i18n="nav.work">Work</span>
                     </a>
-                    <a href="#services" class="nav-link" data-section="services">
-                        <i class="fas fa-palette"></i>
-                        <span>Services</span>
+                    <a href="#process" class="nav-link" data-section="process">
+                        <span>Process</span>
                     </a>
                     <a href="#contact" class="nav-link" data-section="contact">
-                        <i class="fas fa-envelope"></i>
-                        <span>Contact</span>
+                        <span data-i18n="nav.contact">Contact</span>
                     </a>
                 </div>
             </div>
@@ -71,7 +58,7 @@
                 
                 <div class="language-switch">
                     <button class="lang-btn" id="languageToggle">
-                        <span class="lang-text">EN</span>
+                        <span class="lang-text" data-i18n="lang.ar">AR</span>
                         <i class="fas fa-globe"></i>
                     </button>
                 </div>
@@ -88,100 +75,114 @@
     <!-- Hero Section -->
     <section class="hero-section" id="hero">
         <div class="hero-content">
-            <div class="hero-badge">Creative Designer</div>
+            <div class="hero-badge" data-i18n="hero.subtitle">Digital Art</div>
             <h1 class="hero-title">
-                <span class="title-line">Create with</span>
-                <span class="title-line accent">Modern Designs</span>
-                <span class="title-line">That Inspire</span>
+                <span class="title-line">I'm Aseel —</span>
+                <span class="title-line accent">Creative Digital Designer</span>
             </h1>
             <p class="hero-description">
-                I design unique visual experiences that combine digital art with modern technology,
-                creating distinctive visual identities that leave a lasting impact.
+                I design clean visuals & fast experiences for Gen Z brands
             </p>
             
             <div class="hero-actions">
                 <a href="#work" class="btn-primary">
-                    <span>View My Work</span>
+                    <span>View Work</span>
                     <i class="fas fa-arrow-left"></i>
                 </a>
                 <a href="#contact" class="btn-secondary">
-                    <span>Let's Work Together</span>
-                    <i class="fas fa-handshake"></i>
+                    <span>Contact Me</span>
+                    <i class="fas fa-message"></i>
                 </a>
-            </div>
-        </div>
-        
-        <div class="hero-visual">
-            <div class="visual-container">
-                <div class="visual-element v1"></div>
-                <div class="visual-element v2"></div>
-                <div class="visual-element v3"></div>
-                <div class="visual-element v4"></div>
+                <button class="btn-tertiary" onclick="downloadCV()">
+                    <span>Download CV</span>
+                    <i class="fas fa-download"></i>
+                </button>
             </div>
         </div>
         
         <div class="hero-scroll">
-            <span>Discover More</span>
+            <span>Explore</span>
             <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- About Snapshot -->
+    <section class="section snapshot-section">
+        <div class="container">
+            <div class="about-snapshot">
+                <div class="snapshot-card">
+                    <div class="snapshot-icon">🚀</div>
+                    <div class="snapshot-number">3+</div>
+                    <div class="snapshot-label">Years Experience</div>
+                </div>
+                <div class="snapshot-card">
+                    <div class="snapshot-icon">🎯</div>
+                    <div class="snapshot-number">50+</div>
+                    <div class="snapshot-label">Projects Done</div>
+                </div>
+                <div class="snapshot-card">
+                    <div class="snapshot-icon">⚡</div>
+                    <div class="snapshot-number">Fast</div>
+                    <div class="snapshot-label">Web & Mobile Design</div>
+                </div>
+                <div class="snapshot-card">
+                    <div class="snapshot-icon">📍</div>
+                    <div class="snapshot-number">Amman</div>
+                    <div class="snapshot-label">Based in Jordan</div>
+                </div>
+            </div>
+            
+            <div class="about-quote">
+                <p>"أصمم هويات رقمية نظيفة وسريعة تتناسب مع المتاجر والشركات الناشئة. هدفي تبسيط التصميم وتقديم تجربة ذكية مرتبطة بجيل Z."</p>
+            </div>
         </div>
     </section>
 
     <!-- About Section -->
     <section class="section about-section" id="about">
-        <div class="section-header">
-            <span class="section-number">01</span>
-            <h2 class="section-title">Design Philosophy</h2>
-            <p class="section-subtitle">Where creativity meets function</p>
-        </div>
-        
-        <div class="about-content">
-            <div class="about-image">
-                <div class="image-frame">
-                    <div class="frame-border"></div>
-                    <div class="frame-content">
-                        <div class="artist-badge">
-                            <i class="fas fa-paint-brush"></i>
-                            <span>Visual Artist</span>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title" data-i18n="about.title">Design Philosophy</h2>
+                <p class="section-subtitle" data-i18n="about.subtitle">Where creativity meets purpose</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="image-frame">
+                        <div class="frame-content">
+                            <div class="artist-badge">
+                                <i class="fas fa-palette"></i>
+                                <span data-i18n="about.badge">Visual Artist</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="about-text">
-                <div class="about-stats">
-                    <div class="stat">
-                        <span class="stat-number">50+</span>
-                        <span class="stat-label">Successful Projects</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">5+</span>
-                        <span class="stat-label">Years Experience</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">30+</span>
-                        <span class="stat-label">Happy Clients</span>
-                    </div>
-                </div>
                 
-                <h3 class="about-heading">Design with Meaning</h3>
-                
-                <div class="about-description">
-                    <p>
-                        I believe that good design is not just about beautiful forms, but about solving problems
-                        and telling compelling stories. Every line and color in my work carries a message
-                        and clear purpose.
-                    </p>
+                <div class="about-text">
+                    <h3 class="about-heading" data-i18n="about.heading">Design with Purpose</h3>
                     
-                    <p>
-                        With over 5 years of experience in the digital field, I've developed a unique
-                        style that combines artistic intuition with professional methodology, ensuring
-                        results that exceed expectations.
-                    </p>
-                </div>
-                
-                <div class="signature">
-                    <span class="sig-name">Aseel</span>
-                    <span class="sig-title">Creative Designer</span>
+                    <div class="about-description">
+                        <p data-i18n="about.description1">
+                            I believe in creating designs that not only look beautiful but also solve problems 
+                            and tell compelling stories. Every element in my work carries meaning and purpose.
+                        </p>
+                        
+                        <p data-i18n="about.description2">
+                            With over 5 years of digital design experience, I've developed a unique approach 
+                            that combines artistic intuition with professional methodology.
+                        </p>
+                    </div>
+                    
+                    <div class="tools-section">
+                        <h4>Main Tools</h4>
+                        <div class="tools-grid">
+                            <span class="tool-tag">Figma</span>
+                            <span class="tool-tag">Photoshop</span>
+                            <span class="tool-tag">Illustrator</span>
+                            <span class="tool-tag">After Effects</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -189,89 +190,137 @@
 
     <!-- Work Section -->
     <section class="section work-section" id="work">
-        <div class="section-header">
-            <span class="section-number">02</span>
-            <h2 class="section-title">Work Gallery</h2>
-            <p class="section-subtitle">Selected creations that express my style</p>
-        </div>
-        
-        <div class="work-filters">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="branding">Brand Identity</button>
-            <button class="filter-btn" data-filter="web">Web Design</button>
-            <button class="filter-btn" data-filter="illustration">Digital Illustration</button>
-        </div>
-        
-        <div class="work-grid">
-            <!-- Project 1 -->
-            <div class="project-card" data-category="branding">
-                <div class="project-image">
-                    <div class="image-overlay">
-                        <button class="view-project" data-project="1">
-                            <i class="fas fa-expand"></i>
-                            <span>View Project</span>
-                        </button>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title" data-i18n="work.title">Featured Work</h2>
+                <p class="section-subtitle" data-i18n="work.subtitle">Selected projects showcasing design excellence</p>
+            </div>
+            
+            <div class="work-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="branding">Branding</button>
+                <button class="filter-btn" data-filter="web">Web Design</button>
+                <button class="filter-btn" data-filter="art">Digital Art</button>
+            </div>
+            
+            <div class="work-grid">
+                <!-- Project 1 -->
+                <div class="project-card" data-category="branding">
+                    <div class="project-image project-1">
+                        <div class="project-label">Brand Identity</div>
+                        <div class="image-overlay">
+                            <button class="view-project" data-project="1">
+                                <i class="fas fa-expand"></i>
+                                <span>View Full Case</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Luxury Fashion Brand</h3>
+                        <p class="project-description">
+                            Complete visual identity for a high-end fashion brand blending heritage with modernity
+                        </p>
+                        <div class="project-results">
+                            <span><i class="fas fa-chart-line"></i> +40% Brand Awareness</span>
+                            <span><i class="fas fa-users"></i> Better Customer Experience</span>
+                            <span><i class="fas fa-palette"></i> Enhanced Visual Identity</span>
+                        </div>
                     </div>
                 </div>
-                <div class="project-info">
-                    <span class="project-category">Brand Identity</span>
-                    <h3 class="project-title">Luxury Brand Identity</h3>
-                    <p class="project-description">
-                        Complete visual identity design for a luxury fashion brand focusing on elegance and simplicity
-                    </p>
-                    <div class="project-tags">
-                        <span>Logo Design</span>
-                        <span>Brand Colors</span>
-                        <span>Marketing Materials</span>
+                
+                <!-- Project 2 -->
+                <div class="project-card" data-category="web">
+                    <div class="project-image project-2">
+                        <div class="project-label">Web Design</div>
+                        <div class="image-overlay">
+                            <button class="view-project" data-project="2">
+                                <i class="fas fa-expand"></i>
+                                <span>View Full Case</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Interactive Art Platform</h3>
+                        <p class="project-description">
+                            Modern user interface for an art platform with seamless browsing experience
+                        </p>
+                        <div class="project-results">
+                            <span><i class="fas fa-clock"></i> +60% Browsing Time</span>
+                            <span><i class="fas fa-exchange-alt"></i> Better Conversion Rates</span>
+                            <span><i class="fas fa-smile"></i> Enhanced User Experience</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card" data-category="art">
+                    <div class="project-image project-3">
+                        <div class="project-label">Digital Art</div>
+                        <div class="image-overlay">
+                            <button class="view-project" data-project="3">
+                                <i class="fas fa-expand"></i>
+                                <span>View Full Case</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Abstract Art Series</h3>
+                        <p class="project-description">
+                            Collection of digital artworks inspired by contemporary Arabic culture
+                        </p>
+                        <div class="project-results">
+                            <span><i class="fas fa-images"></i> Successful Exhibition</span>
+                            <span><i class="fas fa-check-circle"></i> All Artworks Sold</span>
+                            <span><i class="fas fa-newspaper"></i> Wide Media Coverage</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Project 2 -->
-            <div class="project-card" data-category="web">
-                <div class="project-image">
-                    <div class="image-overlay">
-                        <button class="view-project" data-project="2">
-                            <i class="fas fa-expand"></i>
-                            <span>View Project</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <span class="project-category">Web Design</span>
-                    <h3 class="project-title">Interactive Art Platform</h3>
-                    <p class="project-description">
-                        Modern user interface for an art platform with smooth and engaging browsing experience
-                    </p>
-                    <div class="project-tags">
-                        <span>UI/UX</span>
-                        <span>Interactive</span>
-                        <span>Responsive Design</span>
-                    </div>
-                </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="section process-section" id="process">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">How I Work</h2>
+                <p class="section-subtitle">Simple process, amazing results</p>
             </div>
             
-            <!-- Project 3 -->
-            <div class="project-card" data-category="illustration">
-                <div class="project-image">
-                    <div class="image-overlay">
-                        <button class="view-project" data-project="3">
-                            <i class="fas fa-expand"></i>
-                            <span>View Project</span>
-                        </button>
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-search"></i>
                     </div>
+                    <h3>Discovery</h3>
+                    <p>Understanding your brand and goals</p>
                 </div>
-                <div class="project-info">
-                    <span class="project-category">Digital Illustration</span>
-                    <h3 class="project-title">Abstract Art Series</h3>
-                    <p class="project-description">
-                        Collection of digital artworks inspired by contemporary Arabic culture
-                    </p>
-                    <div class="project-tags">
-                        <span>Digital Art</span>
-                        <span>Digital Coloring</span>
-                        <span>Abstract Art</span>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-palette"></i>
                     </div>
+                    <h3>Moodboard</h3>
+                    <p>Creating visual direction & style guide</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Design</h3>
+                    <p>Crafting beautiful, functional designs</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Deliver</h3>
+                    <p>Final files + support & updates</p>
                 </div>
             </div>
         </div>
@@ -279,198 +328,307 @@
 
     <!-- Services Section -->
     <section class="section services-section" id="services">
-        <div class="section-header">
-            <span class="section-number">03</span>
-            <h2 class="section-title">Services</h2>
-            <p class="section-subtitle">Comprehensive design solutions tailored to your needs</p>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title" data-i18n="services.title">Services</h2>
+                <p class="section-subtitle" data-i18n="services.subtitle">Comprehensive design solutions for your needs</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="service-title" data-i18n="services.service1.title">Brand Identity</h3>
+                    <p class="service-description" data-i18n="services.service1.description">
+                        Complete visual identity systems that express brand values
+                    </p>
+                    <div class="service-price">
+                        <span>Starting from</span>
+                        <span class="price">$800</span>
+                    </div>
+                </div>
+                
+                <div class="service-card featured">
+                    <div class="service-badge">Most Popular</div>
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="service-title" data-i18n="services.service2.title">Web & App Design</h3>
+                    <p class="service-description" data-i18n="services.service2.description">
+                        Modern user interfaces for exceptional experiences
+                    </p>
+                    <div class="service-price">
+                        <span>Starting from</span>
+                        <span class="price">$1,200</span>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="service-title" data-i18n="services.service3.title">Digital Art</h3>
+                    <p class="service-description" data-i18n="services.service3.description">
+                        Creating unique digital artworks for social media
+                    </p>
+                    <div class="service-price">
+                        <span>Starting from</span>
+                        <span class="price">$400</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-palette"></i>
-                </div>
-                <h3 class="service-title">Brand Identity Design</h3>
-                <p class="service-description">
-                    Complete visual identity systems that express your brand values and create memorable impressions
-                </p>
-                <ul class="service-features">
-                    <li>Logo & Brand Mark Design</li>
-                    <li>Color & Typography System</li>
-                    <li>Brand Guidelines</li>
-                    <li>Promotional Materials</li>
-                </ul>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2 class="section-title">Client Love</h2>
+                <p class="section-subtitle">What brands say about working with me</p>
             </div>
             
-            <div class="service-card featured">
-                <div class="service-icon">
-                    <i class="fas fa-laptop-code"></i>
+            <div class="testimonials-grid">
+                <div class="testimonial-bubble">
+                    <div class="bubble-content">
+                        <p>"Aseel transformed our brand completely! The designs are not only beautiful but also increased our conversions by 40%. Working with her was smooth and professional."</p>
+                    </div>
+                    <div class="client-info">
+                        <div class="client-avatar">S</div>
+                        <div>
+                            <h4>Sarah M.</h4>
+                            <p>CEO, StartupX</p>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="service-title">Web & App Design</h3>
-                <p class="service-description">
-                    Modern user interfaces that provide exceptional experiences across all devices
-                </p>
-                <ul class="service-features">
-                    <li>UI/UX Design</li>
-                    <li>User Experience</li>
-                    <li>Responsive Design</li>
-                    <li>Mobile App Design</li>
-                </ul>
+                
+                <div class="testimonial-bubble">
+                    <div class="bubble-content">
+                        <p>"The social media packages she created went viral! Perfect blend of Gen Z aesthetics and brand identity. Highly recommend for any modern brand."</p>
+                    </div>
+                    <div class="client-info">
+                        <div class="client-avatar">A</div>
+                        <div>
+                            <h4>Ahmed R.</h4>
+                            <p>Marketing Director</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-bubble">
+                    <div class="bubble-content">
+                        <p>"Fast delivery, creative solutions, and amazing communication. Aseel understood our vision perfectly and delivered beyond expectations."</p>
+                    </div>
+                    <div class="client-info">
+                        <div class="client-avatar">L</div>
+                        <div>
+                            <h4>Lina K.</h4>
+                            <p>Founder, TechGadgets</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-paint-brush"></i>
-                </div>
-                <h3 class="service-title">Digital Art & Illustration</h3>
-                <p class="service-description">
-                    Creating unique digital artworks for advertising, content, and social media
-                </p>
-                <ul class="service-features">
-                    <li>Digital Illustration</li>
-                    <li>Graphic Design</li>
-                    <li>Social Media Content</li>
-                    <li>Advertising Design</li>
-                </ul>
+        </div>
+    </section>
+
+    <!-- Big CTA Section -->
+    <section class="section cta-section">
+        <div class="container">
+            <div class="big-cta">
+                <h2 class="cta-title">Ready to Build Something Cool?</h2>
+                <p class="cta-subtitle">Let's create something amazing together</p>
+                <a href="#contact" class="cta-button">
+                    Let's Work Together
+                    <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section class="section contact-section" id="contact">
-        <div class="contact-container">
-            <div class="contact-info">
-                <div class="section-header">
-                    <h2 class="section-title">Let's Start a Creative Project</h2>
-                    <p class="section-subtitle">
-                        Let's discuss your idea and turn it into tangible reality
-                    </p>
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="section-header">
+                        <h2 class="section-title" data-i18n="contact.title">Let's Create Together</h2>
+                        <p class="section-subtitle" data-i18n="contact.subtitle">
+                            Let's discuss your idea and turn it into reality
+                        </p>
+                    </div>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-content">
+                                <h4 data-i18n="contact.email">Email</h4>
+                                <a href="mailto:hello@aseel.design">hello@aseel.design</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-content">
+                                <h4 data-i18n="contact.phone">Phone</h4>
+                                <a href="tel:+966555555555">+966 55 555 5555</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-content">
+                                <h4 data-i18n="contact.location">Location</h4>
+                                <span data-i18n="contact.remote">Available for remote work worldwide</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-behance"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-dribbble"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
                 </div>
                 
-                <div class="contact-details">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" required>
+                            <label for="name" data-i18n="contact.form.name">Full Name</label>
+                            <div class="form-line"></div>
                         </div>
-                        <div class="contact-content">
-                            <h4>Email</h4>
-                            <a href="mailto:hello@aseel.design">hello@aseel.design</a>
+                        
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required>
+                            <label for="email" data-i18n="contact.form.email">Email Address</label>
+                            <div class="form-line"></div>
                         </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
+                        
+                        <div class="form-group">
+                            <select id="service" name="service">
+                                <option value="" data-i18n="contact.form.select">Select Service</option>
+                                <option value="branding" data-i18n="contact.form.branding">Brand Identity</option>
+                                <option value="web" data-i18n="contact.form.web">Web & App Design</option>
+                                <option value="art" data-i18n="contact.form.art">Digital Art</option>
+                                <option value="other" data-i18n="contact.form.other">Other Service</option>
+                            </select>
+                            <div class="form-line"></div>
                         </div>
-                        <div class="contact-content">
-                            <h4>Phone</h4>
-                            <a href="tel:+966555555555">+966 55 555 5555</a>
+                        
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="4" required></textarea>
+                            <label for="message" data-i18n="contact.form.message">Project Details</label>
+                            <div class="form-line"></div>
                         </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-content">
-                            <h4>Location</h4>
-                            <span>Available for remote work worldwide</span>
-                        </div>
-                    </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <span data-i18n="contact.form.submit">Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
                 </div>
-                
-                <div class="social-links">
-                    <a href="#" class="social-link">
-                        <i class="fab fa-behance"></i>
-                    </a>
-                    <a href="#" class="social-link">
-                        <i class="fab fa-dribbble"></i>
-                    </a>
-                    <a href="#" class="social-link">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="#" class="social-link">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="contact-form">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" required>
-                        <label for="name">Full Name</label>
-                        <div class="form-line"></div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" required>
-                        <label for="email">Email Address</label>
-                        <div class="form-line"></div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <select id="service" name="service">
-                            <option value="">Select Required Service</option>
-                            <option value="branding">Brand Identity Design</option>
-                            <option value="web">Web & App Design</option>
-                            <option value="illustration">Digital Art & Illustration</option>
-                            <option value="other">Other Service</option>
-                        </select>
-                        <div class="form-line"></div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <textarea id="message" name="message" rows="4" required></textarea>
-                        <label for="message">Project Details</label>
-                        <div class="form-line"></div>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">
-                        <span>Send Request</span>
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <span class="footer-logo">Aseel</span>
-                <p class="footer-description">
-                    Creative designer specializing in creating unique visual experiences
-                </p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">Aseel</span>
+                    <p class="footer-description" data-i18n="footer.tagline">Creative Digital Designer</p>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="#hero" data-i18n="footer.home">Home</a>
+                    <a href="#about" data-i18n="footer.about">About</a>
+                    <a href="#work" data-i18n="footer.work">Work</a>
+                    <a href="#process">Process</a>
+                    <a href="#contact" data-i18n="footer.contact">Contact</a>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="#" class="social-btn">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-btn">
+                        <i class="fab fa-behance"></i>
+                    </a>
+                    <a href="#" class="social-btn">
+                        <i class="fab fa-dribbble"></i>
+                    </a>
+                </div>
             </div>
             
-            <div class="footer-links">
-                <a href="#hero">Home</a>
-                <a href="#about">About</a>
-                <a href="#work">Work</a>
-                <a href="#services">Services</a>
-                <a href="#contact">Contact</a>
+            <div class="footer-bottom">
+                <p class="copyright">© <span id="currentYear"></span> Aseel. <span data-i18n="footer.rights">All rights reserved</span>.</p>
             </div>
-            
-            <div class="footer-social">
-                <a href="#" class="social-btn">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="#" class="social-btn">
-                    <i class="fab fa-behance"></i>
-                </a>
-                <a href="#" class="social-btn">
-                    <i class="fab fa-dribbble"></i>
-                </a>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p class="copyright">© <span id="currentYear"></span> Aseel. All rights reserved.</p>
-            <p class="made-with">Made with ❤️ in the Arab World</p>
         </div>
     </footer>
+
+    <!-- Project Modal -->
+    <div class="modal" id="projectModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-header">
+                <span class="modal-category" id="modalCategory">Brand Identity</span>
+                <h2 class="modal-title" id="modalTitle">Luxury Fashion Brand</h2>
+            </div>
+            
+            <div class="modal-body">
+                <div class="modal-image" id="modalImage"></div>
+                
+                <div class="modal-info">
+                    <div class="modal-section">
+                        <h3 data-i18n="modal.about">About Project</h3>
+                        <p id="modalDescription">
+                            Complete visual identity for a high-end fashion brand blending heritage with modernity
+                        </p>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3 data-i18n="modal.technologies">Technologies Used</h3>
+                        <div class="modal-tags" id="modalTags"></div>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3 data-i18n="modal.results">Results</h3>
+                        <ul class="modal-results" id="modalResults"></ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <a href="#contact" class="btn-primary">
+                    <span data-i18n="modal.start">Start Similar Project</span>
+                    <i class="fas fa-star"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script src="script.js"></script>
